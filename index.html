@@ -107,4 +107,237 @@ window.addEventListener('hashchange',()=>{
  if(n==='guide')openGuide(); else if(n==='search')openSearch(); else if(teams[n])openTeam(n); else goHome()
 });
 
+</script><!-- DLS KIT LAND AI -->
+<div class="ai-button" onclick="toggleAI()">🤖</div>
+
+<div class="ai-chat" id="aiChat">
+
+  <div class="ai-header">
+    🤖 DLS KIT LAND AI
+    <button onclick="toggleAI()">✕</button>
+  </div>
+
+  <div class="ai-messages" id="aiMessages">
+    <div class="ai-bot">
+      سلام! 👋 من دستیار DLS KIT LAND هستم.<br>
+      درباره کیت‌ها، DLS 2019 یا سایت از من بپرس!
+    </div>
+  </div>
+
+  <div class="ai-input">
+    <input
+      id="aiInput"
+      type="text"
+      placeholder="سؤالت رو بنویس..."
+      onkeydown="if(event.key==='Enter') sendAI()"
+    >
+
+    <button onclick="sendAI()">➤</button>
+  </div>
+
+</div>
+
+<style>
+
+.ai-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #2463e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(0,0,0,.35);
+  z-index: 9999;
+}
+
+.ai-chat {
+  position: fixed;
+  bottom: 90px;
+  left: 20px;
+  width: 330px;
+  max-width: calc(100vw - 40px);
+  height: 450px;
+  background: #10182f;
+  border: 1px solid #30436f;
+  border-radius: 18px;
+  overflow: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 9999;
+  box-shadow: 0 10px 35px rgba(0,0,0,.5);
+}
+
+.ai-header {
+  background: #1d2d58;
+  padding: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ai-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ai-messages {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.ai-bot,
+.ai-user {
+  padding: 10px 12px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+  line-height: 1.6;
+}
+
+.ai-bot {
+  background: #1b294d;
+}
+
+.ai-user {
+  background: #2463e8;
+  margin-right: 25px;
+}
+
+.ai-input {
+  display: flex;
+  padding: 10px;
+  background: #0b1125;
+  gap: 8px;
+}
+
+.ai-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 11px;
+  background: #192442;
+  color: white;
+}
+
+.ai-input button {
+  width: 45px;
+  border: none;
+  border-radius: 10px;
+  background: #2463e8;
+  color: white;
+  font-size: 18px;
+}
+
+</style>
+
+<script>
+
+function toggleAI() {
+
+  const chat = document.getElementById("aiChat");
+
+  if (chat.style.display === "flex") {
+    chat.style.display = "none";
+  } else {
+    chat.style.display = "flex";
+  }
+
+}
+
+
+function sendAI() {
+
+  const input = document.getElementById("aiInput");
+  const messages = document.getElementById("aiMessages");
+
+  const question = input.value.trim();
+
+  if (!question) return;
+
+  messages.innerHTML += `
+    <div class="ai-user">
+      ${question}
+    </div>
+  `;
+
+  input.value = "";
+
+  let answer = getAIAnswer(question);
+
+  setTimeout(() => {
+
+    messages.innerHTML += `
+      <div class="ai-bot">
+        ${answer}
+      </div>
+    `;
+
+    messages.scrollTop = messages.scrollHeight;
+
+  }, 400);
+
+}
+
+
+function getAIAnswer(question) {
+
+  const q = question.toLowerCase();
+
+  if (
+    q.includes("psg") ||
+    q.includes("پاریس") ||
+    q.includes("پاری سن ژرمن")
+  ) {
+    return "👕 کیت‌های PSG در بخش کیت‌های سایت قرار می‌گیرند. فعلاً روی نسخه 2027 کار می‌کنیم.";
+  }
+
+  if (
+    q.includes("بایرن") ||
+    q.includes("bayern")
+  ) {
+    return "🔴 کیت‌های Bayern Munich برای DLS 2019 هم در برنامه سایت قرار دارند.";
+  }
+
+  if (
+    q.includes("آرسنال") ||
+    q.includes("arsenal")
+  ) {
+    return "🔴 کیت‌های Arsenal هم به مجموعه DLS KIT LAND اضافه می‌شوند.";
+  }
+
+  if (
+    q.includes("نصب") ||
+    q.includes("install")
+  ) {
+    return "🎮 برای نصب کیت در DLS 2019، لینک کیت را کپی کن و از قسمت Kit در بازی استفاده کن.";
+  }
+
+  if (
+    q.includes("سلام") ||
+    q.includes("hello") ||
+    q.includes("hi")
+  ) {
+    return "سلام داداش! 👋🤖 چه کیتی می‌خوای پیدا کنیم؟";
+  }
+
+  if (
+    q.includes("dls") ||
+    q.includes("دریم لیگ")
+  ) {
+    return "⚽ DLS KIT LAND مخصوص کیت‌های Dream League Soccer است و تمرکز اصلی سایت روی DLS 2019 است.";
+  }
+
+  return "🤖 فعلاً نسخه آزمایشی من هستم! درباره کیت‌های DLS، PSG، Bayern، Arsenal یا نصب کیت ازم بپرس.";
+}
+
 </script></body></html>
