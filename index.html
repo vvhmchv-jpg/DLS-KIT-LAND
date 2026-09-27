@@ -1,2316 +1,901 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#07111f">
-  <meta name="description" content="DLS KIT LAND - انتشار و دانلود کیت‌های Dream League Soccer 2019">
-  <title>DLS KIT LAND | Dream League Soccer 2019</title>
-
-  <style>
-    :root{
-      --bg:#050a12;
-      --bg2:#081321;
-      --card:rgba(13,25,42,.72);
-      --card2:rgba(17,34,55,.82);
-      --line:rgba(255,255,255,.09);
-      --text:#f5f8ff;
-      --muted:#91a0b5;
-      --primary:#27d7ff;
-      --secondary:#7c5cff;
-      --success:#28e0a0;
-      --danger:#ff5f6d;
-      --warning:#ffc857;
-      --shadow:0 20px 60px rgba(0,0,0,.35);
-      --radius:22px;
-      --max:1200px;
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      min-height:100vh;
-      background:
-        radial-gradient(circle at 10% 0%,rgba(39,215,255,.11),transparent 28%),
-        radial-gradient(circle at 90% 15%,rgba(124,92,255,.12),transparent 30%),
-        linear-gradient(145deg,var(--bg),var(--bg2));
-      color:var(--text);
-      font-family:Tahoma,"Segoe UI",Arial,sans-serif;
-      overflow-x:hidden;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      opacity:.28;
-      background-image:
-        linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
-      background-size:42px 42px;
-      mask-image:linear-gradient(to bottom,black,transparent 80%);
-    }
-
-    a{color:inherit;text-decoration:none}
-    button,input{font:inherit}
-    button{cursor:pointer}
-    img{max-width:100%}
-
-    .app{
-      width:100%;
-      min-height:100vh;
-      position:relative;
-    }
-
-    .container{
-      width:min(calc(100% - 28px),var(--max));
-      margin:auto;
-    }
-
-    /* Header */
-    .header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      height:72px;
-      border-bottom:1px solid var(--line);
-      background:rgba(5,10,18,.72);
-      backdrop-filter:blur(18px);
-      -webkit-backdrop-filter:blur(18px);
-    }
-
-    .header-inner{
-      height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:14px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:11px;
-      min-width:0;
-    }
-
-    .brand-mark{
-      width:42px;
-      height:42px;
-      flex:none;
-      display:grid;
-      place-items:center;
-      border-radius:13px;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      box-shadow:0 0 28px rgba(39,215,255,.22);
-      color:#03111a;
-      font-size:20px;
-      font-weight:1000;
-    }
-
-    .brand-text{
-      min-width:0;
-    }
-
-    .brand-title{
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:.4px;
-      white-space:nowrap;
-    }
-
-    .brand-sub{
-      color:var(--muted);
-      font-size:10px;
-      margin-top:2px;
-      white-space:nowrap;
-    }
-
-    .menu-btn{
-      width:45px;
-      height:45px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:rgba(255,255,255,.045);
-      color:var(--text);
-      display:grid;
-      place-items:center;
-      gap:4px;
-      padding:10px;
-      transition:.2s;
-    }
-
-    .menu-btn:hover{background:rgba(255,255,255,.09)}
-    .menu-lines{
-      width:21px;
-      display:grid;
-      gap:4px;
-    }
-    .menu-lines span{
-      height:2px;
-      width:100%;
-      border-radius:4px;
-      background:currentColor;
-      transition:.2s;
-    }
-
-    /* Drawer */
-    .drawer-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.58);
-      z-index:1100;
-      opacity:0;
-      visibility:hidden;
-      transition:.25s;
-    }
-
-    .drawer-overlay.open{
-      opacity:1;
-      visibility:visible;
-    }
-
-    .drawer{
-      position:absolute;
-      top:0;
-      right:0;
-      width:min(320px,88vw);
-      height:100%;
-      background:linear-gradient(160deg,#0b1727,#07101d);
-      border-left:1px solid var(--line);
-      transform:translateX(100%);
-      transition:.28s ease;
-      padding:20px;
-      box-shadow:-30px 0 80px rgba(0,0,0,.45);
-    }
-
-    .drawer-overlay.open .drawer{transform:translateX(0)}
-
-    .drawer-head{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:28px;
-    }
-
-    .close-btn{
-      width:40px;
-      height:40px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      color:var(--text);
-      background:rgba(255,255,255,.05);
-      font-size:22px;
-    }
-
-    .nav{
-      display:grid;
-      gap:8px;
-    }
-
-    .nav-btn{
-      border:1px solid transparent;
-      border-radius:15px;
-      background:transparent;
-      color:#dce5f2;
-      padding:14px 15px;
-      text-align:right;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      transition:.2s;
-    }
-
-    .nav-btn:hover,.nav-btn.active{
-      background:rgba(39,215,255,.08);
-      border-color:rgba(39,215,255,.14);
-      color:#fff;
-    }
-
-    .nav-icon{
-      width:31px;
-      height:31px;
-      display:grid;
-      place-items:center;
-      border-radius:10px;
-      background:rgba(255,255,255,.06);
-      flex:none;
-    }
-
-    /* Main */
-    main{min-height:calc(100vh - 72px)}
-
-    .page{
-      display:none;
-      animation:pageIn .35s ease;
-    }
-
-    .page.active{display:block}
-
-    @keyframes pageIn{
-      from{opacity:0;transform:translateY(8px)}
-      to{opacity:1;transform:none}
-    }
-
-    /* Hero */
-    .hero{
-      padding:58px 0 34px;
-      position:relative;
-    }
-
-    .hero-grid{
-      display:grid;
-      gap:28px;
-      align-items:center;
-    }
-
-    .hero-copy{
-      position:relative;
-      z-index:1;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      border:1px solid rgba(39,215,255,.16);
-      background:rgba(39,215,255,.06);
-      color:#8feaff;
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:11px;
-      font-weight:700;
-      margin-bottom:17px;
-    }
-
-    .pulse{
-      width:7px;
-      height:7px;
-      border-radius:50%;
-      background:var(--success);
-      box-shadow:0 0 0 5px rgba(40,224,160,.08);
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:clamp(38px,11vw,72px);
-      line-height:.98;
-      letter-spacing:-2px;
-      font-weight:1000;
-      background:linear-gradient(100deg,#fff 20%,#8feaff 52%,#9c89ff);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .hero p{
-      color:var(--muted);
-      line-height:2;
-      margin:19px 0 25px;
-      max-width:650px;
-      font-size:14px;
-    }
-
-    .hero-actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
-
-    .btn{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.055);
-      color:var(--text);
-      min-height:46px;
-      padding:0 18px;
-      border-radius:14px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:9px;
-      font-weight:800;
-      font-size:13px;
-      transition:.2s;
-    }
-
-    .btn:hover{
-      transform:translateY(-2px);
-      background:rgba(255,255,255,.09);
-    }
-
-    .btn-primary{
-      border-color:transparent;
-      color:#021119;
-      background:linear-gradient(135deg,var(--primary),#79eaff);
-      box-shadow:0 10px 30px rgba(39,215,255,.16);
-    }
-
-    .btn-secondary{
-      border-color:rgba(124,92,255,.25);
-      background:rgba(124,92,255,.09);
-    }
-
-    .hero-visual{
-      min-height:260px;
-      border:1px solid var(--line);
-      border-radius:30px;
-      background:
-        radial-gradient(circle at 50% 35%,rgba(39,215,255,.18),transparent 35%),
-        linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-    }
-
-    .hero-ball{
-      width:170px;
-      height:170px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
-      font-size:75px;
-      background:linear-gradient(145deg,#13263e,#08121f);
-      border:1px solid rgba(255,255,255,.1);
-      box-shadow:
-        0 0 70px rgba(39,215,255,.12),
-        inset 0 0 35px rgba(255,255,255,.035);
-      animation:float 5s ease-in-out infinite;
-    }
-
-    @keyframes float{
-      0%,100%{transform:translateY(0) rotate(-3deg)}
-      50%{transform:translateY(-12px) rotate(3deg)}
-    }
-
-    .orbit{
-      position:absolute;
-      width:230px;
-      height:230px;
-      border:1px dashed rgba(39,215,255,.22);
-      border-radius:50%;
-      animation:spin 18s linear infinite;
-    }
-
-    .orbit::before{
-      content:"";
-      position:absolute;
-      width:9px;
-      height:9px;
-      background:var(--primary);
-      border-radius:50%;
-      top:18px;
-      right:30px;
-      box-shadow:0 0 20px var(--primary);
-    }
-
-    @keyframes spin{to{transform:rotate(360deg)}}
-
-    /* Stats */
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:9px;
-      margin:12px 0 42px;
-    }
-
-    .stat{
-      padding:17px 8px;
-      text-align:center;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.035);
-      border-radius:18px;
-    }
-
-    .stat strong{
-      display:block;
-      font-size:24px;
-      font-weight:1000;
-      background:linear-gradient(135deg,#fff,var(--primary));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .stat span{
-      display:block;
-      color:var(--muted);
-      font-size:10px;
-      margin-top:5px;
-    }
-
-    /* Sections */
-    .section{
-      padding:35px 0;
-    }
-
-    .section-head{
-      display:flex;
-      align-items:end;
-      justify-content:space-between;
-      gap:15px;
-      margin-bottom:18px;
-    }
-
-    .section-title{
-      margin:0;
-      font-size:22px;
-      font-weight:950;
-    }
-
-    .section-sub{
-      color:var(--muted);
-      font-size:11px;
-      margin-top:6px;
-    }
-
-    .link-btn{
-      border:0;
-      background:transparent;
-      color:var(--primary);
-      font-size:11px;
-      font-weight:800;
-      padding:7px;
-    }
-
-    /* Team cards */
-    .team-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:11px;
-    }
-
-    .team-card{
-      border:1px solid var(--line);
-      background:linear-gradient(145deg,rgba(18,34,53,.82),rgba(9,19,32,.72));
-      border-radius:20px;
-      padding:16px;
-      min-height:142px;
-      position:relative;
-      overflow:hidden;
-      cursor:pointer;
-      transition:.23s;
-    }
-
-    .team-card::after{
-      content:"";
-      position:absolute;
-      width:100px;
-      height:100px;
-      border-radius:50%;
-      left:-35px;
-      bottom:-45px;
-      background:rgba(39,215,255,.06);
-      filter:blur(5px);
-    }
-
-    .team-card:hover{
-      transform:translateY(-4px);
-      border-color:rgba(39,215,255,.25);
-      box-shadow:0 18px 45px rgba(0,0,0,.25);
-    }
-
-    .team-logo{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      background:linear-gradient(135deg,rgba(39,215,255,.13),rgba(124,92,255,.12));
-      display:grid;
-      place-items:center;
-      font-size:21px;
-      margin-bottom:13px;
-    }
-
-    .team-name{
-      font-weight:900;
-      font-size:13px;
-      margin-bottom:5px;
-      position:relative;
-      z-index:1;
-    }
-
-    .team-meta{
-      color:var(--muted);
-      font-size:10px;
-      position:relative;
-      z-index:1;
-    }
-
-    /* Kit cards */
-    .kit-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:11px;
-    }
-
-    .kit-card{
-      border:1px solid var(--line);
-      border-radius:20px;
-      overflow:hidden;
-      background:rgba(11,23,38,.78);
-      transition:.23s;
-      min-width:0;
-    }
-
-    .kit-card:hover{
-      transform:translateY(-3px);
-      border-color:rgba(39,215,255,.24);
-      box-shadow:0 18px 40px rgba(0,0,0,.28);
-    }
-
-    .kit-image-wrap{
-      height:220px;
-      background:
-        radial-gradient(circle at center,rgba(255,255,255,.045),transparent 65%),
-        rgba(255,255,255,.018);
-      display:grid;
-      place-items:center;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .kit-image{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      padding:12px;
-      transition:.3s;
-    }
-
-    .kit-card:hover .kit-image{transform:scale(1.035)}
-
-    .kit-image.error{
-      display:none;
-    }
-
-    .image-error{
-      display:none;
-      color:var(--muted);
-      font-size:11px;
-      text-align:center;
-      padding:20px;
-    }
-
-    .image-error.show{display:block}
-
-    .kit-body{padding:13px}
-
-    .kit-top{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:7px;
-      margin-bottom:7px;
-    }
-
-    .kit-name{
-      font-weight:900;
-      font-size:12px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:5px 8px;
-      border-radius:999px;
-      font-size:9px;
-      white-space:nowrap;
-      background:rgba(39,215,255,.08);
-      border:1px solid rgba(39,215,255,.12);
-      color:#9aefff;
-    }
-
-    .kit-meta{
-      color:var(--muted);
-      font-size:9px;
-      margin-bottom:11px;
-    }
-
-    .kit-actions{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:7px;
-    }
-
-    .small-btn{
-      min-height:38px;
-      padding:0 8px;
-      border-radius:11px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.045);
-      color:#e9f1fb;
-      font-size:10px;
-      font-weight:800;
-    }
-
-    .small-btn.primary{
-      background:rgba(39,215,255,.09);
-      color:#9aefff;
-      border-color:rgba(39,215,255,.14);
-    }
-
-    /* Latest */
-    .latest-grid{
-      display:grid;
-      grid-template-columns:repeat(2,minmax(0,1fr));
-      gap:11px;
-    }
-
-    .latest-card{
-      padding:15px;
-      border-radius:19px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.035);
-      cursor:pointer;
-      transition:.2s;
-    }
-
-    .latest-card:hover{transform:translateY(-3px)}
-
-    .latest-icon{
-      width:40px;
-      height:40px;
-      border-radius:12px;
-      background:rgba(124,92,255,.11);
-      display:grid;
-      place-items:center;
-      margin-bottom:10px;
-    }
-
-    .latest-card strong{
-      font-size:12px;
-      display:block;
-    }
-
-    .latest-card span{
-      color:var(--muted);
-      font-size:9px;
-      display:block;
-      margin-top:5px;
-    }
-
-    /* Guide/contact */
-    .info-grid{
-      display:grid;
-      gap:12px;
-    }
-
-    .info-card{
-      padding:21px;
-      border:1px solid var(--line);
-      border-radius:22px;
-      background:linear-gradient(145deg,rgba(18,34,53,.65),rgba(255,255,255,.025));
-    }
-
-    .info-card h3{
-      margin:0 0 9px;
-      font-size:15px;
-    }
-
-    .info-card p,.info-card li{
-      color:var(--muted);
-      font-size:12px;
-      line-height:2;
-    }
-
-    .info-card ul{
-      padding-right:19px;
-      margin-bottom:0;
-    }
-
-    /* Search */
-    .search-box{
-      position:relative;
-      margin:25px 0 16px;
-    }
-
-    .search-input{
-      width:100%;
-      height:56px;
-      border:1px solid var(--line);
-      border-radius:17px;
-      outline:none;
-      background:rgba(255,255,255,.045);
-      color:var(--text);
-      padding:0 50px 0 18px;
-      transition:.2s;
-    }
-
-    .search-input:focus{
-      border-color:rgba(39,215,255,.42);
-      box-shadow:0 0 0 4px rgba(39,215,255,.06);
-    }
-
-    .search-icon{
-      position:absolute;
-      right:17px;
-      top:50%;
-      transform:translateY(-50%);
-      color:var(--muted);
-    }
-
-    .search-info{
-      color:var(--muted);
-      font-size:11px;
-      margin:0 0 14px;
-    }
-
-    .empty{
-      text-align:center;
-      padding:50px 15px;
-      border:1px dashed var(--line);
-      border-radius:20px;
-      color:var(--muted);
-      display:none;
-    }
-
-    .empty.show{display:block}
-
-    /* Team page */
-    .team-page-head{
-      padding:35px 0 18px;
-    }
-
-    .back-row{
-      margin-bottom:19px;
-    }
-
-    .team-title-row{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:15px;
-    }
-
-    .team-page-title{
-      margin:0;
-      font-size:clamp(27px,7vw,44px);
-      font-weight:1000;
-    }
-
-    .team-page-meta{
-      color:var(--muted);
-      font-size:11px;
-      margin-top:7px;
-    }
-
-    /* Footer */
-    footer{
-      margin-top:40px;
-      border-top:1px solid var(--line);
-      padding:30px 0 45px;
-    }
-
-    .footer-inner{
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-
-    .footer-brand{
-      font-size:16px;
-      font-weight:1000;
-    }
-
-    .footer-text{
-      color:var(--muted);
-      font-size:10px;
-      line-height:1.9;
-    }
-
-    .footer-links{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-    }
-
-    .footer-link{
-      border:1px solid var(--line);
-      border-radius:11px;
-      padding:9px 11px;
-      color:#c8d4e5;
-      font-size:10px;
-      transition:.2s;
-    }
-
-    .footer-link:hover{
-      border-color:rgba(39,215,255,.22);
-      color:#fff;
-    }
-
-    /* Toast */
-    .toast-container{
-      position:fixed;
-      left:14px;
-      bottom:18px;
-      z-index:3000;
-      display:grid;
-      gap:8px;
-      width:min(330px,calc(100vw - 28px));
-    }
-
-    .toast{
-      padding:13px 15px;
-      border:1px solid var(--line);
-      border-radius:14px;
-      background:rgba(10,20,34,.94);
-      backdrop-filter:blur(15px);
-      box-shadow:0 15px 40px rgba(0,0,0,.35);
-      font-size:11px;
-      animation:toastIn .25s ease;
-    }
-
-    .toast.success{border-color:rgba(40,224,160,.24)}
-    .toast.error{border-color:rgba(255,95,109,.24)}
-
-    @keyframes toastIn{
-      from{opacity:0;transform:translateY(10px)}
-      to{opacity:1;transform:none}
-    }
-
-    /* Lightbox */
-    .modal{
-      position:fixed;
-      inset:0;
-      z-index:2500;
-      background:rgba(0,0,0,.8);
-      backdrop-filter:blur(12px);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:18px;
-    }
-
-    .modal.open{display:flex}
-
-    .modal-content{
-      width:min(700px,100%);
-      max-height:92vh;
-      border:1px solid var(--line);
-      border-radius:23px;
-      background:#08111e;
-      padding:13px;
-      position:relative;
-      box-shadow:0 30px 90px rgba(0,0,0,.6);
-      animation:modalIn .25s ease;
-    }
-
-    @keyframes modalIn{
-      from{opacity:0;transform:scale(.96)}
-      to{opacity:1;transform:scale(1)}
-    }
-
-    .modal-image{
-      width:100%;
-      height:min(75vh,650px);
-      object-fit:contain;
-      display:block;
-      border-radius:15px;
-      background:rgba(255,255,255,.02);
-    }
-
-    .modal-close{
-      position:absolute;
-      top:20px;
-      left:20px;
-      width:40px;
-      height:40px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.55);
-      color:#fff;
-      border-radius:12px;
-      z-index:2;
-      font-size:20px;
-    }
-
-    .modal-caption{
-      padding:12px 5px 3px;
-      display:flex;
-      justify-content:space-between;
-      gap:10px;
-      font-size:11px;
-    }
-
-    .modal-caption span:last-child{color:var(--muted)}
-
-    /* AI */
-    .ai-fab{
-      position:fixed;
-      bottom:18px;
-      right:18px;
-      z-index:1800;
-      width:58px;
-      height:58px;
-      border:1px solid rgba(39,215,255,.2);
-      border-radius:18px;
-      background:linear-gradient(135deg,#0e2538,#17234a);
-      color:#fff;
-      box-shadow:0 15px 35px rgba(0,0,0,.35),0 0 30px rgba(39,215,255,.08);
-      font-size:22px;
-    }
-
-    .ai-panel{
-      position:fixed;
-      z-index:1799;
-      right:16px;
-      bottom:86px;
-      width:min(370px,calc(100vw - 32px));
-      height:min(590px,calc(100vh - 110px));
-      border:1px solid var(--line);
-      border-radius:23px;
-      background:rgba(7,16,28,.97);
-      backdrop-filter:blur(18px);
-      box-shadow:0 25px 80px rgba(0,0,0,.5);
-      display:none;
-      overflow:hidden;
-      flex-direction:column;
-    }
-
-    .ai-panel.open{display:flex}
-
-    .ai-head{
-      padding:15px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom:1px solid var(--line);
-      background:rgba(255,255,255,.025);
-    }
-
-    .ai-head-info{
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
-    .ai-avatar{
-      width:39px;
-      height:39px;
-      display:grid;
-      place-items:center;
-      border-radius:12px;
-      background:linear-gradient(135deg,var(--primary),var(--secondary));
-      color:#06101b;
-      font-weight:1000;
-    }
-
-    .ai-head strong{
-      font-size:12px;
-      display:block;
-    }
-
-    .ai-head small{
-      color:var(--success);
-      font-size:9px;
-    }
-
-    .ai-close{
-      width:34px;
-      height:34px;
-      border-radius:10px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:#fff;
-    }
-
-    .ai-messages{
-      flex:1;
-      overflow:auto;
-      padding:14px;
-      display:flex;
-      flex-direction:column;
-      gap:9px;
-    }
-
-    .ai-message{
-      max-width:88%;
-      padding:10px 12px;
-      border-radius:14px;
-      font-size:10px;
-      line-height:1.9;
-      white-space:pre-line;
-    }
-
-    .ai-message.bot{
-      align-self:flex-start;
-      background:rgba(255,255,255,.055);
-      border:1px solid var(--line);
-    }
-
-    .ai-message.user{
-      align-self:flex-end;
-      background:rgba(39,215,255,.11);
-      border:1px solid rgba(39,215,255,.12);
-    }
-
-    .ai-suggestions{
-      display:flex;
-      gap:6px;
-      overflow:auto;
-      padding:0 12px 9px;
-      scrollbar-width:none;
-    }
-
-    .ai-suggestion{
-      flex:none;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.035);
-      color:#cbd8e8;
-      padding:7px 9px;
-      border-radius:999px;
-      font-size:9px;
-    }
-
-    .ai-form{
-      display:flex;
-      gap:7px;
-      padding:11px;
-      border-top:1px solid var(--line);
-    }
-
-    .ai-input{
-      flex:1;
-      min-width:0;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.045);
-      color:#fff;
-      border-radius:12px;
-      outline:none;
-      padding:0 11px;
-      height:42px;
-      font-size:10px;
-    }
-
-    .ai-send{
-      width:43px;
-      height:42px;
-      border:0;
-      border-radius:12px;
-      background:var(--primary);
-      color:#041019;
-      font-weight:1000;
-    }
-
-    /* Desktop */
-    @media(min-width:700px){
-      .container{width:min(calc(100% - 44px),var(--max))}
-      .hero{padding-top:80px}
-      .hero-grid{grid-template-columns:1.05fr .95fr}
-      .hero-visual{min-height:380px}
-      .stats{gap:14px;margin-top:20px}
-      .stat{padding:22px}
-      .stat strong{font-size:30px}
-      .team-grid{grid-template-columns:repeat(3,1fr);gap:14px}
-      .kit-grid{grid-template-columns:repeat(3,1fr);gap:14px}
-      .latest-grid{grid-template-columns:repeat(4,1fr)}
-      .kit-image-wrap{height:270px}
-      .info-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-inner{flex-direction:row;justify-content:space-between;align-items:center}
-    }
-
-    @media(min-width:1000px){
-      .team-grid{grid-template-columns:repeat(4,1fr)}
-      .kit-grid{grid-template-columns:repeat(4,1fr)}
-      .kit-image-wrap{height:290px}
-      .hero h1{font-size:76px}
-    }
-
-    @media(max-width:420px){
-      .team-grid,.kit-grid,.latest-grid{grid-template-columns:1fr}
-      .kit-image-wrap{height:290px}
-      .hero-actions .btn{flex:1}
-    }
-
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{
-        animation-duration:.001ms!important;
-        animation-iteration-count:1!important;
-        scroll-behavior:auto!important;
-        transition-duration:.001ms!important;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="DLS KIT LAND - کیت های Dream League Soccer 2019">
+<title>DLS KIT LAND</title>
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+margin:0;
+background:#07111f;
+color:#eef5ff;
+font-family:Tahoma,Arial,sans-serif;
+min-height:100vh
+}
+button,input{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
+
+header{
+position:sticky;
+top:0;
+z-index:100;
+height:64px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 16px;
+background:rgba(7,17,31,.82);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08)
+}
+
+.brand{
+font-size:20px;
+font-weight:900;
+letter-spacing:.5px
+}
+
+.brand span{color:#35a7ff}
+
+.menu-btn{
+width:44px;
+height:44px;
+border:0;
+border-radius:13px;
+background:#101f34;
+color:#fff;
+font-size:23px
+}
+
+.side{
+position:fixed;
+top:0;
+right:-290px;
+width:280px;
+height:100%;
+z-index:300;
+background:#0a1728;
+border-left:1px solid rgba(255,255,255,.08);
+padding:80px 18px 20px;
+transition:.28s
+}
+
+.side.open{right:0}
+
+.side button{
+width:100%;
+border:0;
+background:transparent;
+color:#dceaff;
+padding:15px;
+margin:3px 0;
+border-radius:12px;
+text-align:right
+}
+
+.side button:hover{background:#12243b}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:250;
+display:none
+}
+
+.overlay.show{display:block}
+
+main{
+max-width:1180px;
+margin:auto;
+padding:25px 15px 70px
+}
+
+.hero{
+padding:45px 20px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+border-radius:28px;
+background:
+radial-gradient(circle at 50% 0,#12365d 0,transparent 55%),
+linear-gradient(145deg,#0c1b2e,#081321);
+box-shadow:0 20px 70px rgba(0,0,0,.25)
+}
+
+.hero h1{
+font-size:clamp(32px,8vw,62px);
+margin:0 0 10px;
+font-weight:1000
+}
+
+.hero h1 span{color:#35a7ff}
+
+.hero p{
+color:#a9bad0;
+margin:0 auto 25px;
+font-size:15px
+}
+
+.actions{
+display:flex;
+gap:10px;
+justify-content:center;
+flex-wrap:wrap
+}
+
+.btn{
+border:0;
+padding:12px 19px;
+border-radius:13px;
+background:#168cff;
+color:#fff;
+font-weight:800;
+transition:.2s
+}
+
+.btn:hover{transform:translateY(-2px)}
+
+.btn.secondary{
+background:#13253c;
+border:1px solid rgba(255,255,255,.08)
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:22px
+}
+
+.stat{
+background:rgba(255,255,255,.045);
+border:1px solid rgba(255,255,255,.07);
+padding:15px;
+border-radius:17px
+}
+
+.stat b{
+display:block;
+font-size:22px
+}
+
+.stat small{color:#8fa5bd}
+
+.section{
+margin-top:30px
+}
+
+.section-head{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+margin-bottom:15px
+}
+
+.section-head h2{
+margin:0;
+font-size:22px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+gap:14px
+}
+
+.card{
+background:linear-gradient(145deg,#0d1c2f,#0a1727);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:14px;
+transition:.22s;
+overflow:hidden
+}
+
+.card:hover{
+transform:translateY(-4px);
+border-color:rgba(53,167,255,.35)
+}
+
+.team-card{
+text-align:center;
+padding:22px 14px
+}
+
+.team-icon{
+width:76px;
+height:76px;
+border-radius:50%;
+margin:auto auto 12px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#12263e;
+font-size:28px;
+font-weight:900;
+overflow:hidden
+}
+
+.team-icon img{
+width:100%;
+height:100%;
+object-fit:cover
+}
+
+.card h3{
+margin:8px 0 5px;
+font-size:17px
+}
+
+.muted{
+color:#8fa5bd;
+font-size:13px
+}
+
+.kit-img{
+width:100%;
+aspect-ratio:1;
+object-fit:contain;
+background:rgba(255,255,255,.025);
+border-radius:14px;
+display:block
+}
+
+.kit-info{
+padding-top:11px
+}
+
+.tag{
+display:inline-block;
+font-size:11px;
+padding:5px 8px;
+border-radius:8px;
+background:#132e49;
+color:#76c5ff;
+margin-bottom:5px
+}
+
+.card-actions{
+display:flex;
+gap:7px;
+margin-top:10px
+}
+
+.card-actions button{
+flex:1;
+border:0;
+padding:9px 7px;
+border-radius:10px;
+background:#142940;
+color:#fff;
+font-size:12px
+}
+
+.card-actions button.primary{
+background:#168cff
+}
+
+.search-box{
+display:flex;
+gap:9px;
+margin-bottom:18px
+}
+
+.search-box input{
+flex:1;
+min-width:0;
+padding:14px 16px;
+border-radius:14px;
+border:1px solid rgba(255,255,255,.1);
+background:#0c1b2c;
+color:#fff;
+outline:none
+}
+
+.search-box input:focus{
+border-color:#168cff
+}
+
+.empty{
+padding:35px 15px;
+text-align:center;
+color:#91a5bb
+}
+
+.channel{
+display:flex;
+align-items:center;
+gap:16px;
+padding:18px;
+border-radius:20px;
+background:linear-gradient(145deg,#0d1d31,#0a1727);
+border:1px solid rgba(255,255,255,.08)
+}
+
+.channel-logo{
+width:86px;
+height:86px;
+border-radius:50%;
+overflow:hidden;
+flex-shrink:0;
+border:3px solid rgba(53,167,255,.5);
+box-shadow:0 8px 30px rgba(0,0,0,.4);
+background:#111827
+}
+
+.channel-logo img{
+width:100%;
+height:100%;
+display:block;
+object-fit:cover
+}
+
+.channel h3{
+margin:0 0 5px
+}
+
+.channel p{
+margin:0 0 10px;
+color:#91a5bb;
+font-size:13px
+}
+
+.ai{
+padding:18px;
+border-radius:20px;
+background:linear-gradient(145deg,#101f34,#0b1727);
+border:1px solid rgba(255,255,255,.08)
+}
+
+.ai-box{
+height:260px;
+overflow:auto;
+padding:8px;
+background:#07111f;
+border-radius:15px;
+margin-bottom:10px
+}
+
+.msg{
+padding:10px 12px;
+border-radius:12px;
+margin:7px 0;
+max-width:88%;
+font-size:13px;
+line-height:1.8
+}
+
+.msg.bot{
+background:#12263d;
+margin-left:auto
+}
+
+.msg.user{
+background:#126fc4;
+margin-right:auto
+}
+
+.ai-row{
+display:flex;
+gap:8px
+}
+
+.ai-row input{
+flex:1;
+min-width:0;
+padding:12px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.1);
+background:#0d1b2d;
+color:#fff
+}
+
+.modal{
+position:fixed;
+inset:0;
+z-index:500;
+display:none;
+align-items:center;
+justify-content:center;
+background:rgba(0,0,0,.86);
+padding:15px
+}
+
+.modal.show{display:flex}
+
+.modal-inner{
+position:relative;
+max-width:700px;
+width:100%
+}
+
+.modal img{
+width:100%;
+max-height:85vh;
+object-fit:contain
+}
+
+.close{
+position:absolute;
+top:-10px;
+left:-5px;
+width:42px;
+height:42px;
+border:0;
+border-radius:50%;
+background:#172b43;
+color:#fff;
+font-size:23px;
+z-index:2
+}
+
+.toast{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translate(-50%,20px);
+opacity:0;
+pointer-events:none;
+z-index:700;
+background:#10243a;
+border:1px solid rgba(255,255,255,.1);
+padding:11px 16px;
+border-radius:12px;
+transition:.25s;
+font-size:13px
+}
+
+.toast.show{
+opacity:1;
+transform:translate(-50%,0)
+}
+
+footer{
+text-align:center;
+padding:25px 15px;
+color:#71869d;
+font-size:12px
+}
+
+.back{
+margin-bottom:15px
+}
+
+@media(max-width:600px){
+.stats{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.card{border-radius:16px}
+.hero{padding:35px 14px}
+.channel{align-items:flex-start}
+.channel-logo{width:70px;height:70px}
+}
+
+@media(max-width:380px){
+.grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 
 <body>
-<div class="app">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-inner">
-      <a class="brand" href="#home" aria-label="DLS KIT LAND - خانه">
-        <div class="brand-mark">⚽</div>
-        <div class="brand-text">
-          <div class="brand-title">DLS KIT LAND</div>
-          <div class="brand-sub">Dream League Soccer 2019</div>
-        </div>
-      </a>
+<header>
+<div class="brand">DLS <span>KIT LAND</span></div>
+<button class="menu-btn" aria-label="منو" onclick="openMenu()">☰</button>
+</header>
 
-      <button class="menu-btn" id="menuBtn" aria-label="باز کردن منو" aria-controls="drawerOverlay" aria-expanded="false">
-        <span class="menu-lines">
-          <span></span><span></span><span></span>
-        </span>
-      </button>
-    </div>
-  </header>
+<div id="overlay" class="overlay" onclick="closeMenu()"></div>
 
-  <!-- DRAWER -->
-  <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true">
-    <aside class="drawer" aria-label="منوی اصلی">
-      <div class="drawer-head">
-        <div>
-          <strong>DLS KIT LAND</strong>
-          <div class="brand-sub">منوی اصلی</div>
-        </div>
-        <button class="close-btn" id="closeDrawer" aria-label="بستن منو">×</button>
-      </div>
+<nav id="side" class="side">
+<button onclick="go('#home');closeMenu()">⌂ خانه</button>
+<button onclick="go('#kits');closeMenu()">⚽ کیت‌ها</button>
+<button onclick="go('#search');closeMenu()">⌕ جستجو</button>
+<button onclick="go('#guide');closeMenu()">☷ راهنما</button>
+<button onclick="go('#ai');closeMenu()">✦ DLS AI</button>
+<button onclick="window.open('https://rubika.ir/fc_barcelona_1899_2027','_blank');closeMenu()">☏ ارتباط با ما</button>
+</nav>
 
-      <nav class="nav">
-        <button class="nav-btn" data-route="home"><span class="nav-icon">⌂</span>خانه</button>
-        <button class="nav-btn" data-route="teams"><span class="nav-icon">⚽</span>کیت‌ها</button>
-        <button class="nav-btn" data-route="search"><span class="nav-icon">⌕</span>جستجو</button>
-        <button class="nav-btn" data-route="guide"><span class="nav-icon">?</span>راهنما</button>
-        <button class="nav-btn" data-route="ai"><span class="nav-icon">✦</span>DLS AI</button>
-        <button class="nav-btn" data-route="contact"><span class="nav-icon">✉</span>ارتباط با ما</button>
-      </nav>
-    </aside>
-  </div>
+<main id="app"></main>
 
-  <main>
-
-    <!-- HOME -->
-    <section class="page" id="page-home">
-      <div class="container">
-        <div class="hero">
-          <div class="hero-grid">
-            <div class="hero-copy">
-              <div class="eyebrow">
-                <span class="pulse"></span>
-                کتابخانه کیت‌های DLS 2019
-              </div>
-
-              <h1>DLS KIT<br>LAND</h1>
-
-              <p>
-                مجموعه‌ای مدرن برای پیدا کردن، مشاهده و دریافت کیت‌های
-                Dream League Soccer 2019؛ سریع، ساده و بدون نیاز به Reload.
-              </p>
-
-              <div class="hero-actions">
-                <button class="btn btn-primary" id="heroKits">⚽ مشاهده کیت‌ها</button>
-                <button class="btn btn-secondary" id="heroSearch">⌕ جستجوی کیت</button>
-              </div>
-            </div>
-
-            <div class="hero-visual" aria-hidden="true">
-              <div class="orbit"></div>
-              <div class="hero-ball">⚽</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="stats" id="stats"></div>
-
-        <section class="section">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">آخرین کیت‌ها</h2>
-              <div class="section-sub">آخرین موارد موجود در کتابخانه</div>
-            </div>
-            <button class="link-btn" data-route="teams">مشاهده همه ←</button>
-          </div>
-          <div class="latest-grid" id="latestGrid"></div>
-        </section>
-
-        <section class="section">
-          <div class="section-head">
-            <div>
-              <h2 class="section-title">تیم‌ها</h2>
-              <div class="section-sub">انتخاب تیم و مشاهده تمام کیت‌ها</div>
-            </div>
-            <button class="link-btn" data-route="teams">همه تیم‌ها ←</button>
-          </div>
-          <div class="team-grid" id="homeTeams"></div>
-        </section>
-
-        <section class="section">
-          <div class="info-grid">
-            <div class="info-card">
-              <h3>راهنمای سریع</h3>
-              <p>
-                تیم موردنظر را انتخاب کنید، کیت را باز کنید و از گزینه
-                «کپی لینک» برای دریافت لینک مستقیم PNG استفاده کنید.
-              </p>
-              <button class="btn btn-secondary" data-route="guide">مشاهده راهنما</button>
-            </div>
-
-            <div class="info-card">
-              <h3>ارتباط با DLS KIT LAND</h3>
-              <p>
-                برای دنبال‌کردن محتوای جدید می‌توانید کانال روبیکا را مشاهده کنید.
-              </p>
-              <a class="btn btn-primary" href="https://rubika.ir/dls_kit_land" target="_blank" rel="noopener">
-                کانال روبیکا
-              </a>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <!-- TEAMS -->
-    <section class="page" id="page-teams">
-      <div class="container">
-        <section class="section">
-          <div class="section-head">
-            <div>
-              <h1 class="section-title">تیم‌ها</h1>
-              <div class="section-sub">یک تیم را برای مشاهده کیت‌ها انتخاب کنید.</div>
-            </div>
-          </div>
-          <div class="team-grid" id="allTeams"></div>
-        </section>
-      </div>
-    </section>
-
-    <!-- SEARCH -->
-    <section class="page" id="page-search">
-      <div class="container">
-        <section class="section">
-          <h1 class="section-title">جستجوی کیت</h1>
-          <div class="section-sub">جستجو بر اساس نام تیم، نوع کیت، فصل یا لینک</div>
-
-          <div class="search-box">
-            <span class="search-icon">⌕</span>
-            <input
-              id="searchInput"
-              class="search-input"
-              type="search"
-              autocomplete="off"
-              placeholder="مثلاً PSG، GK1، Barcelona..."
-              aria-label="جستجوی کیت"
-            >
-          </div>
-
-          <p class="search-info" id="searchInfo">همه کیت‌ها نمایش داده می‌شوند.</p>
-
-          <div class="kit-grid" id="searchResults"></div>
-
-          <div class="empty" id="searchEmpty">
-            <div style="font-size:30px;margin-bottom:10px">⌕</div>
-            نتیجه‌ای پیدا نشد.
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <!-- GUIDE -->
-    <section class="page" id="page-guide">
-      <div class="container">
-        <section class="section">
-          <h1 class="section-title">راهنمای DLS KIT LAND</h1>
-          <div class="section-sub">استفاده از سایت در چند مرحله ساده</div>
-
-          <div class="info-grid" style="margin-top:20px">
-            <article class="info-card">
-              <h3>۱. پیدا کردن تیم</h3>
-              <p>
-                از صفحه «کیت‌ها» تیم موردنظر را انتخاب کنید یا از جستجوی زنده استفاده کنید.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <h3>۲. مشاهده کیت</h3>
-              <p>
-                روی تصویر کیت بزنید تا نسخه بزرگ تصویر در Lightbox نمایش داده شود.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <h3>۳. کپی لینک</h3>
-              <p>
-                گزینه «کپی لینک» لینک مستقیم همان فایل PNG را در Clipboard ذخیره می‌کند.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <h3>۴. استفاده در DLS 2019</h3>
-              <p>
-                لینک تصویر کیت را در بخش مربوط به تغییر کیت بازی Dream League Soccer 2019 وارد کنید.
-                برای اعمال صحیح، بازی و نسخه موردنظر خود را بررسی کنید.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <h3>داده‌ها</h3>
-              <p>
-                این نسخه کاملاً Front-end است و برای نمایش داده‌های فعلی به Backend یا API نیاز ندارد.
-              </p>
-            </article>
-
-            <article class="info-card">
-              <h3>ذخیره اطلاعات</h3>
-              <p>
-                آخرین تیم مشاهده‌شده و جستجوهای اخیر در localStorage مرورگر ذخیره می‌شوند.
-              </p>
-            </article>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="page" id="page-contact">
-      <div class="container">
-        <section class="section">
-          <h1 class="section-title">ارتباط با ما</h1>
-          <div class="section-sub">راه‌های ارتباطی DLS KIT LAND</div>
-
-          <div class="info-card" style="margin-top:20px">
-            <h3>کانال روبیکا</h3>
-            <p>
-              برای مشاهده کیت‌ها و محتوای جدید، کانال DLS KIT LAND را دنبال کنید.
-            </p>
-            <a class="btn btn-primary" href="https://rubika.ir/dls_kit_land" target="_blank" rel="noopener">
-              ورود به کانال
-            </a>
-          </div>
-
-          <div class="info-card" style="margin-top:12px">
-            <h3>ارتباط با ما</h3>
-            <p>
-              برای ارتباط مستقیم از لینک زیر استفاده کنید.
-            </p>
-            <a class="btn btn-secondary" href="https://rubika.ir/fc_barcelona_1899_2027" target="_blank" rel="noopener">
-              ارتباط با ما
-            </a>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <!-- TEAM DETAIL -->
-    <section class="page" id="page-team">
-      <div class="container">
-        <section class="team-page-head">
-          <div class="back-row">
-            <button class="btn" id="backFromTeam">→ بازگشت به تیم‌ها</button>
-          </div>
-
-          <div class="team-title-row">
-            <div>
-              <h1 class="team-page-title" id="teamPageTitle"></h1>
-              <div class="team-page-meta" id="teamPageMeta"></div>
-            </div>
-          </div>
-        </section>
-
-        <div class="kit-grid" id="teamKits"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container footer-inner">
-      <div>
-        <div class="footer-brand">DLS KIT LAND</div>
-        <div class="footer-text">
-          Dream League Soccer 2019 Kit Library
-        </div>
-      </div>
-
-      <div class="footer-links">
-        <a class="footer-link" href="https://rubika.ir/dls_kit_land" target="_blank" rel="noopener">روبیکا</a>
-        <a class="footer-link" href="https://rubika.ir/fc_barcelona_1899_2027" target="_blank" rel="noopener">ارتباط با ما</a>
-        <button class="footer-link" data-route="guide">راهنما</button>
-        <button class="footer-link" data-route="ai">DLS AI</button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- LIGHTBOX -->
-  <div class="modal" id="imageModal" role="dialog" aria-modal="true" aria-label="نمایش بزرگ کیت">
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose" aria-label="بستن تصویر">×</button>
-      <img class="modal-image" id="modalImage" alt="">
-      <div class="modal-caption">
-        <strong id="modalTitle"></strong>
-        <span id="modalType"></span>
-      </div>
-    </div>
-  </div>
-
-  <!-- AI -->
-  <button class="ai-fab" id="aiFab" aria-label="باز کردن DLS AI" title="DLS AI">✦</button>
-
-  <section class="ai-panel" id="aiPanel" aria-label="DLS AI">
-    <header class="ai-head">
-      <div class="ai-head-info">
-        <div class="ai-avatar">AI</div>
-        <div>
-          <strong>DLS AI</strong>
-          <small>آفلاین • بدون API</small>
-        </div>
-      </div>
-      <button class="ai-close" id="aiClose" aria-label="بستن DLS AI">×</button>
-    </header>
-
-    <div class="ai-messages" id="aiMessages"></div>
-
-    <div class="ai-suggestions">
-      <button class="ai-suggestion">کیت PSG</button>
-      <button class="ai-suggestion">کیت بایرن</button>
-      <button class="ai-suggestion">لیست تیم‌ها</button>
-      <button class="ai-suggestion">راهنمای سایت</button>
-    </div>
-
-    <form class="ai-form" id="aiForm">
-      <input class="ai-input" id="aiInput" autocomplete="off" placeholder="سؤال خود را بنویسید..." aria-label="سؤال برای DLS AI">
-      <button class="ai-send" type="submit" aria-label="ارسال">➤</button>
-    </form>
-  </section>
-
-  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+<div id="modal" class="modal" onclick="closeModal()">
+<div class="modal-inner" onclick="event.stopPropagation()">
+<button class="close" onclick="closeModal()">×</button>
+<img id="modalImg" src="" alt="Kit">
 </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<footer>
+DLS KIT LAND © 2026 — Dream League Soccer 2019
+</footer>
 
 <script>
 "use strict";
 
-/* =========================================================
-   DLS KIT LAND
-   Single-file / GitHub Pages / No API / No Backend
-   ========================================================= */
+/* DLS KIT LAND */
 
-const DATA = [
-  {
-    id:"barcelona",
-    name:"Barcelona",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/e165660_1000137980.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/c365345_1000137982.png"],
-      ["3","Third","https://cdn.imgurl.ir/uploads/l639910_1000137985.png"],
-      ["4","Player 4","https://cdn.imgurl.ir/uploads/k745553_mzPcP16.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/w486938_1000137987.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/i90298_1000137988.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/r22064_1000137989.png"]
-    ]
-  },
-  {
-    id:"real-madrid",
-    name:"Real Madrid",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/y70020_1000138009.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/m955366_1000138010.png"],
-      ["3","Third","https://cdn.imgurl.ir/uploads/r00414_1000138011.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/f357745_1000138013.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/x54307_1000138012.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/p409316_1000138014.png"]
-    ]
-  },
-  {
-    id:"psg",
-    name:"PSG",
-    season:"2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/l99813_1000139500.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/f78582_1000139502.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/x86783_1000139144.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/z7637_1000139146.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/u42979_1000139148.png"]
-    ]
-  },
-  {
-    id:"inter-milan",
-    name:"Inter Milan",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/l045084_1000138894.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/k901664_1000138898.png"],
-      ["3","Third","https://cdn.imgurl.ir/uploads/b63011_1000138899.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/s113374_1000138905.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/w304702_1000138904.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/j600406_1000138908.png"]
-    ]
-  },
-  {
-    id:"bayern-munchen",
-    name:"bayern munchen",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/z244632_1000139169.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/h94513_1000139171.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/g07503_1000139172.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/o05482_1000139173.png"]
-    ]
-  },
-  {
-    id:"manchester-city",
-    name:"Manchester City",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/u881845_1000139210.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/o612216_1000139211.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/u685225_1000139212.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/j196908_1000139213.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/y453418_1000139214.png"]
-    ]
-  },
-  {
-    id:"arsenal",
-    name:"Arsenal",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/q155685_1000139187.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/m156645_1000139188.png"],
-      ["3","Third","https://cdn.imgurl.ir/uploads/q820501_1000139189.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/y25389_1000139190.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/r438381_1000139191.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/t93789_1000139202.png"]
-    ]
-  },
-  {
-    id:"manchester-united",
-    name:"Manchester United",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/g84830_1000139254.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/u798526_1000139255.png"],
-      ["3","Third","https://cdn.imgurl.ir/uploads/i97055_1000139256.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/e32709_1000139253.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/h47000_1000139257.png"],
-      ["GK3","GK3","https://cdn.imgurl.ir/uploads/f928392_1000139258.png"]
-    ]
-  },
-  {
-    id:"liverpool",
-    name:"Liverpool",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/p645143_1000139272.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/b54801_1000139273.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/z707325_1000139274.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/v891716_1000139275.png"]
-    ]
-  },
-  {
-    id:"chelsea",
-    name:"Chelsea",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/l07558_1000139294.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/b8863_1000139295.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/e71720_1000139296.png"]
-    ]
-  },
-  {
-    id:"ac-milan",
-    name:"AC Milan",
-    season:"2026/2027",
-    kits:[
-      ["1","Home","https://cdn.imgurl.ir/uploads/u71819_1000139323.png"],
-      ["2","Away","https://cdn.imgurl.ir/uploads/r057453_1000139324.png"],
-      ["GK1","GK1","https://cdn.imgurl.ir/uploads/s235_1000139325.png"],
-      ["GK2","GK2","https://cdn.imgurl.ir/uploads/y737619_1000139326.png"]
-    ]
-  }
+const D=[
+["Barcelona","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/e165660_1000137980.png"],
+["2","https://cdn.imgurl.ir/uploads/c365345_1000137982.png"],
+["3","https://cdn.imgurl.ir/uploads/l639910_1000137985.png"],
+["4","https://cdn.imgurl.ir/uploads/k745553_mzPcP16.png"],
+["GK1","https://cdn.imgurl.ir/uploads/w486938_1000137987.png"],
+["GK2","https://cdn.imgurl.ir/uploads/i90298_1000137988.png"],
+["GK3","https://cdn.imgurl.ir/uploads/r22064_1000137989.png"]
+]],
+
+["Real Madrid","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/y70020_1000138009.png"],
+["2","https://cdn.imgurl.ir/uploads/m955366_1000138010.png"],
+["3","https://cdn.imgurl.ir/uploads/r00414_1000138011.png"],
+["GK1","https://cdn.imgurl.ir/uploads/f357745_1000138013.png"],
+["GK2","https://cdn.imgurl.ir/uploads/x54307_1000138012.png"],
+["GK3","https://cdn.imgurl.ir/uploads/p409316_1000138014.png"]
+]],
+
+["PSG","2027",[
+["1","https://cdn.imgurl.ir/uploads/l99813_1000139500.png"],
+["2","https://cdn.imgurl.ir/uploads/f78582_1000139502.png"],
+["GK1","https://cdn.imgurl.ir/uploads/x86783_1000139144.png"],
+["GK2","https://cdn.imgurl.ir/uploads/z7637_1000139146.png"],
+["GK3","https://cdn.imgurl.ir/uploads/u42979_1000139148.png"]
+]],
+
+["Inter Milan","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/l045084_1000138894.png"],
+["2","https://cdn.imgurl.ir/uploads/k901664_1000138898.png"],
+["3","https://cdn.imgurl.ir/uploads/b63011_1000138899.png"],
+["GK1","https://cdn.imgurl.ir/uploads/s113374_1000138905.png"],
+["GK2","https://cdn.imgurl.ir/uploads/w304702_1000138904.png"],
+["GK3","https://cdn.imgurl.ir/uploads/j600406_1000138908.png"]
+]],
+
+["bayern munchen","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/z244632_1000139169.png"],
+["2","https://cdn.imgurl.ir/uploads/h94513_1000139171.png"],
+["GK1","https://cdn.imgurl.ir/uploads/g07503_1000139172.png"],
+["GK2","https://cdn.imgurl.ir/uploads/o05482_1000139173.png"]
+]],
+
+["Manchester City","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/u881845_1000139210.png"],
+["2","https://cdn.imgurl.ir/uploads/o612216_1000139211.png"],
+["GK1","https://cdn.imgurl.ir/uploads/u685225_1000139212.png"],
+["GK2","https://cdn.imgurl.ir/uploads/j196908_1000139213.png"],
+["GK3","https://cdn.imgurl.ir/uploads/y453418_1000139214.png"]
+]],
+
+["Arsenal","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/q155685_1000139187.png"],
+["2","https://cdn.imgurl.ir/uploads/m156645_1000139188.png"],
+["3","https://cdn.imgurl.ir/uploads/q820501_1000139189.png"],
+["GK1","https://cdn.imgurl.ir/uploads/y25389_1000139190.png"],
+["GK2","https://cdn.imgurl.ir/uploads/r438381_1000139191.png"],
+["GK3","https://cdn.imgurl.ir/uploads/t93789_1000139202.png"]
+]],
+
+["Manchester United","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/g84830_1000139254.png"],
+["2","https://cdn.imgurl.ir/uploads/u798526_1000139255.png"],
+["3","https://cdn.imgurl.ir/uploads/i97055_1000139256.png"],
+["GK1","https://cdn.imgurl.ir/uploads/e32709_1000139253.png"],
+["GK2","https://cdn.imgurl.ir/uploads/h47000_1000139257.png"],
+["GK3","https://cdn.imgurl.ir/uploads/f928392_1000139258.png"]
+]],
+
+["Liverpool","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/p645143_1000139272.png"],
+["2","https://cdn.imgurl.ir/uploads/b54801_1000139273.png"],
+["GK1","https://cdn.imgurl.ir/uploads/z707325_1000139274.png"],
+["GK2","https://cdn.imgurl.ir/uploads/v891716_1000139275.png"]
+]],
+
+["Chelsea","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/l07558_1000139294.png"],
+["2","https://cdn.imgurl.ir/uploads/b8863_1000139295.png"],
+["GK1","https://cdn.imgurl.ir/uploads/e71720_1000139296.png"]
+]],
+
+["AC Milan","2026/2027",[
+["1","https://cdn.imgurl.ir/uploads/u71819_1000139323.png"],
+["2","https://cdn.imgurl.ir/uploads/r057453_1000139324.png"],
+["GK1","https://cdn.imgurl.ir/uploads/s235_1000139325.png"],
+["GK2","https://cdn.imgurl.ir/uploads/y737619_1000139326.png"]
+]]
 ];
 
-/* ---------- DOM ---------- */
+const $=x=>document.querySelector(x);
 
-const $ = (selector, root=document) => root.querySelector(selector);
-const $$ = (selector, root=document) => [...root.querySelectorAll(selector)];
-
-const els = {
-  menuBtn:$("#menuBtn"),
-  drawerOverlay:$("#drawerOverlay"),
-  closeDrawer:$("#closeDrawer"),
-  stats:$("#stats"),
-  latestGrid:$("#latestGrid"),
-  homeTeams:$("#homeTeams"),
-  allTeams:$("#allTeams"),
-  searchInput:$("#searchInput"),
-  searchResults:$("#searchResults"),
-  searchInfo:$("#searchInfo"),
-  searchEmpty:$("#searchEmpty"),
-  teamPageTitle:$("#teamPageTitle"),
-  teamPageMeta:$("#teamPageMeta"),
-  teamKits:$("#teamKits"),
-  backFromTeam:$("#backFromTeam"),
-  imageModal:$("#imageModal"),
-  modalImage:$("#modalImage"),
-  modalTitle:$("#modalTitle"),
-  modalType:$("#modalType"),
-  modalClose:$("#modalClose"),
-  toastContainer:$("#toastContainer"),
-  aiFab:$("#aiFab"),
-  aiPanel:$("#aiPanel"),
-  aiClose:$("#aiClose"),
-  aiMessages:$("#aiMessages"),
-  aiForm:$("#aiForm"),
-  aiInput:$("#aiInput")
-};
-
-/* ---------- Utilities ---------- */
-
-function normalize(value){
-  return String(value || "")
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g,"")
-    .replace(/[يى]/g,"ی")
-    .replace(/ك/g,"ک")
-    .replace(/\s+/g," ")
-    .trim();
+function openMenu(){
+$("#side").classList.add("open");
+$("#overlay").classList.add("show")
 }
 
-function escapeHTML(value){
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+function closeMenu(){
+$("#side").classList.remove("open");
+$("#overlay").classList.remove("show")
+}
+
+function esc(s){
+return String(s).replace(/[&<>"']/g,m=>({
+"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+}[m]))
+}
+
+function toast(t){
+const x=$("#toast");
+x.textContent=t;
+x.classList.add("show");
+clearTimeout(window.__t);
+window.__t=setTimeout(()=>x.classList.remove("show"),2200)
+}
+
+function copy(t){
+if(navigator.clipboard){
+navigator.clipboard.writeText(t).then(()=>toast("لینک کپی شد"))
+}else{
+const x=document.createElement("textarea");
+x.value=t;
+document.body.appendChild(x);
+x.select();
+document.execCommand("copy");
+x.remove();
+toast("لینک کپی شد")
+}
+}
+
+function image(url,name){
+return `<img class="kit-img" loading="lazy" src="${esc(url)}" alt="${esc(name)}" onerror="this.style.opacity='.2'">`
+}
+
+function teamIcon(name){
+return `<div class="team-icon">${esc(name.slice(0,1).toUpperCase())}</div>`
+}
+
+function kitCard(team,season,k){
+return `
+<article class="card">
+${image(k[1],team+" "+k[0])}
+<div class="kit-info">
+<span class="tag">${esc(k[0])}</span>
+<h3>${esc(team)}</h3>
+<div class="muted">${esc(season)} • DLS 2019</div>
+<div class="card-actions">
+<button class="primary" onclick="window.open('${esc(k[1])}','_blank')">باز کردن PNG</button>
+<button onclick="copy('${esc(k[1])}')">کپی لینک</button>
+</div>
+</div>
+</article>`
+}
+
+function teamsHTML(){
+return D.map(t=>`
+<article class="card team-card" onclick="go('#team='+encodeURIComponent(t[0]))">
+${teamIcon(t[0])}
+<h3>${esc(t[0])}</h3>
+<div class="muted">${esc(t[1])} • ${t[2].length} کیت</div>
+</article>`).join("")
 }
 
 function allKits(){
-  return DATA.flatMap(team =>
-    team.kits.map(k => ({
-      teamId:team.id,
-      team:team.name,
-      season:team.season,
-      number:k[0],
-      type:k[1],
-      url:k[2]
-    }))
-  );
+let a=[];
+D.forEach(t=>t[2].forEach(k=>a.push([t[0],t[1],k])));
+return a
 }
 
-function findTeam(id){
-  return DATA.find(team => team.id === id);
+function home(){
+$("#app").innerHTML=`
+<section class="hero">
+<h1>DLS <span>KIT LAND</span></h1>
+<p>کیت های Dream League Soccer 2019</p>
+<div class="actions">
+<button class="btn" onclick="go('#kits')">مشاهده کیت‌ها</button>
+<button class="btn secondary" onclick="go('#search')">جستجوی کیت</button>
+</div>
+
+<div class="stats">
+<div class="stat"><b>${D.length}</b><small>تیم</small></div>
+<div class="stat"><b>${allKits().length}</b><small>کیت</small></div>
+<div class="stat"><b>2019</b><small>DLS</small></div>
+</div>
+</section>
+
+<section class="section" id="kits">
+<div class="section-head"><h2>⚽ تیم‌ها</h2></div>
+<div class="grid">${teamsHTML()}</div>
+</section>
+
+<section class="section">
+<div class="section-head"><h2>📢 کانال DLS KIT LAND</h2></div>
+<div class="channel">
+<div class="channel-logo">
+<img src="https://cdn.imgurl.ir/uploads/i830073_IMG_20260916_224213_832.jpg" alt="DLS KIT LAND">
+</div>
+<div>
+<h3>DLS KIT LAND</h3>
+<p>کیت های DLS 2019 و جدیدترین آپدیت‌ها</p>
+<button class="btn" onclick="window.open('https://rubika.ir/dls_kit_land','_blank')">ورود به کانال</button>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head"><h2>✦ DLS AI</h2></div>
+<div class="ai">
+<div class="ai-box" id="aibox">
+<div class="msg bot">سلام! من DLS AI هستم. درباره سایت و کیت‌های DLS 2019 سؤال کن.</div>
+</div>
+<div class="ai-row">
+<input id="aiinput" placeholder="سؤال خود را بنویسید..." onkeydown="if(event.key==='Enter')askAI()">
+<button class="btn" onclick="askAI()">ارسال</button>
+</div>
+</div>
+</section>
+`
 }
 
-function kitLabel(kit){
-  if(kit.type === "Player 4") return "Player 4";
-  return kit.type;
+function kits(){
+home()
 }
 
-function showToast(message,type="success"){
-  const toast=document.createElement("div");
-  toast.className=`toast ${type}`;
-  toast.textContent=message;
-  els.toastContainer.appendChild(toast);
-
-  setTimeout(()=>{
-    toast.style.opacity="0";
-    toast.style.transform="translateY(8px)";
-    setTimeout(()=>toast.remove(),220);
-  },2600);
+function searchPage(){
+$("#app").innerHTML=`
+<section class="section">
+<div class="section-head">
+<h2>⌕ جستجوی کیت</h2>
+</div>
+<div class="search-box">
+<input id="searchInput" autofocus placeholder="نام تیم، نوع کیت یا فصل..." oninput="doSearch(this.value)">
+</div>
+<div id="results" class="grid"></div>
+</section>`
+doSearch("")
 }
 
-function saveRecentSearch(query){
-  if(!query.trim()) return;
-  let searches=[];
-  try{
-    searches=JSON.parse(localStorage.getItem("dls_recent_searches") || "[]");
-  }catch(_){}
+function doSearch(q){
+q=q.trim().toLowerCase();
+const out=$("#results");
+if(!out)return;
 
-  searches=[query.trim(),...searches.filter(x=>x!==query.trim())].slice(0,8);
-
-  try{
-    localStorage.setItem("dls_recent_searches",JSON.stringify(searches));
-  }catch(_){}
-}
-
-/* ---------- Routing ---------- */
-
-function getRoute(){
-  const hash=location.hash.replace(/^#/,"") || "home";
-
-  if(hash.startsWith("team=")){
-    return {page:"team",id:decodeURIComponent(hash.slice(5))};
-  }
-
-  return {page:hash};
-}
-
-function navigate(route, replace=false){
-  const hash=route.startsWith("#") ? route : "#"+route;
-
-  if(replace){
-    history.replaceState(null,"",hash);
-    handleRoute();
-  }else{
-    location.hash=hash;
-  }
-}
-
-function handleRoute(){
-  const route=getRoute();
-
-  $$(".page").forEach(page=>page.classList.remove("active"));
-
-  if(route.page==="team"){
-    const team=findTeam(route.id);
-
-    if(!team){
-      navigate("home",true);
-      return;
-    }
-
-    renderTeamPage(team);
-    $("#page-team").classList.add("active");
-
-    try{
-      localStorage.setItem("dls_last_team",team.id);
-    }catch(_){}
-  }else{
-    const validPages=["home","teams","search","guide","contact"];
-
-    if(!validPages.includes(route.page)){
-      navigate("home",true);
-      return;
-    }
-
-    $(`#page-${route.page}`).classList.add("active");
-
-    if(route.page==="search"){
-      setTimeout(()=>els.searchInput?.focus(),80);
-      renderSearch(els.searchInput.value);
-    }
-  }
-
-  updateActiveNav(route.page);
-  window.scrollTo({top:0,behavior:"smooth"});
-  closeDrawer();
-}
-
-function updateActiveNav(page){
-  $$(".nav-btn").forEach(btn=>{
-    const route=btn.dataset.route;
-    btn.classList.toggle(
-      "active",
-      route===page || (page==="team" && route==="teams")
-    );
-  });
-}
-
-/* ---------- Navigation Events ---------- */
-
-function closeDrawer(){
-  els.drawerOverlay.classList.remove("open");
-  els.menuBtn.setAttribute("aria-expanded","false");
-  els.drawerOverlay.setAttribute("aria-hidden","true");
-}
-
-function openDrawer(){
-  els.drawerOverlay.classList.add("open");
-  els.menuBtn.setAttribute("aria-expanded","true");
-  els.drawerOverlay.setAttribute("aria-hidden","false");
-}
-
-els.menuBtn.addEventListener("click",openDrawer);
-els.closeDrawer.addEventListener("click",closeDrawer);
-
-els.drawerOverlay.addEventListener("click",e=>{
-  if(e.target===els.drawerOverlay) closeDrawer();
+const r=allKits().filter(x=>{
+const s=(x[0]+" "+x[1]+" "+x[2][0]+" "+x[2][1]).toLowerCase();
+return !q||s.includes(q)
 });
 
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){
-    closeDrawer();
-    closeModal();
-    closeAI();
-  }
-});
-
-document.addEventListener("click",e=>{
-  const routeTarget=e.target.closest("[data-route]");
-  if(routeTarget){
-    navigate(routeTarget.dataset.route);
-  }
-});
-
-$("#heroKits").addEventListener("click",()=>navigate("teams"));
-$("#heroSearch").addEventListener("click",()=>navigate("search"));
-
-window.addEventListener("hashchange",handleRoute);
-
-/* ---------- Render Stats ---------- */
-
-function renderStats(){
-  const teams=DATA.length;
-  const kits=allKits().length;
-
-  els.stats.innerHTML=`
-    <div class="stat">
-      <strong>${teams}</strong>
-      <span>تیم</span>
-    </div>
-    <div class="stat">
-      <strong>${kits}</strong>
-      <span>کیت</span>
-    </div>
-    <div class="stat">
-      <strong>2019</strong>
-      <span>نسخه DLS</span>
-    </div>
-  `;
+out.innerHTML=r.length
+?r.map(x=>kitCard(x[0],x[1],x[2])).join("")
+:`<div class="empty">نتیجه‌ای پیدا نشد.</div>`
 }
 
-/* ---------- Team Cards ---------- */
+function teamPage(name){
+const t=D.find(x=>x[0]===name);
+if(!t)return home();
 
-function teamCardHTML(team){
-  const count=team.kits.length;
+localStorage.setItem("lastTeam",name);
 
-  return `
-    <article
-      class="team-card"
-      role="button"
-      tabindex="0"
-      data-team="${escapeHTML(team.id)}"
-      aria-label="مشاهده کیت‌های ${escapeHTML(team.name)}"
-    >
-      <div class="team-logo">⚽</div>
-      <div class="team-name">${escapeHTML(team.name)}</div>
-      <div class="team-meta">${escapeHTML(team.season)} • ${count} کیت</div>
-    </article>
-  `;
+$("#app").innerHTML=`
+<section class="section">
+<button class="btn secondary back" onclick="history.back()">← بازگشت</button>
+
+<div class="hero" style="margin-bottom:20px">
+<h1 style="font-size:34px">${esc(t[0])}</h1>
+<p>${esc(t[1])} • ${t[2].length} کیت</p>
+</div>
+
+<div class="grid">
+${t[2].map(k=>kitCard(t[0],t[1],k)).join("")}
+</div>
+</section>`
 }
 
-function renderTeams(){
-  els.homeTeams.innerHTML=DATA.map(teamCardHTML).join("");
-  els.allTeams.innerHTML=DATA.map(teamCardHTML).join("");
+function guide(){
+$("#app").innerHTML=`
+<section class="section">
+<div class="hero">
+<h1 style="font-size:34px">راهنمای سایت</h1>
+<p>
+برای مشاهده کیت‌ها وارد بخش تیم‌ها شوید.
+روی هر تیم بزنید تا تمام کیت‌های آن نمایش داده شود.
+از «کپی لینک» می‌توانید لینک مستقیم PNG را کپی کنید.
+</p>
+</div>
+</section>`
 }
 
-document.addEventListener("click",e=>{
-  const card=e.target.closest("[data-team]");
-  if(!card) return;
-
-  navigate("team="+encodeURIComponent(card.dataset.team));
-});
-
-document.addEventListener("keydown",e=>{
-  const card=e.target.closest("[data-team]");
-  if(card && (e.key==="Enter" || e.key===" ")){
-    e.preventDefault();
-    navigate("team="+encodeURIComponent(card.dataset.team));
-  }
-});
-
-/* ---------- Latest ---------- */
-
-function renderLatest(){
-  const latest=allKits().slice(-8).reverse();
-
-  els.latestGrid.innerHTML=latest.map(kit=>`
-    <article
-      class="latest-card"
-      data-latest-team="${escapeHTML(kit.teamId)}"
-      tabindex="0"
-      role="button"
-    >
-      <div class="latest-icon">👕</div>
-      <strong>${escapeHTML(kit.team)} • ${escapeHTML(kitLabel(kit))}</strong>
-      <span>${escapeHTML(kit.season)}</span>
-    </article>
-  `).join("");
+function aiPage(){
+home();
+setTimeout(()=>document.querySelector(".ai")?.scrollIntoView({behavior:"smooth"}),100)
 }
 
-document.addEventListener("click",e=>{
-  const item=e.target.closest("[data-latest-team]");
-  if(item){
-    navigate("team="+encodeURIComponent(item.dataset.latestTeam));
-  }
-});
+function askAI(){
+const input=$("#aiinput");
+const box=$("#aibox");
+if(!input||!box)return;
 
-document.addEventListener("keydown",e=>{
-  const item=e.target.closest("[data-latest-team]");
-  if(item && (e.key==="Enter" || e.key===" ")){
-    e.preventDefault();
-    navigate("team="+encodeURIComponent(item.dataset.latestTeam));
-  }
-});
+const q=input.value.trim();
+if(!q)return;
 
-/* ---------- Kit Card ---------- */
+box.innerHTML+=`<div class="msg user">${esc(q)}</div>`;
 
-function kitCardHTML(kit){
-  const safeUrl=escapeHTML(kit.url);
-  const title=`${kit.team} • ${kitLabel(kit)}`;
+let a="فعلاً اطلاعات کافی برای پاسخ به این سؤال ندارم.";
+const x=q.toLowerCase();
 
-  return `
-    <article class="kit-card">
-      <div class="kit-image-wrap">
-        <img
-          class="kit-image"
-          src="${safeUrl}"
-          alt="${escapeHTML(title)}"
-          loading="lazy"
-          decoding="async"
-          data-kit-url="${safeUrl}"
-          onerror="handleImageError(this)"
-          onclick="openImageModalFromElement(this)"
-        >
-        <div class="image-error">
-          تصویر این کیت در حال حاضر قابل نمایش نیست.
-        </div>
-      </div>
+if(x.includes("کیت")||x.includes("kit"))
+a="برای دیدن کیت‌ها از منوی «کیت‌ها» وارد تیم موردنظر شو.";
 
-      <div class="kit-body">
-        <div class="kit-top">
-          <div class="kit-name">${escapeHTML(kitLabel(kit))}</div>
-          <span class="badge">${escapeHTML(kit.team)}</span>
-        </div>
+else if(x.includes("دانلود")||x.includes("لینک"))
+a="در صفحه هر تیم، دکمه «باز کردن PNG» لینک مستقیم تصویر کیت را باز می‌کند و با «کپی لینک» می‌توانی لینک را کپی کنی.";
 
-        <div class="kit-meta">
-          فصل ${escapeHTML(kit.season)}
-        </div>
+else if(x.includes("dls"))
+a="این سایت برای کیت‌های Dream League Soccer 2019 ساخته شده است.";
 
-        <div class="kit-actions">
-          <button
-            class="small-btn primary"
-            onclick="copyKitLink('${safeUrl}')"
-            aria-label="کپی لینک ${escapeHTML(title)}"
-          >
-            کپی لینک
-          </button>
+else if(x.includes("بارسا")||x.includes("barcelona"))
+a="کیت‌های Barcelona 2026/2027 در بخش تیم‌ها قرار دارند.";
 
-          <a
-            class="small-btn"
-            href="${safeUrl}"
-            target="_blank"
-            rel="noopener"
-            aria-label="باز کردن PNG ${escapeHTML(title)}"
-          >
-            باز کردن PNG
-          </a>
-        </div>
-      </div>
-    </article>
-  `;
+else if(x.includes("psg"))
+a="کیت‌های PSG 2027 در بخش تیم‌ها قرار دارند.";
+
+else if(x.includes("سلام"))
+a="سلام داداش 👋 چطور کمکت کنم؟";
+
+box.innerHTML+=`<div class="msg bot">${a}</div>`;
+box.scrollTop=box.scrollHeight;
+input.value=""
 }
 
-function makeKitObject(team,k){
-  return {
-    teamId:team.id,
-    team:team.name,
-    season:team.season,
-    number:k[0],
-    type:k[1],
-    url:k[2]
-  };
+function modal(url){
+$("#modalImg").src=url;
+$("#modal").classList.add("show")
 }
-
-function renderTeamPage(team){
-  els.teamPageTitle.textContent=team.name;
-  els.teamPageMeta.textContent=`فصل ${team.season} • ${team.kits.length} کیت`;
-
-  els.teamKits.innerHTML=team.kits
-    .map(k=>kitCardHTML(makeKitObject(team,k)))
-    .join("");
-}
-
-/* ---------- Image Error ---------- */
-
-function handleImageError(img){
-  img.classList.add("error");
-  const error=img.parentElement.querySelector(".image-error");
-  if(error) error.classList.add("show");
-}
-
-window.handleImageError=handleImageError;
-
-/* ---------- Copy ---------- */
-
-async function copyKitLink(url){
-  try{
-    if(navigator.clipboard && window.isSecureContext){
-      await navigator.clipboard.writeText(url);
-      showToast("لینک کیت کپی شد.","success");
-      return;
-    }
-  }catch(_){}
-
-  /* Fallback */
-  const textarea=document.createElement("textarea");
-  textarea.value=url;
-  textarea.setAttribute("readonly","");
-  textarea.style.position="fixed";
-  textarea.style.opacity="0";
-  textarea.style.pointerEvents="none";
-  document.body.appendChild(textarea);
-  textarea.focus();
-  textarea.select();
-
-  let ok=false;
-  try{
-    ok=document.execCommand("copy");
-  }catch(_){}
-
-  textarea.remove();
-
-  if(ok){
-    showToast("لینک کیت کپی شد.","success");
-  }else{
-    showToast("کپی خودکار انجام نشد؛ لینک را از دکمه PNG باز کنید.","error");
-  }
-}
-
-window.copyKitLink=copyKitLink;
-
-/* ---------- Lightbox ---------- */
-
-function openImageModalFromElement(img){
-  if(img.classList.contains("error")) return;
-
-  const card=img.closest(".kit-card");
-  const title=card?.querySelector(".kit-name")?.textContent || "Kit";
-  const team=card?.querySelector(".badge")?.textContent || "";
-
-  els.modalImage.src=img.src;
-  els.modalImage.alt=img.alt;
-  els.modalTitle.textContent=title;
-  els.modalType.textContent=team;
-  els.imageModal.classList.add("open");
-  document.body.style.overflow="hidden";
-}
-
-window.openImageModalFromElement=openImageModalFromElement;
 
 function closeModal(){
-  els.imageModal.classList.remove("open");
-  document.body.style.overflow="";
+$("#modal").classList.remove("show");
+$("#modalImg").src=""
 }
 
-els.modalClose.addEventListener("click",closeModal);
+function go(hash){
+location.hash=hash
+}
 
-els.imageModal.addEventListener("click",e=>{
-  if(e.target===els.imageModal) closeModal();
+function router(){
+const h=decodeURIComponent(location.hash||"#home");
+
+if(h==="#home"||h==="#")
+home();
+else if(h==="#kits")
+home();
+else if(h==="#search")
+searchPage();
+else if(h==="#guide")
+guide();
+else if(h==="#ai")
+aiPage();
+else if(h.startsWith("#team="))
+teamPage(h.slice(6));
+else
+home();
+
+window.scrollTo(0,0)
+}
+
+window.addEventListener("hashchange",router);
+document.addEventListener("keydown",e=>{
+if(e.key==="Escape"){
+closeMenu();
+closeModal()
+}
 });
 
-/* ---------- Search ---------- */
-
-function renderSearch(query=""){
-  const q=normalize(query);
-
-  const results=allKits().filter(kit=>{
-    if(!q) return true;
-
-    const haystack=normalize([
-      kit.team,
-      kit.season,
-      kit.number,
-      kit.type,
-      kit.url,
-      kit.type==="Home" ? "خانه home اول اولی" : "",
-      kit.type==="Away" ? "مهمان away دوم دومی" : "",
-      kit.type==="Third" ? "سوم third" : "",
-      kit.type.startsWith("GK") ? "دروازه بان goalkeeper gk" : ""
-    ].join(" "));
-
-    return haystack.includes(q);
-  });
-
-  els.searchResults.innerHTML=results.map(kitCardHTML).join("");
-
-  els.searchEmpty.classList.toggle("show",results.length===0);
-
-  els.searchInfo.textContent=q
-    ? `${results.length} نتیجه برای «${query}»`
-    : `${results.length} کیت موجود است.`;
-}
-
-els.searchInput.addEventListener("input",e=>{
-  renderSearch(e.target.value);
-
-  if(e.target.value.trim()){
-    saveRecentSearch(e.target.value);
-  }
-});
-
-/* ---------- Back ---------- */
-
-els.backFromTeam.addEventListener("click",()=>{
-  navigate("teams");
-});
-
-/* ---------- AI ---------- */
-
-function openAI(){
-  els.aiPanel.classList.add("open");
-
-  if(!els.aiMessages.children.length){
-    addAIMessage(
-      "سلام! من DLS AI هستم.\n" +
-      "یک دستیار آفلاین داخلی هستم و به اینترنت یا API متصل نیستم.\n\n" +
-      "می‌توانم درباره تیم‌ها، کیت‌های موجود و استفاده از سایت راهنمایی کنم."
-    );
-  }
-
-  setTimeout(()=>els.aiInput.focus(),80);
-}
-
-function closeAI(){
-  els.aiPanel.classList.remove("open");
-}
-
-function addAIMessage(text,type="bot"){
-  const message=document.createElement("div");
-  message.className=`ai-message ${type}`;
-  message.textContent=text;
-  els.aiMessages.appendChild(message);
-  els.aiMessages.scrollTop=els.aiMessages.scrollHeight;
-}
-
-function aiResponse(input){
-  const q=normalize(input);
-
-  if(!q){
-    return "لطفاً سؤال خود را بنویسید.";
-  }
-
-  if(
-    q.includes("psg") ||
-    q.includes("پاریس") ||
-    q.includes("پاریس ژرمن")
-  ){
-    const team=findTeam("psg");
-    return `کیت‌های PSG در سایت موجود است:\n${team.kits.map(k=>`${k[0]} — ${k[1]}`).join("\n")}\n\nبرای دیدن تصاویر، صفحه تیم PSG را باز کنید.`;
-  }
-
-  if(
-    q.includes("بایرن") ||
-    q.includes("bayern") ||
-    q.includes("munchen")
-  ){
-    const team=findTeam("bayern-munchen");
-    return `تیم ${team.name} در سایت ${team.kits.length} کیت دارد:\n${team.kits.map(k=>`${k[0]} — ${k[1]}`).join("\n")}`;
-  }
-
-  if(
-    q.includes("کپی") ||
-    q.includes("لینک") ||
-    q.includes("copy")
-  ){
-    return "برای کپی لینک، وارد صفحه تیم شوید و روی دکمه «کپی لینک» زیر کیت موردنظر بزنید. لینک مستقیم PNG در Clipboard قرار می‌گیرد.";
-  }
-
-  if(
-    q.includes("نصب") ||
-    q.includes("استفاده") ||
-    q.includes("install")
-  ){
-    return "برای استفاده از کیت، صفحه تیم را باز کنید، کیت موردنظر را انتخاب کنید و لینک PNG آن را کپی کنید. سپس آن را در بخش تغییر کیت DLS 2019 وارد کنید.";
-  }
-
-  if(
-    q.includes("تیم") ||
-    q.includes("لیست") ||
-    q.includes("teams")
-  ){
-    return "تیم‌های فعلی سایت:\n" + DATA.map(t=>`• ${t.name}`).join("\n");
-  }
-
-  if(
-    q.includes("راهنما") ||
-    q.includes("سایت") ||
-    q.includes("guide")
-  ){
-    return "از منوی سایت می‌توانید وارد «کیت‌ها»، «جستجو» و «راهنما» شوید. روی هر تیم بزنید تا تمام کیت‌های آن نمایش داده شود.";
-  }
-
-  if(
-    q.includes("dls kit land") ||
-    q.includes("معرفی") ||
-    q.includes("چیست")
-  ){
-    return "DLS KIT LAND یک کتابخانه Front-end برای انتشار و مشاهده کیت‌های Dream League Soccer 2019 است. این نسخه برای GitHub Pages ساخته شده و برای قابلیت‌های اصلی سایت به Backend یا API نیاز ندارد.";
-  }
-
-  if(q.includes("بارسا") || q.includes("بارسلونا") || q.includes("barcelona")){
-    const team=findTeam("barcelona");
-    return `Barcelona در فصل ${team.season}، ${team.kits.length} کیت دارد. کیت شماره 4 بازیکنی است و GK محسوب نمی‌شود.`;
-  }
-
-  return "فعلاً اطلاعات کافی برای پاسخ به این سؤال ندارم.";
-}
-
-els.aiFab.addEventListener("click",()=>{
-  if(els.aiPanel.classList.contains("open")) closeAI();
-  else openAI();
-});
-
-els.aiClose.addEventListener("click",closeAI);
-
-els.aiForm.addEventListener("submit",e=>{
-  e.preventDefault();
-
-  const text=els.aiInput.value.trim();
-  if(!text) return;
-
-  addAIMessage(text,"user");
-  els.aiInput.value="";
-
-  setTimeout(()=>{
-    addAIMessage(aiResponse(text),"bot");
-  },180);
-});
-
-$$(".ai-suggestion").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const text=btn.textContent.trim();
-    els.aiInput.value=text;
-    els.aiForm.requestSubmit();
-  });
-});
-
-/* ---------- Local Storage: last team ---------- */
-
-function restoreLastTeam(){
-  try{
-    const last=localStorage.getItem("dls_last_team");
-
-    if(last && findTeam(last)){
-      /* فقط برای حفظ state ذخیره‌شده است؛
-         بدون تغییر مسیر ناخواسته در ورود اولیه. */
-      return last;
-    }
-  }catch(_){}
-
-  return null;
-}
-
-/* ---------- Init ---------- */
-
-function init(){
-  renderStats();
-  renderTeams();
-  renderLatest();
-
-  /* اگر صفحه با hash خالی باز شود، home */
-  if(!location.hash){
-    history.replaceState(null,"","#home");
-  }
-
-  handleRoute();
-
-  /* نمایش خطای بهتر برای تصاویر */
-  $$(".kit-image").forEach(img=>{
-    if(img.complete && img.naturalWidth===0){
-      handleImageError(img);
-    }
-  });
-
-  restoreLastTeam();
-}
-
-init();
+router();
 </script>
+
 </body>
-  </html>
+</html>
