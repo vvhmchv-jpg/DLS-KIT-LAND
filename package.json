@@ -1,8 +1,0 @@
-{
-  "name": "dls-kit-land",
-  "private": true,
-  "type": "module",
-  "dependencies": {
-    "openai": "latest"
-  }
-}
