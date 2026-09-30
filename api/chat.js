@@ -1,50 +1,93 @@
 import OpenAI from "openai";
 
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 export default async function handler(req, res) {
+  // تست اتصال
   if (req.method === "GET") {
-    return res.status(200).json({ ok: true, service: "DLS AI", endpoint: "/api/chat" });
+    return res.status(200).json({
+      ok: true,
+      service: "DLS AI",
+      endpoint: "/api/chat",
+      hasApiKey: Boolean(process.env.OPENAI_API_KEY),
+    });
   }
 
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "Method Not Allowed" });
+    return res.status(405).json({
+      ok: false,
+      error: "Method Not Allowed",
+    });
   }
 
   try {
-    const { message, model, context } = req.body || {};
+    const body = req.body || {};
+    const message = body.message;
+    const context = body.context || {};
 
     if (!message || typeof message !== "string") {
-      return res.status(400).json({ error: "Message is required" });
+      return res.status(400).json({
+        ok: false,
+        error: "Message is required",
+      });
     }
 
-    const selectedModel = model || "gpt-5.6-luna";
+    if (!process.env.OPENAI_API_KEY) {
+      return res.status(500).json({
+        ok: false,
+        error: "OPENAI_API_KEY is missing",
+      });
+    }
 
     const response = await client.responses.create({
-      model: selectedModel,
-      instructions: [
-        "You are DLS AI for DLS KIT LAND.",
-        "Help users with Dream League Soccer 2019 kits, teams, seasons, kit types, direct kit links, search, and website features.",
-        "Answer in the user's language. If the user writes Persian, answer in Persian.",
-        "Be concise and useful. Do not invent a direct download URL when the website has not provided one.",
-        `Website context: ${JSON.stringify(context || {})}`
-      ].join("\n"),
-      input: message
+      model: "gpt-5.6-luna",
+
+      instructions: `
+You are DLS AI for DLS KIT LAND.
+
+Help users with:
+- Dream League Soccer 2019
+- football kits
+- teams
+- seasons
+- home/away/third kits
+- goalkeeper kits
+- kit links
+- kit searching
+- website features
+
+Answer in the same language as the user.
+If the user writes Persian, answer in Persian.
+
+Be concise and useful.
+Never invent a direct download URL.
+If a link is not available in the website data, say so.
+
+Website context:
+${JSON.stringify(context)}
+      `,
+
+      input: message,
+
+      max_output_tokens: 500,
     });
 
     return res.status(200).json({
-      reply: response.output_text || "پاسخی از مدل دریافت نشد."
+      ok: true,
+      reply: response.output_text || "پاسخی از مدل دریافت نشد.",
     });
+
   } catch (error) {
-    console.error("OpenAI API error:", error);
+    console.error("DLS AI ERROR:", error);
 
-    const status = Number(error?.status) || 500;
-    const safeStatus = status >= 400 && status < 600 ? status : 500;
-
-    return res.status(safeStatus).json({
-      error: error?.message || "AI request failed"
+    return res.status(500).json({
+      ok: false,
+      error: error?.message || "OpenAI request failed",
+      type: error?.type || null,
+      code: error?.code || null,
+      request_id: error?._request_id || null,
     });
   }
 }
