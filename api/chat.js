@@ -1,15 +1,12 @@
 export default async function handler(req, res) {
-  // CORS
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
 
-  // Preflight
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
 
-  // GET test
   if (req.method === "GET") {
     return res.status(200).json({
       ok: true,
@@ -19,7 +16,6 @@ export default async function handler(req, res) {
     });
   }
 
-  // Only POST
   if (req.method !== "POST") {
     return res.status(405).json({
       ok: false,
@@ -28,27 +24,21 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Check API key
     const apiKey = process.env.OPENAI_API_KEY;
 
     if (!apiKey) {
       return res.status(500).json({
         ok: false,
-        error: "OPENAI_API_KEY is not configured on Vercel"
+        error: "OPENAI_API_KEY is missing in Vercel"
       });
     }
 
-    // Read body
     const body = req.body || {};
-
     const message =
       typeof body.message === "string"
         ? body.message.trim()
         : "";
 
-    const context = body.context || {};
-
-    // Validate message
     if (!message) {
       return res.status(400).json({
         ok: false,
@@ -56,94 +46,94 @@ export default async function handler(req, res) {
       });
     }
 
-    // Prevent extremely large requests
-    if (message.length > 8000) {
-      return res.status(413).json({
-        ok: false,
-        error: "Message is too long"
-      });
-    }
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
 
-    // Always use the intended DLS KIT LAND model
-    const selectedModel = "gpt-5.6-luna";
+    let response;
 
-    // OpenAI Responses API
-    const response = await fetch(
-      "https://api.openai.com/v1/responses",
-      {
+    try {
+      response = await fetch("https://api.openai.com/v1/responses", {
         method: "POST",
-
+        signal: controller.signal,
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${apiKey}`
         },
-
         body: JSON.stringify({
-          model: selectedModel,
-
+          model: "gpt-5.6-luna",
           instructions:
             "تو DLS AI دستیار سایت DLS KIT LAND هستی. " +
-            "درباره Dream League Soccer 2019، کیت‌ها، تیم‌ها، " +
-            "قالب کیت، لینک کیت و امکانات سایت به فارسی، واضح و کوتاه پاسخ بده.",
-
-          input: [
-            {
-              role: "user",
-              content: message
-            }
-          ],
-
-          metadata: {
-            source: "DLS KIT LAND",
-            language: "fa",
-            page: String(context.page || "")
-          }
+            "به فارسی و واضح درباره Dream League Soccer 2019، " +
+            "کیت‌ها، تیم‌ها و امکانات سایت پاسخ بده.",
+          input: message
         })
-      }
-    );
+      });
+    } finally {
+      clearTimeout(timeout);
+    }
 
-    // Read OpenAI response
-    const data = await response.json();
+    const raw = await response.text();
 
-    // OpenAI error
+    let data = {};
+
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      data = {
+        raw
+      };
+    }
+
     if (!response.ok) {
-      console.error("OpenAI API error:", data);
+      console.error("OPENAI ERROR:", data);
 
       return res.status(response.status).json({
         ok: false,
         error:
           data?.error?.message ||
           data?.error?.code ||
-          "OpenAI API request failed"
+          data?.raw ||
+          `OpenAI HTTP ${response.status}`
       });
     }
 
-    // Extract answer
     const reply =
-      typeof data.output_text === "string"
-        ? data.output_text.trim()
-        : "";
+      data?.output_text ||
+      data?.output
+        ?.filter(item => item.type === "message")
+        ?.flatMap(item => item.content || [])
+        ?.filter(item => item.type === "output_text")
+        ?.map(item => item.text)
+        ?.join("\n") ||
+      "";
 
-    if (!reply) {
+    if (!reply.trim()) {
+      console.error("EMPTY OPENAI RESPONSE:", data);
+
       return res.status(502).json({
         ok: false,
-        error: "OpenAI returned an empty response"
+        error: "OpenAI returned no text"
       });
     }
 
-    // Success
     return res.status(200).json({
       ok: true,
-      reply,
-      model: selectedModel
+      reply: reply.trim()
     });
 
   } catch (error) {
-    console.error("DLS KIT LAND AI error:", error);
+    console.error("DLS AI ERROR:", error);
+
+    if (error?.name === "AbortError") {
+      return res.status(504).json({
+        ok: false,
+        error: "OpenAI request timed out after 30 seconds"
+      });
+    }
 
     return res.status(500).json({
       ok: false,
-      error: error?.message || "AI request failed"
+      error: error?.message || "Server error"
     });
   }
 }
