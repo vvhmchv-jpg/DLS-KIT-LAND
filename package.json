@@ -1,0 +1,11 @@
+{
+  "name": "dls-kit-land-passkey",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "^14.0.0",
+    "@vercel/blob": "^2.6.1"
+  }
+}
