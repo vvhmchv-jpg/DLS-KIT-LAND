@@ -1,0 +1,10 @@
+{
+  "name": "dls-kit-land-passkey",
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "^14.0.0"
+  }
+}
