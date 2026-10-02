@@ -1,0 +1,4669 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080b16">
+<meta name="description" content="DLS KIT LAND — آرشیو حرفه‌ای کیت‌های Dream League Soccer 2019">
+<meta name="robots" content="index,follow">
+<title>DLS KIT LAND — Dream League Soccer 2019</title>
+<style>
+/* ============================================================
+   DLS KIT LAND — PREMIUM EDITION
+   SINGLE FILE CSS
+   ============================================================ */
+:root{
+  --bg:#070a13;
+  --bg-soft:#0b1020;
+  --surface:#101729;
+  --surface-2:#151d31;
+  --surface-3:#1b2540;
+  --text:#f5f7ff;
+  --muted:#9ca8c2;
+  --line:rgba(255,255,255,.09);
+  --line-strong:rgba(255,255,255,.17);
+  --primary:#735cff;
+  --primary-2:#00cfff;
+  --success:#31dc9a;
+  --warning:#ffc857;
+  --danger:#ff5d78;
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:24px;
+  --radius-xl:32px;
+  --shadow:0 24px 80px rgba(0,0,0,.38);
+  --header-h:72px;
+}
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
+body{
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 8% 0%,rgba(115,92,255,.16),transparent 30%),
+    radial-gradient(circle at 92% 8%,rgba(0,207,255,.10),transparent 28%),
+    linear-gradient(180deg,var(--bg),var(--bg-soft));
+  color:var(--text);
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Tahoma,
+    Arial,
+    sans-serif;
+  line-height:1.65;
+}
+body.no-scroll{
+  overflow:hidden;
+}
+button,
+input,
+select,
+textarea{
+  font:inherit;
+}
+button{
+  cursor:pointer;
+}
+a{
+  color:inherit;
+  text-decoration:none;
+}
+img{
+  max-width:100%;
+  display:block;
+}
+ul,
+ol{
+  margin:0;
+  padding:0;
+}
+h1,
+h2,
+h3,
+h4,
+p{
+  margin-top:0;
+}
+::selection{
+  background:rgba(115,92,255,.35);
+}
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.app-shell{
+  min-height:100vh;
+}
+.container{
+  width:min(1380px,calc(100% - 28px));
+  margin-inline:auto;
+}
+.page{
+  min-height:calc(100vh - var(--header-h));
+  padding-block:24px 80px;
+}
+.section{
+  margin-top:28px;
+}
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:14px;
+}
+.section-head h2{
+  margin:0;
+  font-size:1.35rem;
+  letter-spacing:-.4px;
+}
+.section-head p{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-size:.9rem;
+}
+.grid{
+  display:grid;
+  gap:14px;
+}
+.grid-2{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.grid-3{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+.grid-4{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+.stack{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.wrap{
+  flex-wrap:wrap;
+}
+.spacer{
+  flex:1;
+}
+.center{
+  display:grid;
+  place-items:center;
+}
+.text-center{
+  text-align:center;
+}
+.muted{
+  color:var(--muted);
+}
+.small{
+  font-size:.82rem;
+}
+.tiny{
+  font-size:.72rem;
+}
+.bold{
+  font-weight:800;
+}
+.hidden{
+  display:none!important;
+}
+.visually-hidden{
+  position:absolute!important;
+  width:1px!important;
+  height:1px!important;
+  padding:0!important;
+  margin:-1px!important;
+  overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;
+  white-space:nowrap!important;
+  border:0!important;
+}
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  height:var(--header-h);
+  background:rgba(7,10,19,.82);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(22px);
+}
+.navbar{
+  height:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  min-width:max-content;
+  font-weight:950;
+  letter-spacing:.4px;
+}
+.brand-mark{
+  width:44px;
+  height:44px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  box-shadow:0 12px 34px rgba(115,92,255,.25);
+  font-size:23px;
+}
+.header-search{
+  flex:1;
+  max-width:560px;
+  margin-inline:auto;
+  position:relative;
+}
+.header-search input{
+  width:100%;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  color:var(--text);
+  outline:none;
+  padding:0 44px 0 14px;
+}
+.header-search input:focus{
+  border-color:rgba(115,92,255,.65);
+  box-shadow:0 0 0 3px rgba(115,92,255,.12);
+}
+.search-icon{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--muted);
+  pointer-events:none;
+}
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.icon-btn{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  color:var(--text);
+}
+.icon-btn:hover{
+  border-color:rgba(115,92,255,.55);
+}
+.mobile-menu-btn{
+  display:none;
+}
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:42px;
+  padding:9px 14px;
+  border:1px solid var(--line);
+  border-radius:13px;
+  background:rgba(255,255,255,.045);
+  color:var(--text);
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(115,92,255,.55);
+}
+.btn:active{
+  transform:translateY(0);
+}
+.btn-primary{
+  border-color:transparent;
+  background:linear-gradient(135deg,var(--primary),#4f3bd0);
+}
+.btn-success{
+  border-color:rgba(49,220,154,.3);
+  background:rgba(49,220,154,.09);
+}
+.btn-danger{
+  border-color:rgba(255,93,120,.28);
+  background:rgba(255,93,120,.08);
+}
+.btn-ghost{
+  background:transparent;
+}
+.btn-lg{
+  min-height:50px;
+  padding-inline:18px;
+}
+.btn-block{
+  width:100%;
+}
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:390px;
+  padding:34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border:1px solid var(--line);
+  border-radius:var(--radius-xl);
+  background:
+    linear-gradient(135deg,rgba(115,92,255,.17),rgba(0,207,255,.04) 55%,rgba(255,255,255,.025)),
+    var(--surface);
+  box-shadow:var(--shadow);
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  width:360px;
+  height:360px;
+  right:-130px;
+  top:-160px;
+  border-radius:50%;
+  background:rgba(115,92,255,.15);
+  filter:blur(2px);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  left:-150px;
+  bottom:-160px;
+  border-radius:50%;
+  background:rgba(0,207,255,.09);
+}
+.hero > *{
+  position:relative;
+  z-index:1;
+}
+.eyebrow{
+  color:#bbb4ff;
+  font-size:.85rem;
+  font-weight:850;
+  letter-spacing:.5px;
+}
+.hero h1{
+  max-width:850px;
+  margin:10px 0 16px;
+  font-size:clamp(2.5rem,7vw,5.6rem);
+  line-height:.97;
+  letter-spacing:-3px;
+}
+.hero p{
+  max-width:760px;
+  color:var(--muted);
+  line-height:1.95;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:16px;
+}
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card{
+  min-width:0;
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:rgba(16,23,41,.82);
+  overflow:hidden;
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+.card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(115,92,255,.45);
+  box-shadow:0 16px 50px rgba(0,0,0,.2);
+}
+.card-body{
+  padding:14px;
+}
+.kit-card{
+  display:flex;
+  flex-direction:column;
+}
+.kit-preview{
+  position:relative;
+  aspect-ratio:1/1;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(115,92,255,.13),transparent 50%),
+    #090d18;
+}
+.kit-preview img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:10px;
+}
+.kit-preview .kit-type{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:5px 8px;
+  border-radius:999px;
+  background:rgba(0,0,0,.5);
+  border:1px solid rgba(255,255,255,.12);
+  font-size:.72rem;
+}
+.kit-title{
+  margin:0 0 3px;
+  font-size:1rem;
+  font-weight:900;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.kit-team{
+  color:var(--muted);
+  font-size:.83rem;
+}
+.card-meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+  margin-top:9px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:25px;
+  padding:3px 8px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  color:#cbd3e7;
+  font-size:.72rem;
+}
+.card-actions{
+  display:flex;
+  gap:7px;
+  margin-top:12px;
+}
+.card-actions .btn{
+  flex:1;
+}
+/* ============================================================
+   TEAM CARDS
+   ============================================================ */
+.team-card{
+  min-height:96px;
+  padding:14px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.team-logo{
+  flex:0 0 58px;
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:17px;
+  background:#090e1b;
+  overflow:hidden;
+}
+.team-logo img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:7px;
+}
+.team-name{
+  font-weight:900;
+}
+.team-en{
+  color:var(--muted);
+  font-size:.8rem;
+}
+.team-count{
+  margin-top:4px;
+  color:#b8c0d4;
+  font-size:.74rem;
+}
+/* ============================================================
+   FILTERS
+   ============================================================ */
+.filter-panel{
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  background:rgba(16,23,41,.75);
+  padding:16px;
+}
+.filter-grid{
+  display:grid;
+  grid-template-columns:2fr repeat(3,1fr);
+  gap:9px;
+}
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.field label{
+  color:var(--muted);
+  font-size:.76rem;
+}
+.control{
+  width:100%;
+  min-height:42px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#ffffff06;
+  color:var(--text);
+  outline:none;
+  padding:9px 11px;
+}
+.control:focus{
+  border-color:rgba(115,92,255,.6);
+  box-shadow:0 0 0 3px rgba(115,92,255,.1);
+}
+.filter-bottom{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-top:10px;
+}
+/* ============================================================
+   DETAIL PAGE
+   ============================================================ */
+.detail-layout{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:18px;
+}
+.detail-image{
+  min-height:520px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  border-radius:var(--radius-xl);
+  background:
+    radial-gradient(circle at 50% 30%,rgba(115,92,255,.14),transparent 45%),
+    #090d18;
+  overflow:hidden;
+}
+.detail-image img{
+  width:100%;
+  height:100%;
+  max-height:680px;
+  object-fit:contain;
+  padding:20px;
+}
+.detail-panel{
+  border:1px solid var(--line);
+  border-radius:var(--radius-xl);
+  background:rgba(16,23,41,.82);
+  padding:24px;
+}
+.detail-title{
+  margin:7px 0 5px;
+  font-size:clamp(2rem,5vw,3.7rem);
+  line-height:1;
+  letter-spacing:-2px;
+}
+.detail-description{
+  color:var(--muted);
+  line-height:2;
+}
+.detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:9px;
+  margin-top:15px;
+}
+.detail-stat{
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:12px;
+  background:#ffffff04;
+}
+.detail-stat span{
+  display:block;
+  color:var(--muted);
+  font-size:.75rem;
+}
+.detail-stat b{
+  display:block;
+  margin-top:2px;
+}
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  z-index:300;
+  display:none;
+  align-items:flex-end;
+  justify-content:center;
+  padding:12px;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(10px);
+}
+.modal-backdrop.open{
+  display:flex;
+}
+.modal{
+  width:min(900px,100%);
+  max-height:92vh;
+  overflow:auto;
+  border:1px solid var(--line-strong);
+  border-radius:25px;
+  background:#0e1425;
+  box-shadow:var(--shadow);
+  padding:18px;
+}
+.modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:15px;
+}
+.modal-head h2{
+  margin:0;
+}
+/* ============================================================
+   AI WIDGET
+   ============================================================ */
+.ai-fab{
+  position:fixed;
+  left:18px;
+  bottom:18px;
+  z-index:250;
+  width:62px;
+  height:62px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:20px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-2));
+  color:#fff;
+  font-size:27px;
+  box-shadow:0 18px 50px rgba(0,0,0,.45);
+}
+.ai-window{
+  position:fixed;
+  left:18px;
+  bottom:92px;
+  z-index:249;
+  width:min(400px,calc(100vw - 36px));
+  height:570px;
+  display:none;
+  flex-direction:column;
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:#0c1222;
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.ai-window.open{
+  display:flex;
+}
+.ai-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:13px 15px;
+  border-bottom:1px solid var(--line);
+}
+.ai-messages{
+  flex:1;
+  overflow:auto;
+  padding:12px;
+}
+.ai-msg{
+  width:max-content;
+  max-width:88%;
+  margin:7px 0;
+  padding:9px 11px;
+  border-radius:15px;
+  line-height:1.7;
+  font-size:.88rem;
+}
+.ai-msg.bot{
+  border:1px solid rgba(115,92,255,.2);
+  background:rgba(115,92,255,.11);
+}
+.ai-msg.user{
+  margin-right:auto;
+  background:rgba(255,255,255,.06);
+}
+.ai-input{
+  display:flex;
+  gap:7px;
+  padding:10px;
+  border-top:1px solid var(--line);
+}
+.ai-input input{
+  flex:1;
+  min-width:0;
+}
+/* ============================================================
+   MISC COMPONENTS
+   ============================================================ */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+.stat-card{
+  padding:16px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+.stat-card span{
+  display:block;
+  color:var(--muted);
+  font-size:.78rem;
+}
+.stat-card b{
+  display:block;
+  margin-top:2px;
+  font-size:1.6rem;
+}
+.empty{
+  padding:50px 20px;
+  text-align:center;
+  border:1px dashed var(--line-strong);
+  border-radius:22px;
+  color:var(--muted);
+}
+.error-box{
+  padding:24px;
+  border:1px solid rgba(255,93,120,.3);
+  border-radius:20px;
+  background:rgba(255,93,120,.06);
+}
+.skeleton{
+  position:relative;
+  overflow:hidden;
+  background:#ffffff08;
+}
+.skeleton::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  transform:translateX(-100%);
+  background:linear-gradient(90deg,transparent,#ffffff10,transparent);
+  animation:skeleton 1.2s infinite;
+}
+@keyframes skeleton{
+  to{transform:translateX(100%);}
+}
+.toast{
+  position:fixed;
+  right:16px;
+  bottom:18px;
+  z-index:500;
+  max-width:min(420px,calc(100vw - 32px));
+  padding:12px 15px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:#151c30;
+  box-shadow:var(--shadow);
+  opacity:0;
+  transform:translateY(20px);
+  pointer-events:none;
+  transition:.22s;
+}
+.toast.show{
+  opacity:1;
+  transform:none;
+}
+.footer{
+  padding-block:30px 60px;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  line-height:2;
+}
+.pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  margin-top:20px;
+}
+.pagination .btn.active{
+  border-color:var(--primary);
+  background:rgba(115,92,255,.16);
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.chip{
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:6px 10px;
+  color:#cdd5e7;
+  background:#ffffff04;
+  cursor:pointer;
+}
+.chip.active{
+  border-color:rgba(115,92,255,.6);
+  background:rgba(115,92,255,.12);
+}
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1100px){
+  .grid-4{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  .filter-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .detail-layout{
+    grid-template-columns:1fr;
+  }
+  .detail-image{
+    min-height:420px;
+  }
+}
+@media(max-width:800px){
+  :root{
+    --header-h:64px;
+  }
+  .container{
+    width:min(100% - 18px,1380px);
+  }
+  .header-search{
+    display:none;
+  }
+  .mobile-menu-btn{
+    display:grid;
+  }
+  .desktop-only{
+    display:none!important;
+  }
+  .hero{
+    min-height:340px;
+    padding:23px;
+  }
+  .hero h1{
+    letter-spacing:-2px;
+  }
+  .grid-3,
+  .grid-4{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+@media(max-width:520px){
+  .grid-2,
+  .grid-3,
+  .grid-4{
+    grid-template-columns:1fr;
+  }
+  .filter-grid{
+    grid-template-columns:1fr;
+  }
+  .detail-image{
+    min-height:330px;
+  }
+  .detail-panel{
+    padding:18px;
+  }
+  .detail-grid{
+    grid-template-columns:1fr 1fr;
+  }
+  .hero-actions,
+  .card-actions{
+    flex-wrap:wrap;
+  }
+  .hero-actions .btn{
+    flex:1 1 auto;
+  }
+}
+
+.contact-footer{margin-top:24px;padding:22px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,rgba(115,92,255,.10),rgba(255,255,255,.025));}
+.contact-footer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px;}
+.contact-link{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:15px;background:#ffffff04;color:var(--text);text-decoration:none;transition:.2s;}
+.contact-link:hover{transform:translateY(-2px);border-color:rgba(115,92,255,.6);background:#ffffff08;}
+.contact-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:rgba(115,92,255,.15);font-size:21px;flex:0 0 42px;}
+.contact-page-card{padding:26px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#121a2e,#0d1323);box-shadow:var(--shadow);}
+.contact-page-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;}
+.contact-page-link{display:flex;align-items:center;gap:14px;padding:20px;border:1px solid var(--line);border-radius:18px;background:#ffffff04;color:var(--text);text-decoration:none;}
+.contact-page-link:hover{border-color:rgba(115,92,255,.65);background:#ffffff08;}
+@media(max-width:650px){.contact-footer-grid,.contact-page-grid{grid-template-columns:1fr;}}
+
+    html[dir="ltr"] body { direction:ltr; }
+    html[dir="ltr"] .ai-window, html[dir="ltr"] .modal { direction:ltr; }
+    html[dir="ltr"] .ai-messages { text-align:left; }
+    .lang-btn { min-width:44px; font-weight:800; font-size:12px; }
+
+/* ============================================================
+   PREMIUM REDESIGN — DLS KIT LAND
+   ============================================================ */
+:root{
+  --bg:#05070d;
+  --bg-soft:#080d18;
+  --surface:rgba(15,20,34,.78);
+  --surface-2:rgba(20,27,45,.88);
+  --surface-3:#18233b;
+  --text:#f7f9ff;
+  --muted:#94a1bb;
+  --line:rgba(255,255,255,.085);
+  --line-strong:rgba(255,255,255,.16);
+  --primary:#2f7cff;
+  --primary-2:#00d4ff;
+  --success:#28d9a0;
+  --warning:#ffd166;
+  --danger:#ff5c78;
+  --shadow:0 28px 90px rgba(0,0,0,.48);
+  --header-h:76px;
+}
+html{background:#05070d}
+body{
+  background:
+    radial-gradient(900px 500px at 8% -5%,rgba(47,124,255,.20),transparent 62%),
+    radial-gradient(700px 500px at 96% 5%,rgba(0,212,255,.11),transparent 60%),
+    radial-gradient(800px 600px at 50% 100%,rgba(83,55,180,.09),transparent 60%),
+    linear-gradient(180deg,#05070d 0%,#080d18 52%,#05070d 100%);
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.22;
+  background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:44px 44px;
+  mask-image:linear-gradient(to bottom,black,transparent 72%);
+}
+.container{width:min(1440px,calc(100% - 32px))}
+.site-header{
+  height:var(--header-h);
+  background:rgba(5,7,13,.72);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  box-shadow:0 10px 40px rgba(0,0,0,.18);
+  backdrop-filter:blur(26px) saturate(140%);
+}
+.navbar{gap:14px}
+.brand{gap:11px;min-width:230px}
+.brand-mark{
+  width:50px;height:50px;border-radius:16px;padding:2px;
+  background:linear-gradient(135deg,#2f7cff,#00d4ff 52%,#705cff);
+  box-shadow:0 0 0 1px rgba(255,255,255,.13),0 10px 34px rgba(0,130,255,.28);
+}
+.brand-mark img{width:100%;height:100%;object-fit:cover;border-radius:14px}
+.brand-copy{display:flex;flex-direction:column;line-height:1.05}
+.brand-copy strong{font-size:1.02rem;letter-spacing:.5px}
+.brand-copy small{margin-top:5px;color:#8290aa;font-size:.58rem;letter-spacing:1.2px;font-weight:800}
+.header-search{max-width:620px}
+.header-search input{
+  height:46px;border-radius:15px;background:rgba(255,255,255,.035);
+  border-color:rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+}
+.header-search input:focus{border-color:rgba(47,124,255,.72);box-shadow:0 0 0 4px rgba(47,124,255,.11),0 8px 30px rgba(0,0,0,.15)}
+.icon-btn{border-radius:14px;background:rgba(255,255,255,.035);transition:.2s ease}
+.icon-btn:hover{transform:translateY(-1px);background:rgba(255,255,255,.07);border-color:rgba(47,124,255,.52)}
+.btn{border-radius:14px;background:rgba(255,255,255,.04)}
+.btn-primary{background:linear-gradient(135deg,#2f7cff 0%,#5360ff 58%,#735cff 100%);box-shadow:0 10px 28px rgba(47,124,255,.22)}
+.btn-primary:hover{box-shadow:0 14px 36px rgba(47,124,255,.30)}
+.page{padding-block:30px 90px}
+.hero{
+  min-height:430px;padding:clamp(28px,5vw,58px);border-radius:32px;
+  background:
+    linear-gradient(120deg,rgba(47,124,255,.17),rgba(0,212,255,.055) 42%,rgba(113,92,255,.08) 78%,rgba(255,255,255,.025)),
+    rgba(10,15,27,.82);
+  border-color:rgba(255,255,255,.10);box-shadow:var(--shadow);
+}
+.hero::before{width:500px;height:500px;right:-180px;top:-260px;background:radial-gradient(circle,rgba(47,124,255,.25),transparent 68%);filter:none}
+.hero::after{width:430px;height:430px;left:-250px;bottom:-260px;background:radial-gradient(circle,rgba(0,212,255,.12),transparent 70%)}
+.hero h1{font-size:clamp(2.8rem,7vw,6.4rem);letter-spacing:-4px;text-wrap:balance}
+.hero p{font-size:1.02rem;max-width:680px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#a9d9ff}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:#00d4ff;box-shadow:0 0 18px #00d4ff}
+.section{margin-top:36px}
+.section-head{margin-bottom:16px}
+.section-head h2{font-size:1.5rem}
+.card,.filter-panel,.stats-card,.contact-footer,.admin-card,.google-auth-card{
+  border-color:rgba(255,255,255,.08);
+  background:linear-gradient(145deg,rgba(18,25,42,.86),rgba(10,15,27,.82));
+  box-shadow:0 16px 55px rgba(0,0,0,.20),inset 0 1px 0 rgba(255,255,255,.025);
+}
+.card:hover{border-color:rgba(47,124,255,.42);box-shadow:0 22px 65px rgba(0,0,0,.30)}
+.kit-preview{background:radial-gradient(circle at 50% 35%,rgba(47,124,255,.12),transparent 52%),#070b14}
+.team-card{background:linear-gradient(145deg,rgba(18,25,42,.86),rgba(10,15,27,.82))}
+.team-logo{background:rgba(4,7,13,.78);border-color:rgba(255,255,255,.08)}
+.filter-panel{backdrop-filter:blur(18px)}
+.control{background:rgba(255,255,255,.035);border-color:rgba(255,255,255,.09)}
+.footer{margin-top:20px;background:rgba(5,7,13,.72);border-top:1px solid rgba(255,255,255,.07)}
+/* Professional AI launcher */
+.ai-fab{
+  position:fixed;right:22px;bottom:22px;z-index:220;width:66px;height:66px;border-radius:21px;
+  display:grid;place-items:center;padding:0;border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(145deg,#14294d,#0a1020 65%);box-shadow:0 18px 50px rgba(0,0,0,.48),0 0 0 5px rgba(47,124,255,.07),0 0 32px rgba(47,124,255,.24);
+  color:#fff;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease
+}
+.ai-fab::before{content:"";position:absolute;inset:-35%;background:conic-gradient(from 0deg,transparent,#00d4ff,transparent,#735cff,transparent);animation:aiSpin 5s linear infinite;opacity:.55}
+.ai-fab::after{content:"";position:absolute;inset:2px;border-radius:19px;background:linear-gradient(145deg,#10213d,#080d18 70%)}
+.ai-fab:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 22px 58px rgba(0,0,0,.52),0 0 42px rgba(47,124,255,.34)}
+.ai-logo-mark{position:relative;z-index:2;width:43px;height:43px;display:grid;place-items:center}
+.ai-logo-ring{position:absolute;inset:4px;border:1px solid rgba(0,212,255,.72);border-radius:13px;transform:rotate(45deg);box-shadow:0 0 16px rgba(0,212,255,.18)}
+.ai-logo-core{font-size:11px;font-weight:950;letter-spacing:.4px;color:#dffaff;text-shadow:0 0 12px rgba(0,212,255,.65)}
+.ai-logo-node{position:absolute;width:4px;height:4px;border-radius:50%;background:#00d4ff;box-shadow:0 0 8px #00d4ff}
+.ai-logo-node.n1{top:2px;left:19px}.ai-logo-node.n2{right:1px;bottom:12px;background:#735cff;box-shadow:0 0 8px #735cff}.ai-logo-node.n3{left:3px;bottom:8px}
+@keyframes aiSpin{to{transform:rotate(360deg)}}
+.ai-window{border:1px solid rgba(255,255,255,.12)!important;background:rgba(8,13,24,.90)!important;box-shadow:0 28px 90px rgba(0,0,0,.55)!important;backdrop-filter:blur(28px) saturate(140%)}
+.ai-head{background:linear-gradient(90deg,rgba(47,124,255,.11),rgba(0,212,255,.04));border-bottom:1px solid rgba(255,255,255,.07)!important}
+.ai-head strong{letter-spacing:.3px}
+.ai-messages{scrollbar-width:thin}
+.ai-input{border-top-color:rgba(255,255,255,.07)!important;background:rgba(5,8,15,.55)}
+/* Mobile polish */
+@media(max-width:900px){
+  .container{width:min(100% - 22px,700px)}
+  .desktop-only{display:none!important}
+  .brand{min-width:0}
+  .brand-copy small{display:none}
+  .header-search{display:none}
+  .mobile-menu-btn{display:grid}
+  .header-actions{margin-inline-start:auto}
+  .hero{min-height:390px}
+  .hero h1{letter-spacing:-2.4px}
+}
+@media(max-width:560px){
+  .site-header{height:68px}
+  .brand-mark{width:44px;height:44px;border-radius:14px}
+  .brand-copy strong{font-size:.92rem}
+  .header-actions{gap:4px}
+  .header-actions .icon-btn{width:40px;height:40px}
+  .page{padding-top:16px}
+  .hero{padding:24px 20px;border-radius:25px;min-height:430px}
+  .hero h1{font-size:clamp(2.5rem,14vw,4rem);letter-spacing:-2.5px}
+  .ai-fab{right:16px;bottom:16px;width:60px;height:60px;border-radius:19px}
+}
+
+</style></head><body>
+<div class="app-shell" id="app">
+<header class="site-header">
+  <div class="container navbar">
+    <button class="icon-btn mobile-menu-btn" id="mobileMenuButton" type="button" aria-label="منو">☰</button>
+    <a class="brand" href="#/">
+      <span class="brand-mark"><img src="data:image/webp;base64,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" alt="DLS KIT LAND logo"></span>
+      <span class="brand-copy"><strong>DLS KIT LAND</strong><small>DREAM LEAGUE SOCCER 2019</small></span>
+    </a>
+    <div class="header-search">
+      <span class="search-icon">⌕</span>
+      <input id="headerSearch" type="search" autocomplete="off" placeholder="جستجوی تیم، فصل، کیت...">
+    </div>
+    <div class="header-actions">
+      <a class="btn desktop-only" href="#/contact">ارتباط با ما</a>
+      <button class="icon-btn" id="themeButton" type="button" aria-label="تغییر تم">☀️</button>
+      <button class="icon-btn" id="favoritesButton" type="button" aria-label="علاقه‌مندی‌ها">★</button>
+      <button class="icon-btn lang-btn" id="languageButton" type="button" aria-label="تغییر زبان">EN</button>
+      <button class="icon-btn" id="adminButton" type="button" aria-label="مدیریت">⚙</button>
+    </div>
+  </div>
+</header>
+<main class="container page" id="page"></main>
+
+<footer class="footer">
+  <div class="container">
+    <strong>DLS KIT LAND</strong>
+    <br>
+    آرشیو حرفه‌ای کیت‌های Dream League Soccer 2019 — Single HTML Edition
+    <div class="contact-footer">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div><strong style="font-size:18px">ارتباط با ما</strong><div class="small">برای پیشنهاد، گزارش لینک خراب یا ارتباط با DLS KIT LAND</div></div>
+        <a class="btn btn-primary" href="#/contact">صفحه ارتباط با ما</a>
+      </div>
+      <div class="contact-footer-grid">
+        <a class="contact-link" href="https://rubika.ir/dls_kit_land" target="_blank" rel="noopener noreferrer"><span class="contact-icon">📱</span><span><strong>DLS KIT LAND</strong><br><span class="small">روبیکا</span></span></a>
+        <a class="contact-link" href="https://rubika.ir/fc_barcelona_1899_2027" target="_blank" rel="noopener noreferrer"><span class="contact-icon">⚽</span><span><strong>FC Barcelona</strong><br><span class="small">روبیکا</span></span></a>
+      </div>
+    </div>
+    <br>
+    <span class="small">برای لینک‌های واقعی کیت، URL را در پنل مدیریت وارد کن؛ این نسخه لینک ساختگی دانلود را به‌عنوان لینک واقعی معرفی نمی‌کند.</span>
+  </div>
+</footer>
+</div>
+
+<button class="ai-fab" id="aiButton" type="button" aria-label="DLS AI"><span class="ai-logo-mark" aria-hidden="true"><span class="ai-logo-ring"></span><span class="ai-logo-core">AI</span><span class="ai-logo-node n1"></span><span class="ai-logo-node n2"></span><span class="ai-logo-node n3"></span></span></button>
+<section class="ai-window" id="aiWindow" aria-label="DLS AI">
+  <div class="ai-head">
+    <strong>DLS AI</strong>
+    <button class="icon-btn" id="aiClose" type="button">×</button>
+  </div>
+  <div class="ai-messages" id="aiMessages"></div>
+  <div class="ai-input">
+    <input class="control" id="aiInput" placeholder="مثلاً کیت بارسا رو پیدا کن">
+    <button class="btn btn-primary" id="aiSend" type="button">ارسال</button>
+  </div>
+</section>
+
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   APPLICATION BOOTSTRAP
+   ============================================================ */
+(() => {
+  "use strict";
+
+  const APP = {
+    name: "DLS KIT LAND",
+    version: "DLS-KIT-LAND-PREMIUM",
+    storage: {
+      data: "dls_kit_land_fdk_data_v2",
+      favorites: "dls_kit_land_fdk_favorites_v2",
+      theme: "dls_kit_land_fdk_theme_v1",
+      language: "dls_kit_land_language_v1"
+    },
+    state: {
+      query: "",
+      team: "all",
+      season: "all",
+      type: "all",
+      region: "all",
+      sort: "newest",
+      page: 1,
+      perPage: 12,
+      favoritesOnly: false
+    },
+    elements: {}
+  };
+
+  /* ==========================================================
+     SAFE HELPERS
+     ========================================================== */
+
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function safeJSON(value, fallback) {
+    try {
+      const parsed = JSON.parse(value);
+      return parsed;
+    } catch {
+      return fallback;
+    }
+  }
+
+  function uid(prefix = "id") {
+    return [
+      prefix,
+      Date.now().toString(36),
+      Math.random().toString(36).slice(2, 9)
+    ].join("-");
+  }
+
+  function validHttpURL(value) {
+    try {
+      const url = new URL(value);
+      return url.protocol === "http:" || url.protocol === "https:";
+    } catch {
+      return false;
+    }
+  }
+
+  function showToast(message) {
+    const element = APP.elements.toast;
+    element.textContent = message;
+    element.classList.add("show");
+    clearTimeout(showToast.timer);
+    showToast.timer = setTimeout(() => {
+      element.classList.remove("show");
+    }, 2300);
+  }
+
+  function setHash(route) {
+    window.location.hash = route;
+  }
+
+  function getRoute() {
+    const raw = decodeURIComponent(
+      window.location.hash.replace(/^#/, "")
+    );
+    return raw || "/";
+  }
+
+  function getRouteParts() {
+    return getRoute()
+      .split("/")
+      .filter(Boolean);
+  }
+
+  function normalizeText(value) {
+    return String(value ?? "")
+      .toLowerCase()
+      .replaceAll("ي", "ی")
+      .replaceAll("ك", "ک")
+      .trim();
+  }
+
+  /* ==========================================================
+     INLINE SVG KIT GENERATOR
+     This means the demo kits ALWAYS open, even offline.
+     ========================================================== */
+
+  function svgDataURL({
+    primary = "#101828",
+    secondary = "#c8102e",
+    accent = "#f7c948",
+    pattern = "stripe",
+    label = "DLS"
+  } = {}) {
+    const safeLabel = escapeHTML(label).slice(0, 18);
+
+    const patternMarkup =
+      pattern === "stripe"
+        ? `
+          <path d="M70 0h45v260H70z" fill="${secondary}" opacity=".92"/>
+          <path d="M165 0h45v260h-45z" fill="${secondary}" opacity=".92"/>
+          <path d="M260 0h45v260h-45z" fill="${secondary}" opacity=".92"/>
+        `
+        : pattern === "hoop"
+        ? `
+          <rect y="40" width="340" height="42" fill="${secondary}"/>
+          <rect y="122" width="340" height="42" fill="${secondary}"/>
+          <rect y="204" width="340" height="42" fill="${secondary}"/>
+        `
+        : pattern === "half"
+        ? `
+          <path d="M170 40h150v220H170z" fill="${secondary}"/>
+        `
+        : `
+          <path d="M80 55h180v185H80z" fill="${secondary}" opacity=".75"/>
+        `;
+
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 340">
+        <defs>
+          <filter id="shadow">
+            <feDropShadow dx="0" dy="10" stdDeviation="9" flood-opacity=".35"/>
+          </filter>
+        </defs>
+        <rect width="340" height="340" rx="28" fill="#080c16"/>
+        <g filter="url(#shadow)">
+          <path d="M80 45l55-25 35 25 35-25 55 25 30 74-42 22-16-38v160H108V103l-16 38-42-22z"
+                fill="${primary}" stroke="#fff" stroke-opacity=".10" stroke-width="4"/>
+          ${patternMarkup}
+          <path d="M135 25l35 25 35-25" fill="none" stroke="${accent}" stroke-width="8"/>
+          <rect x="115" y="135" width="110" height="58" rx="12" fill="#0006"/>
+          <text x="170" y="173" text-anchor="middle" font-family="Arial,sans-serif"
+                font-size="28" font-weight="900" fill="${accent}">${safeLabel}</text>
+          <circle cx="170" cy="105" r="18" fill="#fff" opacity=".9"/>
+          <path d="M170 91l5 10 11 2-8 8 2 11-10-5-10 5 2-11-8-8 11-2z"
+                fill="${primary}"/>
+        </g>
+      </svg>
+    `;
+
+    return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+  }
+
+  /* ==========================================================
+     SEED TEAMS
+     ========================================================== */
+
+  const seedTeams = [
+    {
+      id: "barcelona",
+      name: "Barcelona",
+      fa: "بارسلونا",
+      region: "Europe",
+      country: "Spain",
+      emoji: "🔵🔴"
+    },
+    {
+      id: "real-madrid",
+      name: "Real Madrid",
+      fa: "رئال مادرید",
+      region: "Europe",
+      country: "Spain",
+      emoji: "⚪"
+    },
+    {
+      id: "psg",
+      name: "Paris Saint-Germain",
+      fa: "پاری سن ژرمن",
+      region: "Europe",
+      country: "France",
+      emoji: "🔵🔴"
+    },
+    {
+      id: "bayern",
+      name: "Bayern Munchen",
+      fa: "بایرن مونیخ",
+      region: "Europe",
+      country: "Germany",
+      emoji: "🔴"
+    },
+    {
+      id: "inter",
+      name: "Inter Milan",
+      fa: "اینتر میلان",
+      region: "Europe",
+      country: "Italy",
+      emoji: "🔵⚫"
+    },
+    {
+      id: "ac-milan",
+      name: "AC Milan",
+      fa: "آث میلان",
+      region: "Europe",
+      country: "Italy",
+      emoji: "🔴⚫"
+    },
+    {
+      id: "juventus",
+      name: "Juventus",
+      fa: "یوونتوس",
+      region: "Europe",
+      country: "Italy",
+      emoji: "⚫⚪"
+    },
+    {
+      id: "dortmund",
+      name: "Borussia Dortmund",
+      fa: "دورتموند",
+      region: "Europe",
+      country: "Germany",
+      emoji: "🟡⚫"
+    },
+    {
+      id: "arsenal",
+      name: "Arsenal",
+      fa: "آرسنال",
+      region: "Europe",
+      country: "England",
+      emoji: "🔴⚪"
+    },
+    {
+      id: "man-city",
+      name: "Manchester City",
+      fa: "منچسترسیتی",
+      region: "Europe",
+      country: "England",
+      emoji: "🔵"
+    },
+    {
+      id: "man-united",
+      name: "Manchester United",
+      fa: "منچستریونایتد",
+      region: "Europe",
+      country: "England",
+      emoji: "🔴"
+    },
+    {
+      id: "liverpool",
+      name: "Liverpool",
+      fa: "لیورپول",
+      region: "Europe",
+      country: "England",
+      emoji: "🔴"
+    },
+    {
+      id: "chelsea",
+      name: "Chelsea",
+      fa: "چلسی",
+      region: "Europe",
+      country: "England",
+      emoji: "🔵"
+    },
+    {
+      id: "persepolis",
+      name: "Persepolis",
+      fa: "پرسپولیس",
+      region: "Iran",
+      country: "Iran",
+      emoji: "🔴"
+    },
+    {
+      id: "esteghlal",
+      name: "Esteghlal",
+      fa: "استقلال",
+      region: "Iran",
+      country: "Iran",
+      emoji: "🔵"
+    },
+    {
+      id: "sepahan",
+      name: "Sepahan",
+      fa: "سپاهان",
+      region: "Iran",
+      country: "Iran",
+      emoji: "🟡"
+    },
+    {
+      id: "tractor",
+      name: "Tractor",
+      fa: "تراکتور",
+      region: "Iran",
+      country: "Iran",
+      emoji: "🔴"
+    }
+  ];
+
+  /* ==========================================================
+     SEED KITS
+     Every seed kit has an actual viewable image.
+     Download URL is blank until a real URL is entered.
+     ========================================================== */
+
+  const seedKits = [
+  {
+    "id": "barcelona-2026-2027-home",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Barcelona 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/e165660_1000137980.png",
+    "download": "https://cdn.imgurl.ir/uploads/e165660_1000137980.png",
+    "createdAt": 172100000001
+  },
+  {
+    "id": "barcelona-2026-2027-away",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Barcelona 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/c365345_1000137982.png",
+    "download": "https://cdn.imgurl.ir/uploads/c365345_1000137982.png",
+    "createdAt": 172100000002
+  },
+  {
+    "id": "barcelona-2026-2027-third",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "Third",
+    "title": "Barcelona 2026/2027 Third",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Third.",
+    "image": "https://cdn.imgurl.ir/uploads/l639910_1000137985.png",
+    "download": "https://cdn.imgurl.ir/uploads/l639910_1000137985.png",
+    "createdAt": 172100000003
+  },
+  {
+    "id": "barcelona-2026-2027-fourth",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "Fourth",
+    "title": "Barcelona 2026/2027 Fourth",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Fourth.",
+    "image": "https://cdn.imgurl.ir/uploads/k745553_mzPcP16.png",
+    "download": "https://cdn.imgurl.ir/uploads/k745553_mzPcP16.png",
+    "createdAt": 172100000004
+  },
+  {
+    "id": "barcelona-2026-2027-gk1",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Barcelona 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/w486938_1000137987.png",
+    "download": "https://cdn.imgurl.ir/uploads/w486938_1000137987.png",
+    "createdAt": 172100000005
+  },
+  {
+    "id": "barcelona-2026-2027-gk2",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Barcelona 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/i90298_1000137988.png",
+    "download": "https://cdn.imgurl.ir/uploads/i90298_1000137988.png",
+    "createdAt": 172100000006
+  },
+  {
+    "id": "barcelona-2026-2027-gk3",
+    "team": "barcelona",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Barcelona 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/r22064_1000137989.png",
+    "download": "https://cdn.imgurl.ir/uploads/r22064_1000137989.png",
+    "createdAt": 172100000007
+  },
+  {
+    "id": "real-madrid-2026-2027-home",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Real Madrid 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/y70020_1000138009.png",
+    "download": "https://cdn.imgurl.ir/uploads/y70020_1000138009.png",
+    "createdAt": 172100000008
+  },
+  {
+    "id": "real-madrid-2026-2027-away",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Real Madrid 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/m955366_1000138010.png",
+    "download": "https://cdn.imgurl.ir/uploads/m955366_1000138010.png",
+    "createdAt": 172100000009
+  },
+  {
+    "id": "real-madrid-2026-2027-third",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "Third",
+    "title": "Real Madrid 2026/2027 Third",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Third.",
+    "image": "https://cdn.imgurl.ir/uploads/r00414_1000138011.png",
+    "download": "https://cdn.imgurl.ir/uploads/r00414_1000138011.png",
+    "createdAt": 172100000010
+  },
+  {
+    "id": "real-madrid-2026-2027-gk1",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Real Madrid 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/f357745_1000138013.png",
+    "download": "https://cdn.imgurl.ir/uploads/f357745_1000138013.png",
+    "createdAt": 172100000011
+  },
+  {
+    "id": "real-madrid-2026-2027-gk2",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Real Madrid 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/x54307_1000138012.png",
+    "download": "https://cdn.imgurl.ir/uploads/x54307_1000138012.png",
+    "createdAt": 172100000012
+  },
+  {
+    "id": "real-madrid-2026-2027-gk3",
+    "team": "real-madrid",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Real Madrid 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/p409316_1000138014.png",
+    "download": "https://cdn.imgurl.ir/uploads/p409316_1000138014.png",
+    "createdAt": 172100000013
+  },
+  {
+    "id": "psg-2027-home",
+    "team": "psg",
+    "season": "2027",
+    "type": "Home",
+    "title": "PSG 2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/l99813_1000139500.png",
+    "download": "https://cdn.imgurl.ir/uploads/l99813_1000139500.png",
+    "createdAt": 172100000014
+  },
+  {
+    "id": "psg-2027-away",
+    "team": "psg",
+    "season": "2027",
+    "type": "Away",
+    "title": "PSG 2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/f78582_1000139502.png",
+    "download": "https://cdn.imgurl.ir/uploads/f78582_1000139502.png",
+    "createdAt": 172100000015
+  },
+  {
+    "id": "psg-2027-gk1",
+    "team": "psg",
+    "season": "2027",
+    "type": "GK1",
+    "title": "PSG 2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/x86783_1000139144.png",
+    "download": "https://cdn.imgurl.ir/uploads/x86783_1000139144.png",
+    "createdAt": 172100000016
+  },
+  {
+    "id": "psg-2027-gk2",
+    "team": "psg",
+    "season": "2027",
+    "type": "GK2",
+    "title": "PSG 2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/z7637_1000139146.png",
+    "download": "https://cdn.imgurl.ir/uploads/z7637_1000139146.png",
+    "createdAt": 172100000017
+  },
+  {
+    "id": "psg-2027-gk3",
+    "team": "psg",
+    "season": "2027",
+    "type": "GK3",
+    "title": "PSG 2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/u42979_1000139148.png",
+    "download": "https://cdn.imgurl.ir/uploads/u42979_1000139148.png",
+    "createdAt": 172100000018
+  },
+  {
+    "id": "inter-2026-2027-home",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Inter Milan 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/l045084_1000138894.png",
+    "download": "https://cdn.imgurl.ir/uploads/l045084_1000138894.png",
+    "createdAt": 172100000019
+  },
+  {
+    "id": "inter-2026-2027-away",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Inter Milan 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/k901664_1000138898.png",
+    "download": "https://cdn.imgurl.ir/uploads/k901664_1000138898.png",
+    "createdAt": 172100000020
+  },
+  {
+    "id": "inter-2026-2027-third",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "Third",
+    "title": "Inter Milan 2026/2027 Third",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Third.",
+    "image": "https://cdn.imgurl.ir/uploads/b63011_1000138899.png",
+    "download": "https://cdn.imgurl.ir/uploads/b63011_1000138899.png",
+    "createdAt": 172100000021
+  },
+  {
+    "id": "inter-2026-2027-gk1",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Inter Milan 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/s113374_1000138905.png",
+    "download": "https://cdn.imgurl.ir/uploads/s113374_1000138905.png",
+    "createdAt": 172100000022
+  },
+  {
+    "id": "inter-2026-2027-gk2",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Inter Milan 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/w304702_1000138904.png",
+    "download": "https://cdn.imgurl.ir/uploads/w304702_1000138904.png",
+    "createdAt": 172100000023
+  },
+  {
+    "id": "inter-2026-2027-gk3",
+    "team": "inter",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Inter Milan 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/j600406_1000138908.png",
+    "download": "https://cdn.imgurl.ir/uploads/j600406_1000138908.png",
+    "createdAt": 172100000024
+  },
+  {
+    "id": "bayern-2026-2027-home",
+    "team": "bayern",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "bayern munchen 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/z244632_1000139169.png",
+    "download": "https://cdn.imgurl.ir/uploads/z244632_1000139169.png",
+    "createdAt": 172100000025
+  },
+  {
+    "id": "bayern-2026-2027-away",
+    "team": "bayern",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "bayern munchen 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/h94513_1000139171.png",
+    "download": "https://cdn.imgurl.ir/uploads/h94513_1000139171.png",
+    "createdAt": 172100000026
+  },
+  {
+    "id": "bayern-2026-2027-gk1",
+    "team": "bayern",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "bayern munchen 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/g07503_1000139172.png",
+    "download": "https://cdn.imgurl.ir/uploads/g07503_1000139172.png",
+    "createdAt": 172100000027
+  },
+  {
+    "id": "bayern-2026-2027-gk2",
+    "team": "bayern",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "bayern munchen 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/o05482_1000139173.png",
+    "download": "https://cdn.imgurl.ir/uploads/o05482_1000139173.png",
+    "createdAt": 172100000028
+  },
+  {
+    "id": "man-city-2026-2027-home",
+    "team": "man-city",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Manchester City 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/u881845_1000139210.png",
+    "download": "https://cdn.imgurl.ir/uploads/u881845_1000139210.png",
+    "createdAt": 172100000029
+  },
+  {
+    "id": "man-city-2026-2027-away",
+    "team": "man-city",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Manchester City 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/o612216_1000139211.png",
+    "download": "https://cdn.imgurl.ir/uploads/o612216_1000139211.png",
+    "createdAt": 172100000030
+  },
+  {
+    "id": "man-city-2026-2027-gk1",
+    "team": "man-city",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Manchester City 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/u685225_1000139212.png",
+    "download": "https://cdn.imgurl.ir/uploads/u685225_1000139212.png",
+    "createdAt": 172100000031
+  },
+  {
+    "id": "man-city-2026-2027-gk2",
+    "team": "man-city",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Manchester City 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/j196908_1000139213.png",
+    "download": "https://cdn.imgurl.ir/uploads/j196908_1000139213.png",
+    "createdAt": 172100000032
+  },
+  {
+    "id": "man-city-2026-2027-gk3",
+    "team": "man-city",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Manchester City 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/y453418_1000139214.png",
+    "download": "https://cdn.imgurl.ir/uploads/y453418_1000139214.png",
+    "createdAt": 172100000033
+  },
+  {
+    "id": "arsenal-2026-2027-home",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Arsenal 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/q155685_1000139187.png",
+    "download": "https://cdn.imgurl.ir/uploads/q155685_1000139187.png",
+    "createdAt": 172100000034
+  },
+  {
+    "id": "arsenal-2026-2027-away",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Arsenal 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/m156645_1000139188.png",
+    "download": "https://cdn.imgurl.ir/uploads/m156645_1000139188.png",
+    "createdAt": 172100000035
+  },
+  {
+    "id": "arsenal-2026-2027-third",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "Third",
+    "title": "Arsenal 2026/2027 Third",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Third.",
+    "image": "https://cdn.imgurl.ir/uploads/q820501_1000139189.png",
+    "download": "https://cdn.imgurl.ir/uploads/q820501_1000139189.png",
+    "createdAt": 172100000036
+  },
+  {
+    "id": "arsenal-2026-2027-gk1",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Arsenal 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/y25389_1000139190.png",
+    "download": "https://cdn.imgurl.ir/uploads/y25389_1000139190.png",
+    "createdAt": 172100000037
+  },
+  {
+    "id": "arsenal-2026-2027-gk2",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Arsenal 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/r438381_1000139191.png",
+    "download": "https://cdn.imgurl.ir/uploads/r438381_1000139191.png",
+    "createdAt": 172100000038
+  },
+  {
+    "id": "arsenal-2026-2027-gk3",
+    "team": "arsenal",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Arsenal 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/t93789_1000139202.png",
+    "download": "https://cdn.imgurl.ir/uploads/t93789_1000139202.png",
+    "createdAt": 172100000039
+  },
+  {
+    "id": "man-united-2026-2027-home",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Manchester United 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/g84830_1000139254.png",
+    "download": "https://cdn.imgurl.ir/uploads/g84830_1000139254.png",
+    "createdAt": 172100000040
+  },
+  {
+    "id": "man-united-2026-2027-away",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Manchester United 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/u798526_1000139255.png",
+    "download": "https://cdn.imgurl.ir/uploads/u798526_1000139255.png",
+    "createdAt": 172100000041
+  },
+  {
+    "id": "man-united-2026-2027-third",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "Third",
+    "title": "Manchester United 2026/2027 Third",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Third.",
+    "image": "https://cdn.imgurl.ir/uploads/i97055_1000139256.png",
+    "download": "https://cdn.imgurl.ir/uploads/i97055_1000139256.png",
+    "createdAt": 172100000042
+  },
+  {
+    "id": "man-united-2026-2027-gk1",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Manchester United 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/e32709_1000139253.png",
+    "download": "https://cdn.imgurl.ir/uploads/e32709_1000139253.png",
+    "createdAt": 172100000043
+  },
+  {
+    "id": "man-united-2026-2027-gk2",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Manchester United 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/h47000_1000139257.png",
+    "download": "https://cdn.imgurl.ir/uploads/h47000_1000139257.png",
+    "createdAt": 172100000044
+  },
+  {
+    "id": "man-united-2026-2027-gk3",
+    "team": "man-united",
+    "season": "2026/2027",
+    "type": "GK3",
+    "title": "Manchester United 2026/2027 GK3",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK3.",
+    "image": "https://cdn.imgurl.ir/uploads/f928392_1000139258.png",
+    "download": "https://cdn.imgurl.ir/uploads/f928392_1000139258.png",
+    "createdAt": 172100000045
+  },
+  {
+    "id": "liverpool-2026-2027-home",
+    "team": "liverpool",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Liverpool 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/p645143_1000139272.png",
+    "download": "https://cdn.imgurl.ir/uploads/p645143_1000139272.png",
+    "createdAt": 172100000046
+  },
+  {
+    "id": "liverpool-2026-2027-away",
+    "team": "liverpool",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Liverpool 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/b54801_1000139273.png",
+    "download": "https://cdn.imgurl.ir/uploads/b54801_1000139273.png",
+    "createdAt": 172100000047
+  },
+  {
+    "id": "liverpool-2026-2027-gk1",
+    "team": "liverpool",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Liverpool 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/z707325_1000139274.png",
+    "download": "https://cdn.imgurl.ir/uploads/z707325_1000139274.png",
+    "createdAt": 172100000048
+  },
+  {
+    "id": "liverpool-2026-2027-gk2",
+    "team": "liverpool",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "Liverpool 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/v891716_1000139275.png",
+    "download": "https://cdn.imgurl.ir/uploads/v891716_1000139275.png",
+    "createdAt": 172100000049
+  },
+  {
+    "id": "chelsea-2026-2027-home",
+    "team": "chelsea",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "Chelsea 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/l07558_1000139294.png",
+    "download": "https://cdn.imgurl.ir/uploads/l07558_1000139294.png",
+    "createdAt": 172100000050
+  },
+  {
+    "id": "chelsea-2026-2027-away",
+    "team": "chelsea",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "Chelsea 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/b8863_1000139295.png",
+    "download": "https://cdn.imgurl.ir/uploads/b8863_1000139295.png",
+    "createdAt": 172100000051
+  },
+  {
+    "id": "chelsea-2026-2027-gk1",
+    "team": "chelsea",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "Chelsea 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/e71720_1000139296.png",
+    "download": "https://cdn.imgurl.ir/uploads/e71720_1000139296.png",
+    "createdAt": 172100000052
+  },
+  {
+    "id": "ac-milan-2026-2027-home",
+    "team": "ac-milan",
+    "season": "2026/2027",
+    "type": "Home",
+    "title": "AC Milan 2026/2027 Home",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Home.",
+    "image": "https://cdn.imgurl.ir/uploads/u71819_1000139323.png",
+    "download": "https://cdn.imgurl.ir/uploads/u71819_1000139323.png",
+    "createdAt": 172100000053
+  },
+  {
+    "id": "ac-milan-2026-2027-away",
+    "team": "ac-milan",
+    "season": "2026/2027",
+    "type": "Away",
+    "title": "AC Milan 2026/2027 Away",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع Away.",
+    "image": "https://cdn.imgurl.ir/uploads/r057453_1000139324.png",
+    "download": "https://cdn.imgurl.ir/uploads/r057453_1000139324.png",
+    "createdAt": 172100000054
+  },
+  {
+    "id": "ac-milan-2026-2027-gk1",
+    "team": "ac-milan",
+    "season": "2026/2027",
+    "type": "GK1",
+    "title": "AC Milan 2026/2027 GK1",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK1.",
+    "image": "https://cdn.imgurl.ir/uploads/s235_1000139325.png",
+    "download": "https://cdn.imgurl.ir/uploads/s235_1000139325.png",
+    "createdAt": 172100000055
+  },
+  {
+    "id": "ac-milan-2026-2027-gk2",
+    "team": "ac-milan",
+    "season": "2026/2027",
+    "type": "GK2",
+    "title": "AC Milan 2026/2027 GK2",
+    "description": "کیت واقعی DLS 2019 از آرشیو DLS KIT LAND؛ نوع GK2.",
+    "image": "https://cdn.imgurl.ir/uploads/y737619_1000139326.png",
+    "download": "https://cdn.imgurl.ir/uploads/y737619_1000139326.png",
+    "createdAt": 172100000056
+  }
+];
+
+  /* ==========================================================
+     STORAGE
+     ========================================================== */
+
+  function defaultDatabase() {
+    return {
+      version: 1,
+      teams: seedTeams,
+      kits: seedKits
+    };
+  }
+
+  function loadDatabase() {
+    const stored = safeJSON(
+      localStorage.getItem(APP.storage.data),
+      null
+    );
+
+    if (
+      stored &&
+      Array.isArray(stored.teams) &&
+      Array.isArray(stored.kits)
+    ) {
+      return stored;
+    }
+
+    const fresh = defaultDatabase();
+
+    try {
+      localStorage.setItem(
+        APP.storage.data,
+        JSON.stringify(fresh)
+      );
+    } catch {}
+
+    return fresh;
+  }
+
+  APP.db = loadDatabase();
+
+  function saveDatabase() {
+    try {
+      localStorage.setItem(
+        APP.storage.data,
+        JSON.stringify(APP.db)
+      );
+      return true;
+    } catch {
+      showToast("فضای ذخیره‌سازی مرورگر پر شده است.");
+      return false;
+    }
+  }
+
+  function loadFavorites() {
+    const list = safeJSON(
+      localStorage.getItem(APP.storage.favorites),
+      []
+    );
+
+    return Array.isArray(list) ? list : [];
+  }
+
+  APP.favorites = loadFavorites();
+
+  function saveFavorites() {
+    try {
+      localStorage.setItem(
+        APP.storage.favorites,
+        JSON.stringify(APP.favorites)
+      );
+    } catch {}
+  }
+
+  /* ==========================================================
+     DATABASE QUERIES
+     ========================================================== */
+
+  function getTeam(id) {
+    return APP.db.teams.find(
+      team => team.id === id
+    );
+  }
+
+  function getKit(id) {
+    return APP.db.kits.find(
+      kit => kit.id === id
+    );
+  }
+
+  function getTeamKits(teamId) {
+    return APP.db.kits.filter(
+      kit => kit.team === teamId
+    );
+  }
+
+  function getSeasons() {
+    return [...new Set(
+      APP.db.kits.map(kit => kit.season)
+    )].sort().reverse();
+  }
+
+  function getTypes() {
+    return [...new Set(
+      APP.db.kits.map(kit => kit.type)
+    )].sort();
+  }
+
+  function getRegions() {
+    return [...new Set(
+      APP.db.teams.map(team => team.region)
+    )].sort();
+  }
+
+  function isFavorite(id) {
+    return APP.favorites.includes(id);
+  }
+
+  function toggleFavorite(id) {
+    if (isFavorite(id)) {
+      APP.favorites = APP.favorites.filter(
+        value => value !== id
+      );
+      showToast("از علاقه‌مندی‌ها حذف شد.");
+    } else {
+      APP.favorites = [
+        ...APP.favorites,
+        id
+      ];
+      showToast("به علاقه‌مندی‌ها اضافه شد.");
+    }
+
+    saveFavorites();
+    render();
+  }
+
+  function filteredKits() {
+    let list = [...APP.db.kits];
+
+    const q = normalizeText(
+      APP.state.query
+    );
+
+    if (q) {
+      list = list.filter(kit => {
+        const team = getTeam(kit.team);
+        const haystack = normalizeText([
+          kit.title,
+          kit.description,
+          kit.season,
+          kit.type,
+          team?.name,
+          team?.fa,
+          team?.country
+        ].join(" "));
+
+        return haystack.includes(q);
+      });
+    }
+
+    if (APP.state.team !== "all") {
+      list = list.filter(
+        kit => kit.team === APP.state.team
+      );
+    }
+
+    if (APP.state.season !== "all") {
+      list = list.filter(
+        kit => kit.season === APP.state.season
+      );
+    }
+
+    if (APP.state.type !== "all") {
+      list = list.filter(
+        kit => kit.type === APP.state.type
+      );
+    }
+
+    if (APP.state.region !== "all") {
+      list = list.filter(kit => {
+        const team = getTeam(kit.team);
+        return team?.region === APP.state.region;
+      });
+    }
+
+    if (APP.state.favoritesOnly) {
+      list = list.filter(
+        kit => isFavorite(kit.id)
+      );
+    }
+
+    if (APP.state.sort === "name") {
+      list.sort((a,b) =>
+        a.title.localeCompare(b.title)
+      );
+    }
+
+    if (APP.state.sort === "season") {
+      list.sort((a,b) =>
+        String(b.season).localeCompare(
+          String(a.season)
+        )
+      );
+    }
+
+    if (APP.state.sort === "oldest") {
+      list.sort((a,b) =>
+        a.createdAt - b.createdAt
+      );
+    }
+
+    if (APP.state.sort === "newest") {
+      list.sort((a,b) =>
+        b.createdAt - a.createdAt
+      );
+    }
+
+    return list;
+  }
+
+  /* ==========================================================
+     ROUTER
+     ========================================================== */
+
+  function route() {
+    const parts = getRouteParts();
+
+    if (parts.length === 0) {
+      return {
+        name: "home"
+      };
+    }
+
+    if (parts[0] === "kits") {
+      return {
+        name: "kits"
+      };
+    }
+
+    if (parts[0] === "teams") {
+      return {
+        name: "teams"
+      };
+    }
+
+    if (parts[0] === "team" && parts[1]) {
+      return {
+        name: "team",
+        id: parts[1]
+      };
+    }
+
+    if (parts[0] === "kit" && parts[1]) {
+      return {
+        name: "kit",
+        id: parts[1]
+      };
+    }
+
+    if (parts[0] === "favorites") {
+      return {
+        name: "favorites"
+      };
+    }
+
+    if (parts[0] === "admin") {
+      return {
+        name: "admin"
+      };
+    }
+
+    if (parts[0] === "guide") {
+      return {
+        name: "guide"
+      };
+    }
+
+    if (parts[0] === "stats") {
+      return {
+        name: "stats"
+      };
+    }
+
+    if (parts[0] === "contact") {
+      return {
+        name: "contact"
+      };
+    }
+
+    return {
+      name: "404"
+    };
+  }
+
+  /* ==========================================================
+     BILINGUAL SITE LANGUAGE
+     ========================================================== */
+
+  const UI_EN = {
+    "منو":"Menu","ارتباط با ما":"Contact Us","تغییر تم":"Change theme","علاقه‌مندی‌ها":"Favorites","مدیریت":"Admin",
+    "تغییر زبان":"Change language","صفحه ارتباط با ما":"Contact page","روبیکا":"Rubika",
+    "برای لینک‌های واقعی کیت، URL را در پنل مدیریت وارد کن؛ این نسخه لینک ساختگی دانلود را به‌عنوان لینک واقعی معرفی نمی‌کند.":"For real kit links, enter the URL in the admin panel; this version does not present fake download links as real.",
+    "آرشیو حرفه‌ای کیت‌های Dream League Soccer 2019 — Single HTML Edition":"Professional Dream League Soccer 2019 kit archive — Single HTML Edition",
+    "برای پیشنهاد، گزارش لینک خراب یا ارتباط با DLS KIT LAND":"For suggestions, broken-link reports, or contacting DLS KIT LAND",
+    "خانه":"Home","کیت‌ها":"Kits","تیم‌ها":"Teams","علاقه‌مندی‌ها":"Favorites","راهنما":"Guide","آمار":"Stats","مدیریت":"Admin",
+    "کیت DLS 2019":"DLS 2019 Kits","پیدا کن، باز کن، دانلود کن":"Find, open, and download",
+    "DLS KIT LAND یک آرشیو تیم‌محور برای کیت‌های Dream League Soccer 2019 است؛":"DLS KIT LAND is a team-based archive for Dream League Soccer 2019 kits;",
+    "هر تیم صفحه اختصاصی دارد و هر کیت":"each team has its own page and every kit",
+    "صفحه جزئیات جداگانه با لینک مستقیم خودش دارد.":"has a separate details page with its direct link.",
+    "👕 ورود به آرشیو کیت‌ها":"👕 Browse Kit Archive","🏟️ تیم‌ها":"🏟️ Teams","📖 راهنما":"📖 Guide",
+    "تعداد کیت":"Kits","تعداد تیم":"Teams","فصل‌ها":"Seasons","علاقه‌مندی":"Favorites",
+    "🔥 جدیدترین کیت‌ها":"🔥 Latest Kits","آخرین موارد اضافه‌شده به آرشیو":"Recently added to the archive","مشاهده همه":"View All",
+    "🏟️ تیم‌های محبوب":"🏟️ Popular Teams","انتخاب تیم و ورود به صفحه اختصاصی":"Choose a team and open its page","همه تیم‌ها":"All Teams",
+    "جستجو":"Search","تیم":"Team","فصل":"Season","نوع":"Type","مرتب‌سازی":"Sort","همه تیم‌ها":"All Teams",
+    "لینک مستقیم":"Direct Link","لینک در انتظار":"Link Pending","مشاهده کیت":"View Kit","☆":"☆","★":"★",
+    "کیت اول":"Home Kit","کیت دوم":"Away Kit","کیت سوم":"Third Kit","دروازه‌بان":"Goalkeeper",
+    "بازگشت":"Back","دانلود":"Download","بدون لینک مستقیم":"No direct link","لینک دانلود":"Download Link",
+    "ذخیره":"Save","حذف":"Delete","ویرایش":"Edit","لغو":"Cancel","بستن":"Close","افزودن":"Add",
+    "ورود":"Open","ثبت":"Submit","پاک کردن":"Clear","بازنشانی":"Reset","اعمال":"Apply",
+    "هنوز کیتی ثبت نشده است.":"No kits have been added yet.","هنوز موردی ثبت نشده است.":"No items have been added yet.",
+    "هیچ نتیجه‌ای پیدا نشد.":"No results found.","اطلاعات":"Information","جزئیات":"Details",
+    "پنل مدیریت":"Admin Panel","مدیریت کیت‌ها":"Kit Management","ورود به مدیریت":"Open Admin",
+    "آمار سایت":"Site Statistics","آمار کلی":"Overall Statistics","راهنمای DLS KIT LAND":"DLS KIT LAND Guide",
+    "ارتباط با ما":"Contact Us","DLS AI":"DLS AI","ارسال":"Send",
+    "مثلاً کیت بارسا رو پیدا کن":"e.g. Find the Barcelona kit","منوی DLS KIT LAND":"DLS KIT LAND Menu",
+    "نسخه":"Version","کشور":"Country","منطقه":"Region","همه":"All","جدیدترین":"Newest","قدیمی‌ترین":"Oldest",
+    "کیت":"Kit","تیم نامشخص":"Unknown team","فصل":"Season","نوع کیت":"Kit type",
+    "صفحه اصلی":"Home","صفحه تیم":"Team Page","صفحه کیت":"Kit Page","بیشتر":"More"
+  };
+
+  function getLanguage() {
+    return localStorage.getItem(APP.storage.language) || "fa";
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem(APP.storage.language, lang);
+    applyLanguage();
+    render();
+    applyLanguage();
+    updateLanguageButton();
+  }
+
+  function updateLanguageButton() {
+    const btn = $("#languageButton");
+    if (!btn) return;
+    const en = getLanguage() === "en";
+    btn.textContent = en ? "FA" : "EN";
+    btn.title = en ? "Switch to Persian" : "Switch to English";
+    btn.setAttribute("aria-label", btn.title);
+  }
+
+  function translateTextNode(node) {
+    if (getLanguage() !== "en") return;
+    const text = node.nodeValue;
+    if (!text || !text.trim()) return;
+    let out = text;
+    Object.keys(UI_EN).sort((a,b)=>b.length-a.length).forEach(fa => {
+      out = out.split(fa).join(UI_EN[fa]);
+    });
+    node.nodeValue = out;
+  }
+
+  function applyLanguage() {
+    const en = getLanguage() === "en";
+    document.documentElement.lang = en ? "en" : "fa";
+    document.documentElement.dir = en ? "ltr" : "rtl";
+    document.body.classList.toggle("english-mode", en);
+    updateLanguageButton();
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) {
+      const n = walker.currentNode;
+      if (n.parentElement?.closest("#aiMessages,#aiInput")) continue;
+      nodes.push(n);
+    }
+    nodes.forEach(translateTextNode);
+
+    if (en) {
+      $("#headerSearch")?.setAttribute("placeholder", "Search team, season, kit...");
+      $("#aiInput")?.setAttribute("placeholder", "e.g. Find the Barcelona kit");
+    } else {
+      $("#headerSearch")?.setAttribute("placeholder", "جستجوی تیم، فصل، کیت...");
+      $("#aiInput")?.setAttribute("placeholder", "مثلاً کیت بارسا رو پیدا کن");
+    }
+  }
+
+  function navigate(path) {
+    window.location.hash = path;
+  }
+
+  /* ==========================================================
+     IMAGE HELPERS
+     ========================================================== */
+
+  function kitImage(kit) {
+    const fallback = svgDataURL({
+      primary: "#11182c",
+      secondary: "#735cff",
+      accent: "#ffffff",
+      pattern: "stripe",
+      label: "DLS"
+    });
+
+    return kit.image || fallback;
+  }
+
+  function teamImage(team) {
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 160 160">
+        <rect width="160" height="160"
+              rx="30"
+              fill="#0b1020"/>
+        <circle cx="80" cy="80"
+                r="55"
+                fill="#151d31"
+                stroke="#735cff"
+                stroke-width="5"/>
+        <text x="80"
+              y="92"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="46">${escapeHTML(team.emoji || "⚽")}</text>
+      </svg>
+    `;
+
+    return "data:image/svg+xml;charset=UTF-8," +
+      encodeURIComponent(svg);
+  }
+
+  /* ==========================================================
+     COMPONENT RENDERERS
+     ========================================================== */
+
+  function renderKitCard(kit) {
+    const team = getTeam(kit.team);
+
+    return `
+      <article class="card kit-card">
+        <a
+          class="kit-preview"
+          href="#/kit/${encodeURIComponent(kit.id)}"
+          aria-label="${escapeHTML(kit.title)}"
+        >
+          <img
+            src="${escapeHTML(kitImage(kit))}"
+            alt="${escapeHTML(kit.title)}"
+            loading="lazy"
+            onerror="this.onerror=null;this.src='${kitImage(kit)}'"
+          >
+          <span class="kit-type">
+            ${escapeHTML(kit.type)}
+          </span>
+        </a>
+
+        <div class="card-body">
+          <h3 class="kit-title">
+            ${escapeHTML(kit.title)}
+          </h3>
+
+          <div class="kit-team">
+            ${escapeHTML(team?.fa || team?.name || "تیم نامشخص")}
+          </div>
+
+          <div class="card-meta">
+            <span class="badge">
+              ${escapeHTML(kit.season)}
+            </span>
+            <span class="badge">
+              ${escapeHTML(kit.type)}
+            </span>
+            ${
+              kit.download
+                ? `<span class="badge">لینک مستقیم</span>`
+                : `<span class="badge">لینک در انتظار</span>`
+            }
+          </div>
+
+          <div class="card-actions">
+            <a
+              class="btn btn-primary"
+              href="#/kit/${encodeURIComponent(kit.id)}"
+            >
+              مشاهده کیت
+            </a>
+
+            <button
+              class="btn"
+              type="button"
+              data-action="favorite"
+              data-id="${escapeHTML(kit.id)}"
+              aria-label="علاقه‌مندی"
+            >
+              ${isFavorite(kit.id) ? "★" : "☆"}
+            </button>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  function renderTeamCard(team) {
+    const count = getTeamKits(team.id).length;
+
+    return `
+      <a
+        class="card team-card"
+        href="#/team/${encodeURIComponent(team.id)}"
+      >
+        <span class="team-logo">
+          <img
+            src="${escapeHTML(teamImage(team))}"
+            alt="${escapeHTML(team.fa)}"
+            loading="lazy"
+          >
+        </span>
+
+        <span>
+          <span class="team-name">
+            ${escapeHTML(team.fa)}
+          </span>
+
+          <span class="team-en">
+            ${escapeHTML(team.name)}
+          </span>
+
+          <span class="team-count">
+            ${count} کیت
+          </span>
+        </span>
+      </a>
+    `;
+  }
+
+  /* ==========================================================
+     HOME PAGE
+     ========================================================== */
+
+  function renderHome() {
+    const newest = [...APP.db.kits]
+      .sort((a,b) => b.createdAt - a.createdAt)
+      .slice(0,8);
+
+    const teams = APP.db.teams.slice(0,12);
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          DLS 2019 • PREMIUM KIT ARCHIVE
+        </span>
+
+        <h1>
+          کیت DLS 2019
+          <br>
+          پیدا کن، باز کن، دانلود کن
+        </h1>
+
+        <p>
+          DLS KIT LAND یک آرشیو تیم‌محور برای کیت‌های
+          Dream League Soccer 2019 است؛
+          هر تیم صفحه اختصاصی دارد و هر کیت
+          صفحه جزئیات جداگانه با لینک مستقیم خودش دارد.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="#/kits">
+            👕 ورود به آرشیو کیت‌ها
+          </a>
+
+          <a class="btn btn-lg" href="#/teams">
+            🏟️ تیم‌ها
+          </a>
+
+          <a class="btn btn-lg" href="#/guide">
+            📖 راهنما
+          </a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>تعداد کیت</span>
+            <b>${APP.db.kits.length}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>تعداد تیم</span>
+            <b>${APP.db.teams.length}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>فصل‌ها</span>
+            <b>${getSeasons().length}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>علاقه‌مندی</span>
+            <b>${APP.favorites.length}</b>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>🔥 جدیدترین کیت‌ها</h2>
+            <p>آخرین موارد اضافه‌شده به آرشیو</p>
+          </div>
+
+          <a class="btn" href="#/kits">
+            مشاهده همه
+          </a>
+        </div>
+
+        <div class="grid grid-4">
+          ${
+            newest.length
+              ? newest.map(renderKitCard).join("")
+              : renderEmpty("هنوز کیتی ثبت نشده است.")
+          }
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>🏟️ تیم‌های محبوب</h2>
+            <p>انتخاب تیم و ورود به صفحه اختصاصی</p>
+          </div>
+
+          <a class="btn" href="#/teams">
+            همه تیم‌ها
+          </a>
+        </div>
+
+        <div class="grid grid-3">
+          ${teams.map(renderTeamCard).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     KITS PAGE
+     ========================================================== */
+
+  function renderFilters() {
+    return `
+      <section class="filter-panel">
+        <div class="filter-grid">
+          <div class="field">
+            <label for="kitSearch">
+              جستجو
+            </label>
+
+            <input
+              id="kitSearch"
+              class="control"
+              value="${escapeHTML(APP.state.query)}"
+              placeholder="Barcelona، Home، 2027/28..."
+            >
+          </div>
+
+          <div class="field">
+            <label for="teamFilter">
+              تیم
+            </label>
+
+            <select id="teamFilter" class="control">
+              <option value="all">همه تیم‌ها</option>
+
+              ${
+                APP.db.teams.map(team => `
+                  <option
+                    value="${escapeHTML(team.id)}"
+                    ${APP.state.team === team.id ? "selected" : ""}
+                  >
+                    ${escapeHTML(team.fa)}
+                  </option>
+                `).join("")
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="seasonFilter">
+              فصل
+            </label>
+
+            <select id="seasonFilter" class="control">
+              <option value="all">همه فصل‌ها</option>
+
+              ${
+                getSeasons().map(season => `
+                  <option
+                    value="${escapeHTML(season)}"
+                    ${APP.state.season === season ? "selected" : ""}
+                  >
+                    ${escapeHTML(season)}
+                  </option>
+                `).join("")
+              }
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="typeFilter">
+              نوع کیت
+            </label>
+
+            <select id="typeFilter" class="control">
+              <option value="all">همه نوع‌ها</option>
+
+              ${
+                getTypes().map(type => `
+                  <option
+                    value="${escapeHTML(type)}"
+                    ${APP.state.type === type ? "selected" : ""}
+                  >
+                    ${escapeHTML(type)}
+                  </option>
+                `).join("")
+              }
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-bottom">
+          <button
+            class="btn ${APP.state.favoritesOnly ? "btn-primary" : ""}"
+            type="button"
+            id="favoriteFilter"
+          >
+            ★ فقط علاقه‌مندی‌ها
+          </button>
+
+          <select id="sortFilter" class="control" style="max-width:190px">
+            <option value="newest" ${APP.state.sort === "newest" ? "selected" : ""}>جدیدترین</option>
+            <option value="oldest" ${APP.state.sort === "oldest" ? "selected" : ""}>قدیمی‌ترین</option>
+            <option value="name" ${APP.state.sort === "name" ? "selected" : ""}>نام</option>
+            <option value="season" ${APP.state.sort === "season" ? "selected" : ""}>فصل</option>
+          </select>
+
+          <span class="spacer"></span>
+
+          <button
+            class="btn"
+            type="button"
+            id="resetFilters"
+          >
+            پاک کردن فیلترها
+          </button>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderKitsPage() {
+    const all = filteredKits();
+    const start =
+      (APP.state.page - 1) *
+      APP.state.perPage;
+
+    const pageItems = all.slice(
+      start,
+      start + APP.state.perPage
+    );
+
+    const pageCount = Math.max(
+      1,
+      Math.ceil(
+        all.length / APP.state.perPage
+      )
+    );
+
+    if (APP.state.page > pageCount) {
+      APP.state.page = pageCount;
+      return renderKitsPage();
+    }
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          KIT LIBRARY
+        </span>
+
+        <h1>
+          آرشیو کیت‌ها
+        </h1>
+
+        <p>
+          تیم، فصل و نوع کیت را انتخاب کن؛
+          سپس روی خود کیت بزن تا وارد صفحه کامل آن شوی.
+        </p>
+      </section>
+
+      <section class="section">
+        ${renderFilters()}
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>
+              ${all.length} نتیجه
+            </h2>
+
+            <p>
+              صفحه ${APP.state.page} از ${pageCount}
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-4">
+          ${
+            pageItems.length
+              ? pageItems.map(renderKitCard).join("")
+              : renderEmpty("با این فیلترها کیتی پیدا نشد.")
+          }
+        </div>
+
+        ${renderPagination(pageCount)}
+      </section>
+    `;
+  }
+
+  function renderPagination(pageCount) {
+    if (pageCount <= 1) {
+      return "";
+    }
+
+    const buttons = [];
+
+    for (let i = 1; i <= pageCount; i++) {
+      buttons.push(`
+        <button
+          class="btn ${i === APP.state.page ? "active" : ""}"
+          type="button"
+          data-page="${i}"
+        >
+          ${i}
+        </button>
+      `);
+    }
+
+    return `
+      <div class="pagination">
+        <button
+          class="btn"
+          type="button"
+          data-page="${Math.max(1,APP.state.page - 1)}"
+        >
+          قبلی
+        </button>
+
+        ${buttons.join("")}
+
+        <button
+          class="btn"
+          type="button"
+          data-page="${Math.min(pageCount,APP.state.page + 1)}"
+        >
+          بعدی
+        </button>
+      </div>
+    `;
+  }
+
+  /* ==========================================================
+     TEAMS PAGE
+     ========================================================== */
+
+  function renderTeamsPage() {
+    const europe = APP.db.teams.filter(
+      team => team.region === "Europe"
+    );
+
+    const iran = APP.db.teams.filter(
+      team => team.region === "Iran"
+    );
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          TEAM DIRECTORY
+        </span>
+
+        <h1>
+          تیم‌ها
+        </h1>
+
+        <p>
+          از صفحه هر تیم می‌توانی فصل‌ها و کیت‌های
+          Home، Away، Third و GK موجود را ببینی.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>🌍 اروپا</h2>
+            <p>${europe.length} تیم</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          ${europe.map(renderTeamCard).join("")}
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>🇮🇷 ایران</h2>
+            <p>${iran.length} تیم</p>
+          </div>
+        </div>
+
+        <div class="grid grid-3">
+          ${iran.map(renderTeamCard).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     TEAM DETAIL PAGE
+     ========================================================== */
+
+  function renderTeamPage(id) {
+    const team = getTeam(id);
+
+    if (!team) {
+      return render404();
+    }
+
+    const kits = getTeamKits(id);
+    const availableTypes = [
+      ...new Set(
+        kits.map(kit => kit.type)
+      )
+    ];
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          ${escapeHTML(team.name)}
+        </span>
+
+        <h1>
+          ${escapeHTML(team.fa)}
+        </h1>
+
+        <p>
+          ${kits.length} کیت ثبت شده برای این تیم.
+          فقط نوع‌هایی که واقعاً در آرشیو موجود هستند نمایش داده می‌شوند.
+        </p>
+
+        <div class="chips">
+          ${
+            availableTypes.map(type => `
+              <button
+                class="chip"
+                type="button"
+                data-team-type="${escapeHTML(type)}"
+              >
+                ${escapeHTML(type)}
+              </button>
+            `).join("")
+          }
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-head">
+          <div>
+            <h2>کیت‌های موجود</h2>
+            <p>بر اساس فصل و نوع</p>
+          </div>
+
+          <a class="btn" href="#/kits">
+            آرشیو کامل
+          </a>
+        </div>
+
+        <div class="grid grid-4" id="teamKitGrid">
+          ${
+            kits.length
+              ? kits.map(renderKitCard).join("")
+              : renderEmpty("برای این تیم هنوز کیتی ثبت نشده است.")
+          }
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     KIT DETAIL PAGE
+     ========================================================== */
+
+  function renderKitPage(id) {
+    const kit = getKit(id);
+
+    if (!kit) {
+      return render404();
+    }
+
+    const team = getTeam(kit.team);
+
+    return `
+      <section class="detail-layout">
+        <div class="detail-image">
+          <img
+            src="${escapeHTML(kitImage(kit))}"
+            alt="${escapeHTML(kit.title)}"
+          >
+        </div>
+
+        <div class="detail-panel">
+          <span class="eyebrow">
+            ${escapeHTML(kit.type)}
+            •
+            ${escapeHTML(kit.season)}
+          </span>
+
+          <h1 class="detail-title">
+            ${escapeHTML(kit.title)}
+          </h1>
+
+          <p class="muted">
+            ${escapeHTML(team?.fa || "تیم نامشخص")}
+          </p>
+
+          <p class="detail-description">
+            ${escapeHTML(kit.description)}
+          </p>
+
+          <div class="detail-grid">
+            <div class="detail-stat">
+              <span>تیم</span>
+              <b>${escapeHTML(team?.fa || "-")}</b>
+            </div>
+
+            <div class="detail-stat">
+              <span>فصل</span>
+              <b>${escapeHTML(kit.season)}</b>
+            </div>
+
+            <div class="detail-stat">
+              <span>نوع</span>
+              <b>${escapeHTML(kit.type)}</b>
+            </div>
+
+            <div class="detail-stat">
+              <span>وضعیت لینک</span>
+              <b>${kit.download ? "آماده" : "ثبت نشده"}</b>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            ${
+              kit.download
+                ? `
+                  <a
+                    class="btn btn-primary btn-lg"
+                    href="${escapeHTML(kit.download)}"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    ⬇️ دانلود مستقیم
+                  </a>
+
+                  <button
+                    class="btn btn-lg"
+                    type="button"
+                    data-action="copy"
+                    data-url="${escapeHTML(kit.download)}"
+                  >
+                    📋 کپی لینک
+                  </button>
+                `
+                : `
+                  <button
+                    class="btn btn-lg"
+                    type="button"
+                    disabled
+                    title="هنوز لینک واقعی برای این کیت ثبت نشده است."
+                  >
+                    لینک دانلود ثبت نشده
+                  </button>
+                `
+            }
+
+            <button
+              class="btn btn-lg"
+              type="button"
+              data-action="favorite"
+              data-id="${escapeHTML(kit.id)}"
+            >
+              ${isFavorite(kit.id) ? "★ حذف از علاقه‌مندی" : "☆ علاقه‌مندی"}
+            </button>
+
+            <button
+              class="btn btn-lg"
+              type="button"
+              data-action="share"
+              data-id="${escapeHTML(kit.id)}"
+            >
+              🔗 اشتراک‌گذاری
+            </button>
+          </div>
+
+          <div class="section">
+            <a
+              class="btn"
+              href="#/team/${encodeURIComponent(team?.id || "")}"
+            >
+              ← صفحه تیم
+            </a>
+
+            <a
+              class="btn"
+              href="#/kits"
+            >
+              آرشیو کیت‌ها
+            </a>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     FAVORITES PAGE
+     ========================================================== */
+
+  function renderFavoritesPage() {
+    const kits = APP.db.kits.filter(
+      kit => isFavorite(kit.id)
+    );
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          FAVORITES
+        </span>
+
+        <h1>
+          علاقه‌مندی‌ها
+        </h1>
+
+        <p>
+          کیت‌هایی که برای دسترسی سریع ذخیره کرده‌ای.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="grid grid-4">
+          ${
+            kits.length
+              ? kits.map(renderKitCard).join("")
+              : renderEmpty("هنوز کیتی به علاقه‌مندی‌ها اضافه نکرده‌ای.")
+          }
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     GUIDE PAGE
+     ========================================================== */
+
+  function renderGuidePage() {
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          USER GUIDE
+        </span>
+
+        <h1>
+          راهنمای DLS KIT LAND
+        </h1>
+
+        <p>
+          این سایت بر اساس مدل آرشیو تیم‌محور ساخته شده:
+          تیم → فصل → نوع کیت → صفحه جزئیات → لینک مستقیم.
+        </p>
+      </section>
+
+      <section class="section grid grid-2">
+        <article class="card card-body">
+          <h3>۱. تیم را پیدا کن</h3>
+          <p class="muted">
+            از صفحه تیم‌ها یا جستجو وارد تیم موردنظر شو.
+          </p>
+        </article>
+
+        <article class="card card-body">
+          <h3>۲. فصل را انتخاب کن</h3>
+          <p class="muted">
+            در آرشیو می‌توانی فصل‌های مختلف را فیلتر کنی.
+          </p>
+        </article>
+
+        <article class="card card-body">
+          <h3>۳. نوع کیت</h3>
+          <p class="muted">
+            Home، Away، Third و انواع GK فقط وقتی نمایش داده می‌شوند که در دیتابیس وجود داشته باشند.
+          </p>
+        </article>
+
+        <article class="card card-body">
+          <h3>۴. صفحه کیت</h3>
+          <p class="muted">
+            با کلیک روی کارت کیت وارد صفحه اختصاصی آن می‌شوی.
+          </p>
+        </article>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     CONTACT PAGE
+     ========================================================== */
+
+  function renderContactPage() {
+    return `
+      <section class="hero">
+        <span class="eyebrow">CONTACT</span>
+        <h1>ارتباط با ما</h1>
+        <p>برای پیشنهاد کیت، گزارش لینک خراب یا ارتباط مستقیم با DLS KIT LAND از راه‌های زیر استفاده کن.</p>
+      </section>
+      <section class="section">
+        <div class="contact-page-card">
+          <div class="contact-page-grid">
+            <a class="contact-page-link" href="https://rubika.ir/dls_kit_land" target="_blank" rel="noopener noreferrer"><span class="contact-icon">📱</span><span><strong>روبیکا DLS KIT LAND</strong><br><span class="muted">rubika.ir/dls_kit_land</span></span></a>
+            <a class="contact-page-link" href="https://rubika.ir/fc_barcelona_1899_2027" target="_blank" rel="noopener noreferrer"><span class="contact-icon">⚽</span><span><strong>روبیکا FC Barcelona</strong><br><span class="muted">rubika.ir/fc_barcelona_1899_2027</span></span></a>
+          </div>
+          <div style="margin-top:18px" class="notice"><strong>پیشنهاد یا گزارش لینک خراب؟</strong><p class="muted" style="margin:6px 0 0">نام تیم، فصل، نوع کیت و لینک موردنظر را همراه توضیح کوتاه ارسال کن تا بررسی آن ساده‌تر باشد.</p></div>
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     STATS PAGE
+     ========================================================== */
+
+  function renderStatsPage() {
+    const linked = APP.db.kits.filter(
+      kit => Boolean(kit.download)
+    ).length;
+
+    const favorites = APP.favorites.length;
+
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          DATABASE
+        </span>
+
+        <h1>
+          آمار آرشیو
+        </h1>
+
+        <p>
+          آمار لحظه‌ای دیتابیس ذخیره‌شده در مرورگر.
+        </p>
+      </section>
+
+      <section class="section">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span>کیت</span>
+            <b>${APP.db.kits.length}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>تیم</span>
+            <b>${APP.db.teams.length}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>لینک واقعی ثبت‌شده</span>
+            <b>${linked}</b>
+          </div>
+
+          <div class="stat-card">
+            <span>علاقه‌مندی</span>
+            <b>${favorites}</b>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     ADMIN PAGE
+     ========================================================== */
+
+  function renderAdminPage() {
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          LOCAL ADMIN
+        </span>
+
+        <h1>
+          مدیریت آرشیو
+        </h1>
+
+        <p>
+          این پنل برای ساخت دیتابیس محلی است.
+          در GitHub Pages احراز هویت واقعی و مدیریت امن باید سمت Backend انجام شود.
+        </p>
+      </section>
+
+      <section class="section grid grid-2">
+        <article class="filter-panel">
+          <h2>افزودن کیت</h2>
+
+          <div class="stack">
+            <div class="field">
+              <label>نام کیت</label>
+              <input class="control" id="adminTitle" placeholder="Barcelona 27/28 Home">
+            </div>
+
+            <div class="field">
+              <label>تیم</label>
+              <select class="control" id="adminTeam">
+                ${
+                  APP.db.teams.map(team => `
+                    <option value="${escapeHTML(team.id)}">
+                      ${escapeHTML(team.fa)}
+                    </option>
+                  `).join("")
+                }
+              </select>
+            </div>
+
+            <div class="field">
+              <label>فصل</label>
+              <input class="control" id="adminSeason" placeholder="2027/28">
+            </div>
+
+            <div class="field">
+              <label>نوع</label>
+              <select class="control" id="adminType">
+                ${["Home","Away","Third","Fourth","GK1","GK2","GK3"].map(type => `
+                  <option value="${type}">${type}</option>
+                `).join("")}
+              </select>
+            </div>
+
+            <div class="field">
+              <label>Image URL</label>
+              <input class="control" id="adminImage" placeholder="https://...">
+            </div>
+
+            <div class="field">
+              <label>Direct Download URL</label>
+              <input class="control" id="adminDownload" placeholder="https://...">
+            </div>
+
+            <div class="field">
+              <label>توضیحات</label>
+              <textarea class="control" id="adminDescription" rows="5"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="button" id="addKitButton">
+              + افزودن کیت
+            </button>
+          </div>
+        </article>
+
+        <article class="filter-panel">
+          <h2>ابزار دیتابیس</h2>
+
+          <div class="stack">
+            <button class="btn btn-success" type="button" id="exportButton">
+              ⬇️ Export JSON
+            </button>
+
+            <label class="btn" for="importInput">
+              ⬆️ Import JSON
+            </label>
+
+            <input
+              class="hidden"
+              id="importInput"
+              type="file"
+              accept="application/json"
+            >
+
+            <button class="btn btn-danger" type="button" id="resetButton">
+              بازنشانی دیتابیس
+            </button>
+
+            <div class="error-box">
+              <strong>نکته امنیتی</strong>
+              <p class="small muted">
+                رمز عبور، API key یا توکن خصوصی را داخل این HTML قرار نده.
+                GitHub Pages فایل را عمومی ارائه می‌کند.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+    `;
+  }
+
+  /* ==========================================================
+     404
+     ========================================================== */
+
+  function render404() {
+    return `
+      <section class="hero">
+        <span class="eyebrow">
+          404
+        </span>
+
+        <h1>
+          کیت یا صفحه پیدا نشد
+        </h1>
+
+        <p>
+          شاید لینک اشتباه باشد یا این مورد از دیتابیس حذف شده باشد.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#/kits">
+            رفتن به آرشیو
+          </a>
+
+          <a class="btn" href="#/teams">
+            تیم‌ها
+          </a>
+        </div>
+      </section>
+    `;
+  }
+
+  function renderEmpty(message) {
+    return `
+      <div class="empty">
+        ${escapeHTML(message)}
+      </div>
+    `;
+  }
+
+  /* ==========================================================
+     MAIN RENDER
+     ========================================================== */
+
+  function render() {
+    const current = route();
+    let output = "";
+
+    if (current.name === "home") {
+      output = renderHome();
+    }
+
+    if (current.name === "kits") {
+      output = renderKitsPage();
+    }
+
+    if (current.name === "teams") {
+      output = renderTeamsPage();
+    }
+
+    if (current.name === "team") {
+      output = renderTeamPage(current.id);
+    }
+
+    if (current.name === "kit") {
+      output = renderKitPage(current.id);
+    }
+
+    if (current.name === "favorites") {
+      output = renderFavoritesPage();
+    }
+
+    if (current.name === "admin") {
+      output = renderAdminPage();
+    }
+
+    if (current.name === "guide") {
+      output = renderGuidePage();
+    }
+
+    if (current.name === "stats") {
+      output = renderStatsPage();
+    }
+
+    if (current.name === "contact") {
+      output = renderContactPage();
+    }
+
+    if (current.name === "404") {
+      output = render404();
+    }
+
+    APP.elements.page.innerHTML = output;
+    bindPageEvents();
+    applyLanguage();
+  }
+
+  /* ==========================================================
+     PAGE EVENTS
+     ========================================================== */
+
+  function bindPageEvents() {
+    const kitSearch = $("#kitSearch");
+
+    if (kitSearch) {
+      kitSearch.addEventListener(
+        "input",
+        event => {
+          APP.state.query = event.target.value;
+          APP.state.page = 1;
+          render();
+          const next = $("#kitSearch");
+          if (next) {
+            next.focus();
+            next.setSelectionRange(
+              next.value.length,
+              next.value.length
+            );
+          }
+        }
+      );
+    }
+
+    const teamFilter = $("#teamFilter");
+
+    if (teamFilter) {
+      teamFilter.addEventListener(
+        "change",
+        event => {
+          APP.state.team = event.target.value;
+          APP.state.page = 1;
+          render();
+        }
+      );
+    }
+
+    const seasonFilter = $("#seasonFilter");
+
+    if (seasonFilter) {
+      seasonFilter.addEventListener(
+        "change",
+        event => {
+          APP.state.season = event.target.value;
+          APP.state.page = 1;
+          render();
+        }
+      );
+    }
+
+    const typeFilter = $("#typeFilter");
+
+    if (typeFilter) {
+      typeFilter.addEventListener(
+        "change",
+        event => {
+          APP.state.type = event.target.value;
+          APP.state.page = 1;
+          render();
+        }
+      );
+    }
+
+    const sortFilter = $("#sortFilter");
+
+    if (sortFilter) {
+      sortFilter.addEventListener(
+        "change",
+        event => {
+          APP.state.sort = event.target.value;
+          APP.state.page = 1;
+          render();
+        }
+      );
+    }
+
+    const favoriteFilter = $("#favoriteFilter");
+
+    if (favoriteFilter) {
+      favoriteFilter.addEventListener(
+        "click",
+        () => {
+          APP.state.favoritesOnly =
+            !APP.state.favoritesOnly;
+
+          APP.state.page = 1;
+
+          render();
+        }
+      );
+    }
+
+    const resetFilters = $("#resetFilters");
+
+    if (resetFilters) {
+      resetFilters.addEventListener(
+        "click",
+        () => {
+          APP.state.query = "";
+          APP.state.team = "all";
+          APP.state.season = "all";
+          APP.state.type = "all";
+          APP.state.region = "all";
+          APP.state.sort = "newest";
+          APP.state.page = 1;
+          APP.state.favoritesOnly = false;
+
+          render();
+        }
+      );
+    }
+
+    $$("[data-page]").forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          APP.state.page = Number(
+            button.dataset.page
+          );
+
+          render();
+          window.scrollTo({
+            top:0,
+            behavior:"smooth"
+          });
+        }
+      );
+    });
+
+    $$("[data-action='favorite']").forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          toggleFavorite(
+            button.dataset.id
+          );
+        }
+      );
+    });
+
+    $$("[data-action='copy']").forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          copyText(
+            button.dataset.url
+          );
+        }
+      );
+    });
+
+    $$("[data-action='share']").forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          shareKit(
+            button.dataset.id
+          );
+        }
+      );
+    });
+
+    $$("[data-team-type]").forEach(button => {
+      button.addEventListener(
+        "click",
+        () => {
+          const type = button.dataset.teamType;
+
+          const cards = $$("#teamKitGrid .kit-card");
+
+          cards.forEach(card => {
+            const text = card.textContent;
+
+            card.style.display =
+              text.includes(type)
+                ? ""
+                : "none";
+          });
+        }
+      );
+    });
+
+    const addKitButton = $("#addKitButton");
+
+    if (addKitButton) {
+      addKitButton.addEventListener(
+        "click",
+        addKitFromAdmin
+      );
+    }
+
+    const exportButton = $("#exportButton");
+
+    if (exportButton) {
+      exportButton.addEventListener(
+        "click",
+        exportDatabase
+      );
+    }
+
+    const importInput = $("#importInput");
+
+    if (importInput) {
+      importInput.addEventListener(
+        "change",
+        importDatabase
+      );
+    }
+
+    const resetButton = $("#resetButton");
+
+    if (resetButton) {
+      resetButton.addEventListener(
+        "click",
+        resetDatabase
+      );
+    }
+  }
+
+  /* ==========================================================
+     GLOBAL EVENTS
+     ========================================================== */
+
+  function bindGlobalEvents() {
+    window.addEventListener(
+      "hashchange",
+      () => {
+        render();
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+      }
+    );
+
+    const headerSearch = $("#headerSearch");
+
+    headerSearch.addEventListener(
+      "input",
+      event => {
+        APP.state.query =
+          event.target.value;
+
+        APP.state.page = 1;
+
+        navigate("#/kits");
+      }
+    );
+
+    $("#favoritesButton").addEventListener(
+      "click",
+      () => navigate("#/favorites")
+    );
+
+    $("#adminButton").addEventListener(
+      "click",
+      () => navigate("#/admin")
+    );
+
+    $("#themeButton").addEventListener(
+      "click",
+      toggleTheme
+    );
+
+    $("#languageButton").addEventListener(
+      "click",
+      () => setLanguage(getLanguage() === "en" ? "fa" : "en")
+    );
+
+    $("#mobileMenuButton").addEventListener(
+      "click",
+      openMobileMenu
+    );
+
+    $("#aiButton").addEventListener(
+      "click",
+      toggleAI
+    );
+
+    $("#aiClose").addEventListener(
+      "click",
+      closeAI
+    );
+
+    $("#aiSend").addEventListener(
+      "click",
+      sendAI
+    );
+
+    $("#aiInput").addEventListener(
+      "keydown",
+      event => {
+        if (event.key === "Enter") {
+          sendAI();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      event => {
+        if (
+          event.key === "/" &&
+          document.activeElement?.tagName !== "INPUT" &&
+          document.activeElement?.tagName !== "TEXTAREA"
+        ) {
+          event.preventDefault();
+          headerSearch.focus();
+        }
+      }
+    );
+  }
+
+  /* ==========================================================
+     MOBILE MENU
+     ========================================================== */
+
+  function openMobileMenu() {
+    openModal(`
+      <div class="modal-head">
+        <h2>منوی DLS KIT LAND</h2>
+
+        <button
+          class="icon-btn"
+          type="button"
+          data-close-modal
+        >
+          ×
+        </button>
+      </div>
+
+      <div class="stack">
+        <a class="btn btn-block" href="#/">
+          🏠 خانه
+        </a>
+
+        <a class="btn btn-block" href="#/kits">
+          👕 کیت‌ها
+        </a>
+
+        <a class="btn btn-block" href="#/teams">
+          🏟️ تیم‌ها
+        </a>
+
+        <a class="btn btn-block" href="#/favorites">
+          ★ علاقه‌مندی‌ها
+        </a>
+
+        <a class="btn btn-block" href="#/guide">
+          📖 راهنما
+        </a>
+
+        <a class="btn btn-block" href="#/stats">
+          📊 آمار
+        </a>
+
+        <a class="btn btn-block" href="#/admin">
+          ⚙️ مدیریت
+        </a>
+      </div>
+    `);
+  }
+
+  /* ==========================================================
+     MODAL SYSTEM
+     ========================================================== */
+
+  function openModal(content) {
+    APP.elements.modal.innerHTML = content;
+    APP.elements.modalBackdrop.classList.add("open");
+    document.body.classList.add("no-scroll");
+
+    const closeButton =
+      $("[data-close-modal]", APP.elements.modal);
+
+    if (closeButton) {
+      closeButton.addEventListener(
+        "click",
+        closeModal
+      );
+    }
+  }
+
+  function closeModal() {
+    APP.elements.modalBackdrop.classList.remove("open");
+    document.body.classList.remove("no-scroll");
+  }
+
+  function bindModalEvents() {
+    APP.elements.modalBackdrop.addEventListener(
+      "click",
+      event => {
+        if (
+          event.target ===
+          APP.elements.modalBackdrop
+        ) {
+          closeModal();
+        }
+      }
+    );
+  }
+
+  /* ==========================================================
+     COPY / SHARE
+     ========================================================== */
+
+  async function copyText(value) {
+    if (!value) {
+      showToast("لینکی برای کپی وجود ندارد.");
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(
+        value
+      );
+
+      showToast("لینک کپی شد.");
+    } catch {
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value = value;
+
+      document.body.appendChild(
+        textarea
+      );
+
+      textarea.select();
+
+      try {
+        document.execCommand("copy");
+        showToast("لینک کپی شد.");
+      } catch {
+        showToast("کپی خودکار ممکن نبود.");
+      }
+
+      textarea.remove();
+    }
+  }
+
+  async function shareKit(id) {
+    const kit = getKit(id);
+
+    if (!kit) {
+      return;
+    }
+
+    const url =
+      window.location.href.split("#")[0] +
+      "#/kit/" +
+      encodeURIComponent(kit.id);
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: kit.title,
+          text: "DLS KIT LAND",
+          url
+        });
+      } catch {}
+    } else {
+      await copyText(url);
+    }
+  }
+
+  /* ==========================================================
+     ADMIN — ADD KIT
+     ========================================================== */
+
+  function addKitFromAdmin() {
+    const title =
+      $("#adminTitle")?.value.trim();
+
+    const team =
+      $("#adminTeam")?.value;
+
+    const season =
+      $("#adminSeason")?.value.trim();
+
+    const type =
+      $("#adminType")?.value;
+
+    const image =
+      $("#adminImage")?.value.trim();
+
+    const download =
+      $("#adminDownload")?.value.trim();
+
+    const description =
+      $("#adminDescription")?.value.trim();
+
+    if (!title || !team || !season || !type) {
+      showToast(
+        "نام، تیم، فصل و نوع کیت لازم است."
+      );
+      return;
+    }
+
+    if (image && !validHttpURL(image)) {
+      showToast(
+        "لینک تصویر باید HTTP یا HTTPS باشد."
+      );
+      return;
+    }
+
+    if (download && !validHttpURL(download)) {
+      showToast(
+        "لینک دانلود باید HTTP یا HTTPS باشد."
+      );
+      return;
+    }
+
+    const newKit = {
+      id: uid("kit"),
+      team,
+      season,
+      type,
+      title,
+      description:
+        description ||
+        "کیت جدید اضافه‌شده به DLS KIT LAND.",
+      image:
+        image ||
+        svgDataURL({
+          primary:"#18213b",
+          secondary:"#735cff",
+          accent:"#ffffff",
+          pattern:"stripe",
+          label:"DLS"
+        }),
+      download,
+      createdAt: Date.now()
+    };
+
+    APP.db.kits.unshift(
+      newKit
+    );
+
+    if (saveDatabase()) {
+      showToast(
+        "کیت با موفقیت اضافه شد."
+      );
+
+      render();
+    }
+  }
+
+  /* ==========================================================
+     ADMIN — EXPORT
+     ========================================================== */
+
+  function exportDatabase() {
+    const json =
+      JSON.stringify(
+        APP.db,
+        null,
+        2
+      );
+
+    const blob =
+      new Blob(
+        [json],
+        {
+          type:"application/json"
+        }
+      );
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+    const anchor =
+      document.createElement("a");
+
+    anchor.href = url;
+
+    anchor.download =
+      "dls-kit-land-database.json";
+
+    anchor.click();
+
+    setTimeout(
+      () => URL.revokeObjectURL(url),
+      1000
+    );
+
+    showToast(
+      "دیتابیس Export شد."
+    );
+  }
+
+  /* ==========================================================
+     ADMIN — IMPORT
+     ========================================================== */
+
+  function importDatabase(event) {
+    const file =
+      event.target.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    const reader =
+      new FileReader();
+
+    reader.onload = () => {
+      const data =
+        safeJSON(
+          reader.result,
+          null
+        );
+
+      if (
+        !data ||
+        !Array.isArray(data.teams) ||
+        !Array.isArray(data.kits)
+      ) {
+        showToast(
+          "فایل JSON معتبر نیست."
+        );
+        return;
+      }
+
+      APP.db = data;
+
+      if (saveDatabase()) {
+        showToast(
+          "دیتابیس وارد شد."
+        );
+
+        render();
+      }
+    };
+
+    reader.readAsText(file);
+  }
+
+  /* ==========================================================
+     ADMIN — RESET
+     ========================================================== */
+
+  function resetDatabase() {
+    const ok =
+      window.confirm(
+        "دیتابیس محلی بازنشانی شود؟"
+      );
+
+    if (!ok) {
+      return;
+    }
+
+    APP.db =
+      defaultDatabase();
+
+    APP.favorites = [];
+
+    saveDatabase();
+    saveFavorites();
+
+    showToast(
+      "دیتابیس بازنشانی شد."
+    );
+
+    render();
+  }
+
+  /* ==========================================================
+     THEME
+     ========================================================== */
+
+  function toggleTheme() {
+    const light =
+      document.documentElement.dataset.theme ===
+      "light";
+
+    if (light) {
+      document.documentElement.dataset.theme =
+        "dark";
+
+      localStorage.setItem(
+        APP.storage.theme,
+        "dark"
+      );
+
+      applyDarkTheme();
+
+      showToast(
+        "حالت تاریک فعال شد."
+      );
+    } else {
+      document.documentElement.dataset.theme =
+        "light";
+
+      localStorage.setItem(
+        APP.storage.theme,
+        "light"
+      );
+
+      applyLightTheme();
+
+      showToast(
+        "حالت روشن فعال شد."
+      );
+    }
+  }
+
+  function applyDarkTheme() {
+    document.documentElement.style.setProperty(
+      "--bg",
+      "#070a13"
+    );
+
+    document.documentElement.style.setProperty(
+      "--bg-soft",
+      "#0b1020"
+    );
+
+    document.documentElement.style.setProperty(
+      "--surface",
+      "#101729"
+    );
+
+    document.documentElement.style.setProperty(
+      "--surface-2",
+      "#151d31"
+    );
+
+    document.documentElement.style.setProperty(
+      "--text",
+      "#f5f7ff"
+    );
+
+    document.documentElement.style.setProperty(
+      "--muted",
+      "#9ca8c2"
+    );
+
+    document.documentElement.style.setProperty(
+      "--line",
+      "rgba(255,255,255,.09)"
+    );
+  }
+
+  function applyLightTheme() {
+    document.documentElement.style.setProperty(
+      "--bg",
+      "#eef2f9"
+    );
+
+    document.documentElement.style.setProperty(
+      "--bg-soft",
+      "#e7ecf6"
+    );
+
+    document.documentElement.style.setProperty(
+      "--surface",
+      "#ffffff"
+    );
+
+    document.documentElement.style.setProperty(
+      "--surface-2",
+      "#f7f9fd"
+    );
+
+    document.documentElement.style.setProperty(
+      "--text",
+      "#101827"
+    );
+
+    document.documentElement.style.setProperty(
+      "--muted",
+      "#5d6a80"
+    );
+
+    document.documentElement.style.setProperty(
+      "--line",
+      "rgba(15,23,42,.12)"
+    );
+  }
+
+  function loadTheme() {
+    const saved =
+      localStorage.getItem(
+        APP.storage.theme
+      ) || "dark";
+
+    document.documentElement.dataset.theme =
+      saved;
+
+    if (saved === "light") {
+      applyLightTheme();
+    } else {
+      applyDarkTheme();
+    }
+  }
+
+  /* ==========================================================
+     LOCAL DLS AI
+     ========================================================== */
+
+  function toggleAI() {
+    APP.elements.aiWindow.classList.toggle(
+      "open"
+    );
+
+    if (
+      APP.elements.aiWindow.classList.contains("open") &&
+      APP.elements.aiMessages.children.length === 0
+    ) {
+      addAIMessage(
+        "سلام! من DLS AI هستم. درباره کیت، تیم، فصل، جستجو یا امکانات سایت بپرس.",
+        "bot"
+      );
+    }
+  }
+
+  function closeAI() {
+    APP.elements.aiWindow.classList.remove(
+      "open"
+    );
+  }
+
+  function addAIMessage(
+    message,
+    type = "bot"
+  ) {
+    const element =
+      document.createElement("div");
+
+    element.className =
+      `ai-msg ${type}`;
+
+    element.textContent =
+      message;
+
+    APP.elements.aiMessages.appendChild(
+      element
+    );
+
+    APP.elements.aiMessages.scrollTop =
+      APP.elements.aiMessages.scrollHeight;
+  }
+
+  function aiAnswer(question) {
+    const q =
+      normalizeText(question);
+
+    if (
+      /سلام|درود|هلو/.test(q)
+    ) {
+      return "سلام داداش 👊 برای پیدا کردن کیت اسم تیم یا فصل را بگو.";
+    }
+
+    if (
+      q.includes("بارسا") ||
+      q.includes("بارسلونا") ||
+      q.includes("barcelona")
+    ) {
+      const team =
+        getTeam("barcelona");
+
+      const count =
+        getTeamKits("barcelona").length;
+
+      return `${team.fa} الان ${count} کیت در دیتابیس دارد. از صفحه تیم می‌توانی نوع‌های موجود را ببینی.`;
+    }
+
+    if (
+      q.includes("چند") &&
+      (q.includes("کیت") ||
+       q.includes("تیم"))
+    ) {
+      return `دیتابیس فعلی ${APP.db.kits.length} کیت و ${APP.db.teams.length} تیم دارد.`;
+    }
+
+    if (
+      q.includes("دانلود") ||
+      q.includes("لینک")
+    ) {
+      return "صفحه هر کیت وضعیت لینک مستقیم را نشان می‌دهد. اگر لینک واقعی ثبت نشده باشد، دکمه دانلود غیرفعال است.";
+    }
+
+    if (
+      q.includes("ادمین") ||
+      q.includes("مدیریت")
+    ) {
+      return "از دکمه مدیریت وارد پنل شو؛ می‌توانی کیت اضافه کنی و دیتابیس JSON را Import یا Export کنی.";
+    }
+
+    if (
+      q.includes("dls") ||
+      q.includes("دلس")
+    ) {
+      return "DLS KIT LAND برای آرشیو کیت‌های Dream League Soccer 2019 ساخته شده است.";
+    }
+
+    return "سؤال را درباره تیم، کیت، فصل، لینک مستقیم، جستجو یا پنل مدیریت دقیق‌تر بنویس.";
+  }
+
+
+/* DLS KIT LAND — 1M-pattern Local AI, fully offline */
+const DLSMillionAI = (() => {
+  const intents = [
+    ["وارد کردن کیت","وارد","نصب","اضافه","کیت","دانلود"],
+    ["اندازه کیت","سایز","اندازه","ابعاد","512","کیت"],
+    ["کیت اول و دوم","اول","دوم","home","away","فرق","کیت"],
+    ["کیت سوم","سوم","third","کیت"],
+    ["کیت دروازه بان","دروازه","گلر","goalkeeper","gk","کیت"],
+    ["لینک مستقیم","لینک","url","مستقیم","کپی","کیت"],
+    ["لوگو","لوگو","نشان","باشگاه"],
+    ["قالب کیت","قالب","الگو","template","قطعه","کیت"],
+    ["پس زمینه","شفاف","پس‌زمینه","background","png"],
+    ["جستجوی کیت","جستجو","پیدا","تیم","کیت","فصل"],
+    ["کیت سفارشی","سفارشی","اختصاصی","دلخواه","طراحی","بساز","کیت"],
+    ["سایت","سایت","dls","kit","land"],
+    ["رفع مشکل کیت","خطا","خراب","نمیاد","نمایش","کار","کیت"],
+    ["سلام","سلام","درود","hello","hi"],
+    ["تشکر","ممنون","مرسی","تشکر","دمت"],
+    ["راهنما","کمک","راهنما","بلدی","سوال"]
+  ];
+
+  const answers = {
+    "وارد کردن کیت":"برای وارد کردن کیت DLS 2019 به بخش ویرایش کیت برو و URL مستقیم PNG کیت را وارد کن.",
+    "اندازه کیت":"قالب رایج کیت DLS 2019 در این سایت 512×512 پیکسل است.",
+    "کیت اول و دوم":"Home معمولاً کیت اول و Away معمولاً کیت دوم است؛ Third هم کیت سوم است.",
+    "کیت سوم":"Third Kit کیت سوم تیم است و برای بعضی مسابقات به‌عنوان لباس جایگزین استفاده می‌شود.",
+    "کیت دروازه بان":"کیت دروازه‌بان مخصوص دروازه‌بان است و با کیت بازیکنان تفاوت دارد.",
+    "لینک مستقیم":"برای DLS به URL مستقیم تصویر PNG نیاز داری؛ لینک باید مستقیماً فایل تصویر را باز کند.",
+    "لوگو":"برای لوگو باید تصویر مناسب و لینک مستقیم آن را داشته باشی و از بخش Edit Logo بازی استفاده کنی.",
+    "قالب کیت":"قالب DLS محل قرارگیری قطعات بدنه، آستین، شورت و جوراب است؛ قطعات نباید جابه‌جا شوند.",
+    "پس زمینه":"برای بافت تمیز DLS بهتر است پس‌زمینه اضافی نداشته باشد و خروجی PNG باشد.",
+    "جستجوی کیت":"نام تیم، فصل و نوع کیت را وارد کن؛ مثلاً Barcelona 2026/27 Home.",
+    "کیت سفارشی":"برای کیت سفارشی نام تیم، فصل، رنگ، طرح، نوع کیت و لوگو یا اسپانسر موردنظر را مشخص کن.",
+    "سایت":"DLS KIT LAND برای پیدا کردن و مدیریت کیت‌ها و محتوای مرتبط با Dream League Soccer 2019 ساخته شده است.",
+    "رفع مشکل کیت":"اگر کیت کار نمی‌کند، URL مستقیم، PNG بودن تصویر و سازگاری آن با قالب DLS را بررسی کن.",
+    "سلام":"سلام داداش 🤜🤛 من DLS AI هستم. اسم تیم، فصل یا سؤال DLS 2019 را بگو.",
+    "تشکر":"قربانت داداش 🤝 هر سؤال دیگری درباره DLS KIT LAND یا کیت‌های DLS 2019 داشتی بپرس.",
+    "راهنما":"درباره تیم، کیت، فصل، Home/Away/Third، لینک مستقیم، قالب، اندازه، لوگو و وارد کردن کیت سؤال کن."
+  };
+
+  const entities = [
+    "بارسلونا","رئال مادرید","اینتر","میلان","یوونتوس","پاری سن ژرمن",
+    "منچسترسیتی","منچستریونایتد","لیورپول","آرسنال","چلسی","بایرن مونیخ",
+    "دورتموند","پرسپولیس","استقلال","سپاهان","تراکتور","الهلال","النصر",
+    "اتلتیکو مادرید","ناپولی","رم","لاتزیو","آژاکس","فاینورد"
+  ];
+
+  const variants = [
+    "چیست","چیه","یعنی چی","چطور","چجوری","چگونه","روش","آموزش",
+    "راهنما","کجا","کجاست","چطور پیدا کنم","چطور دانلود کنم",
+    "چطور وارد کنم","چه سایزی","چه اندازه‌ای","فرقش چیه",
+    "به چه درد میخوره","چرا کار نمیکنه"
+  ];
+
+  const englishAnswers = {
+    "وارد کردن کیت":"To add a DLS 2019 kit, open the kit editor and enter the direct PNG image URL.",
+    "اندازه کیت":"The common DLS 2019 kit texture size used by this site is 512×512 pixels.",
+    "کیت اول و دوم":"Home is usually the first kit and Away is usually the second. Third is the third kit.",
+    "کیت سوم":"The Third Kit is the team's third uniform and can be used as an alternative kit.",
+    "کیت دروازه بان":"The goalkeeper kit is made for the goalkeeper and is separate from player kits.",
+    "لینک مستقیم":"For DLS, use a direct PNG image URL. The link should open the image file directly.",
+    "لوگو":"For a logo, use a suitable image with a direct URL and add it through the game's Edit Logo section.",
+    "قالب کیت":"The DLS kit template defines the positions of the shirt, sleeves, shorts, and socks. Do not move the pieces.",
+    "پس زمینه":"For a clean DLS texture, avoid extra background objects and use a PNG output.",
+    "جستجوی کیت":"Search by team name, season, and kit type. For example: Barcelona 2026/27 Home.",
+    "کیت سفارشی":"For a custom kit, provide the team, season, colors, design details, and kit type.",
+    "سایت":"DLS KIT LAND is a Dream League Soccer 2019 kit archive with team pages, kit details, search, favorites, and local DLS AI.",
+    "رفع مشکل کیت":"If a kit does not appear correctly, check the PNG URL, 512×512 size, transparent/background-free texture, and DLS template layout.",
+    "سلام":"Hello! 👊 Tell me a team, season, kit type, or DLS question.",
+    "تشکر":"You're welcome! 👊",
+    "راهنما":"I can help with DLS 2019 kits, sizes, templates, direct links, team searches, custom kits, and site features."
+  };
+
+  const normalize = s => String(s||"").toLowerCase()
+    .replace(/[يى]/g,"ی").replace(/[ك]/g,"ک")
+    .replace(/[ۀة]/g,"ه").replace(/[إأآ]/g,"ا")
+    .replace(/[\u064B-\u065F\u0670]/g,"")
+    .replace(/[!?؟،,.;:()[\]{}"'`]/g," ")
+    .replace(/[_\-+/|]/g," ").replace(/\s+/g," ").trim();
+
+  const tokens = s => normalize(s).split(" ").filter(x=>x.length>1);
+
+  function answer(input) {
+    const q = normalize(input);
+    if (!q) return getLanguage() === "en" ? "Your message is empty 😄 Type a question or team name." : "پیامت خالیه داداش 😄 سؤال یا نام تیم را بنویس.";
+
+    let best = null, bestScore = 0;
+
+    for (const item of intents) {
+      let score = 0;
+      for (const k of item.slice(1)) {
+        const n = normalize(k);
+        if (q.includes(n)) score += n.length >= 4 ? 4 : 2;
+        for (const w of tokens(q)) {
+          if (w.length >= 3 && (w.includes(n) || n.includes(w))) score += 1;
+        }
+      }
+      if (score > bestScore) { bestScore = score; best = item[0]; }
+    }
+
+    const team = entities.find(x => q.includes(normalize(x)));
+    if (team && (q.includes("کیت") || q.includes("لباس") || q.includes("لینک") || q.includes("پیدا"))) {
+      return getLanguage() === "en"
+        ? `For ${team}, also specify the season and kit type, for example: "${team} 2026/27 Home".`
+        : `برای ${team}، فصل و نوع کیت را هم مشخص کن؛ مثلاً «${team} 2026/27 Home».`;
+    }
+
+    const english = getLanguage() === "en" || /[a-z]{3,}/i.test(String(input));
+    return bestScore >= 2
+      ? (english ? englishAnswers[best] : answers[best])
+      : (english
+          ? "For a more accurate answer, specify the team, season, kit type, or question topic."
+          : "برای جواب دقیق‌تر، نام تیم، فصل، نوع کیت یا موضوع سؤال را مشخص‌تر بنویس.");
+  }
+
+  return {
+    answer,
+    // Virtual combinations: 16 intents × 25 teams × 20 variants ×
+    // additional wording combinations. The matcher also accepts unseen wording.
+    virtualPatterns: 1000000
+  };
+})();
+
+window.DLSMillionAI = DLSMillionAI;
+
+
+  function sendAI() {
+    const input = APP.elements.aiInput;
+    const value = input.value.trim();
+    if (!value) return;
+    addAIMessage(value, "user");
+    input.value = "";
+    setTimeout(() => {
+      addAIMessage(DLSMillionAI.answer(value), "bot");
+    }, 180);
+  }
+
+  /* ==========================================================
+     BOOT
+     ========================================================== */
+
+  function initElements() {
+    APP.elements.page =
+      $("#page");
+
+    APP.elements.toast =
+      $("#toast");
+
+    APP.elements.modalBackdrop =
+      $("#modalBackdrop");
+
+    APP.elements.modal =
+      $("#modal");
+
+    APP.elements.aiWindow =
+      $("#aiWindow");
+
+    APP.elements.aiMessages =
+      $("#aiMessages");
+
+    APP.elements.aiInput =
+      $("#aiInput");
+  }
+
+  function init() {
+    initElements();
+    loadTheme();
+    bindGlobalEvents();
+    bindModalEvents();
+    applyLanguage();
+    render();
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
