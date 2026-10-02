@@ -125,10 +125,14 @@ module.exports = async (req, res) => {
         userID: userId,
         attestationType: "none",
         authenticatorSelection: {
-          residentKey: "required",
+          // Android/Google Password Manager: prefer a discoverable passkey
+          // while asking the browser to use the local phone authenticator.
+          residentKey: "preferred",
           userVerification: "required",
-          authenticatorAttachment: "platform",
         },
+        // Prefer the local phone authenticator (pattern/PIN/biometric).
+        // This is a hint; the browser may still apply its own UI rules.
+        preferredAuthenticatorType: "localDevice",
         supportedAlgorithmIDs: [-7, -257],
       });
 
