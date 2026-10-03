@@ -935,6 +935,9 @@ p{
     html[dir="ltr"] .ai-window, html[dir="ltr"] .modal { direction:ltr; }
     html[dir="ltr"] .ai-messages { text-align:left; }
     .lang-btn { min-width:44px; font-weight:800; font-size:12px; }
+
+    .admin-secure-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    [data-delete-kit],[data-delete-team]{white-space:nowrap}
 </style>
 <style>
 .ai-fab-logo{display:grid;place-items:center;width:100%;height:100%;font-weight:900;font-size:18px;letter-spacing:.08em;background:linear-gradient(135deg,#5ee7ff,#7b61ff);-webkit-background-clip:text;background-clip:text;color:transparent;}
@@ -3243,11 +3246,80 @@ p{
      ADMIN PAGE
      ========================================================== */
 
+  function renderAdminTeamList() {
+    const host = $("#adminTeamList");
+    if (!host) return;
+    host.innerHTML = APP.db.teams.map(team => `
+      <div class="filter-panel" style="padding:12px">
+        <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+          <div>
+            <strong>${escapeHTML(team.fa || team.name || team.id)}</strong>
+            <div class="small muted">${escapeHTML(team.en || team.name || "")} · ${escapeHTML(team.id)}</div>
+          </div>
+          <button class="btn btn-danger" type="button" data-delete-team="${escapeHTML(team.id)}">حذف تیم</button>
+        </div>
+      </div>
+    `).join("") || renderEmpty("هنوز تیمی ثبت نشده است.");
+  }
+
+  function renderAdminKitList() {
+    const host = $("#adminKitList");
+    if (!host) return;
+    const kits = [...APP.db.kits].sort((a,b) => (b.createdAt || 0) - (a.createdAt || 0));
+    host.innerHTML = kits.map(kit => {
+      const team = getTeam(kit.team);
+      return `
+        <div class="filter-panel" style="padding:12px">
+          <div style="display:flex;justify-content:space-between;gap:10px;align-items:center">
+            <div style="min-width:0">
+              <strong>${escapeHTML(kit.title || "Untitled Kit")}</strong>
+              <div class="small muted">${escapeHTML(team?.fa || kit.team)} · ${escapeHTML(kit.season || "")} · ${escapeHTML(kit.type || "")}</div>
+            </div>
+            <button class="btn btn-danger" type="button" data-delete-kit="${escapeHTML(kit.id)}">حذف</button>
+          </div>
+        </div>
+      `;
+    }).join("") || renderEmpty("هنوز کیتی ثبت نشده است.");
+  }
+
+  function deleteKitFromAdmin(id) {
+    const kit = APP.db.kits.find(k => k.id === id);
+    if (!kit) return;
+    if (!window.confirm(`کیت «${kit.title || id}» حذف شود؟`)) return;
+    APP.db.kits = APP.db.kits.filter(k => k.id !== id);
+    if (saveDatabase()) {
+      showToast("کیت حذف شد.");
+      render();
+    }
+  }
+
+  function addTeamFromAdmin() {
+    const id = $("#adminTeamId")?.value.trim().toLowerCase().replace(/[^a-z0-9_-]+/g, "-");
+    const fa = $("#adminTeamFa")?.value.trim();
+    const en = $("#adminTeamEn")?.value.trim();
+    const region = $("#adminTeamRegion")?.value.trim() || "Other";
+    if (!id || !fa || !en) return showToast("شناسه، نام فارسی و نام انگلیسی تیم لازم است.");
+    if (APP.db.teams.some(t => t.id === id)) return showToast("این شناسه تیم قبلاً وجود دارد.");
+    APP.db.teams.push({ id, fa, en, name: en, region });
+    if (saveDatabase()) { showToast("تیم اضافه شد."); render(); }
+  }
+
+  function deleteTeamFromAdmin(id) {
+    const team = getTeam(id);
+    if (!team) return;
+    const count = APP.db.kits.filter(k => k.team === id).length;
+    const message = count ? `تیم «${team.fa || team.en || id}» و ${count} کیت وابسته حذف شوند؟` : `تیم «${team.fa || team.en || id}» حذف شود؟`;
+    if (!window.confirm(message)) return;
+    APP.db.teams = APP.db.teams.filter(t => t.id !== id);
+    APP.db.kits = APP.db.kits.filter(k => k.team !== id);
+    if (saveDatabase()) { showToast("تیم و موارد وابسته حذف شدند."); render(); }
+  }
+
   function renderAdminPanel() {
     return `
       <section class="hero">
         <span class="eyebrow">
-          LOCAL ADMIN
+          SECURE ADMIN
         </span>
 
         <h1>
@@ -3318,6 +3390,36 @@ p{
               + افزودن کیت
             </button>
           </div>
+        </article>
+
+        <article class="filter-panel">
+          <h2>مدیریت تیم‌ها</h2>
+          <div class="stack">
+            <div class="field">
+              <label>شناسه تیم</label>
+              <input class="control" id="adminTeamId" placeholder="barcelona">
+            </div>
+            <div class="field">
+              <label>نام فارسی</label>
+              <input class="control" id="adminTeamFa" placeholder="بارسلونا">
+            </div>
+            <div class="field">
+              <label>نام انگلیسی</label>
+              <input class="control" id="adminTeamEn" placeholder="Barcelona">
+            </div>
+            <div class="field">
+              <label>منطقه</label>
+              <input class="control" id="adminTeamRegion" placeholder="Europe">
+            </div>
+            <button class="btn btn-primary" type="button" id="addTeamButton">+ افزودن تیم</button>
+            <div id="adminTeamList" class="stack" style="margin-top:10px"></div>
+          </div>
+        </article>
+
+        <article class="filter-panel">
+          <h2>کیت‌های آرشیو</h2>
+          <p class="small muted">از اینجا می‌توانی کیت‌های هر تیم را حذف کنی. افزودن کیت از فرم سمت چپ انجام می‌شود.</p>
+          <div id="adminKitList" class="stack" style="margin-top:12px"></div>
         </article>
 
         <article class="filter-panel">
@@ -3766,6 +3868,25 @@ p{
         resetDatabase
       );
     }
+
+    const addKitButton = $("#addKitButton");
+    if (addKitButton) addKitButton.addEventListener("click", addKitFromAdmin);
+
+    const addTeamButton = $("#addTeamButton");
+    if (addTeamButton) addTeamButton.addEventListener("click", addTeamFromAdmin);
+
+    document.querySelectorAll("[data-delete-kit]").forEach(btn => {
+      btn.addEventListener("click", () => deleteKitFromAdmin(btn.dataset.deleteKit));
+    });
+
+    document.querySelectorAll("[data-delete-team]").forEach(btn => {
+      btn.addEventListener("click", () => deleteTeamFromAdmin(btn.dataset.deleteTeam));
+    });
+
+    if (route().name === "admin" && APP.state.adminAuthenticated) {
+      renderAdminTeamList();
+      renderAdminKitList();
+    }
   }
 
   /* ==========================================================
@@ -3905,7 +4026,7 @@ p{
           📊 آمار
         </a>
 
-        <a class="btn btn-block" href="#/admin">
+        <a class="btn btn-block" href="#/admin" data-admin-entry>
           ⚙️ مدیریت
         </a>
       </div>
@@ -4616,8 +4737,14 @@ window.DLSMillionAI = DLSMillionAI;
       $("#aiInput");
   }
 
+  function initAdminVisibility() {
+    const button = $("#adminButton");
+    if (button) button.setAttribute("aria-label", "مدیریت امن");
+  }
+
   function init() {
     initElements();
+    initAdminVisibility();
     loadTheme();
     bindGlobalEvents();
     bindModalEvents();
@@ -4629,4 +4756,4 @@ window.DLSMillionAI = DLSMillionAI;
 })();
 </script>
 </body>
-</html>
+   </html>
